@@ -14,6 +14,7 @@ import { redirect } from 'next/navigation'
 import { getAuthContext } from '@/lib/supabase/server'
 import { Sidebar } from '@/components/ui/Sidebar'
 import { TopBar } from '@/components/ui/TopBar'
+import { AppContent } from './_components/AppContent'
 import styles from './layout.module.css'
 
 export default async function ProtectedLayout({
@@ -39,14 +40,14 @@ export default async function ProtectedLayout({
       {/* Sidebar lateral permanente */}
       <Sidebar profile={sidebarProfile} />
 
-      {/* Área principal: TopBar + conteúdo */}
-      <div className={styles.appContent}>
+      {/* Área principal: background escolhido pela rota (AppContent) */}
+      <AppContent>
         <TopBar titulo="A Biblioteca" />
 
         <main className={styles.appMain} id="main-content" tabIndex={-1}>
           {children}
         </main>
-      </div>
+      </AppContent>
     </div>
   )
 }

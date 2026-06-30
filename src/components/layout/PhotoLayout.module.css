@@ -38,20 +38,17 @@
     "footer-l footer-l footer-r";
   gap: 0;
 
-  /* Subir para cobrir a TopBar (44px) — o pergaminho começa do topo */
+  /* Subir para cobrir a TopBar (44px) — o conteúdo começa no topo */
   margin-top: -44px;
   padding-top: calc(44px + var(--esp-6));
   padding-left: var(--esp-5);
   padding-right: var(--esp-5);
   padding-bottom: var(--esp-6);
 
-  /* Seções usam o Background papel todos — sobrepõe o background-mesa do appContent.
-     min-height: 100vh garante que a foto cubra a tela inteira,
-     sem deixar a mesa aparecer por baixo. */
-  background-image: url('/Background%20papel%20todos.png');
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
+  /* SEM background próprio — o fundo de papel é fornecido pelo layout
+     principal (.bgPapel em layout.module.css), escolhido pela rota.
+     O PhotoLayout apenas posiciona o conteúdo sobre o papel. */
+  background: transparent;
 }
 
 /* ─────────────────────────────────────────────

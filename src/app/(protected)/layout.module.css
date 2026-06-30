@@ -30,7 +30,9 @@
 
 /* ─────────────────────────────────────────────
    APP CONTENT — Área à direita da sidebar
-   A foto da mesa é o background de toda esta área.
+   O background é escolhido pela rota (AppContent.tsx):
+   - .bgMesa  → mesa de madeira (apenas /mesa)
+   - .bgPapel → rolo de papel antigo (todas as demais)
 ───────────────────────────────────────────── */
 
 .appContent {
@@ -41,13 +43,31 @@
   min-height: 100vh;
   position: relative;
 
-  /* Mockup da mesa — fotografia como gabarito físico.
-     NUNCA usar background-attachment: fixed.
-     A foto rola com a página como uma folha impressa gigante. */
+  /* Regras comuns às duas variantes. A foto rola com o conteúdo
+     (NUNCA background-attachment: fixed) e nunca se repete. */
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+/* Variante MESA — fotografia da mesa de madeira.
+   Largura total, ancorada no topo. */
+.bgMesa {
   background-image: url('/Background%20mesa.png');
   background-size: 100% auto;
   background-position: top left;
-  background-repeat: no-repeat;
+  background-color: var(--cor-papel-creme);
+}
+
+/* Variante PAPEL — rolo de papel antigo.
+   Começa no topo, preenche toda a largura e acompanha toda a altura
+   durante o scroll. background-color de papel garante que, em páginas
+   muito longas, o fim da folha continue claro — a madeira nunca aparece. */
+.bgPapel {
+  background-image: url('/Background%20papel%20todos.png');
+  background-size: cover;
+  background-position: top center;
+  /* Fallback claro: cobre qualquer área além da imagem em páginas longas */
+  background-color: var(--cor-papel-algodao);
 }
 
 /* ─────────────────────────────────────────────
@@ -112,17 +132,16 @@
    RESPONSIVIDADE
 ───────────────────────────────────────────── */
 
-/* Tablet */
+/* Tablet — a mesa ajusta para preencher a altura; o papel mantém cover */
 @media (max-width: 900px) {
-  .appContent {
+  .bgMesa {
     background-size: auto 100%;
   }
 }
 
-/* Mobile */
+/* Mobile — a fotografia da mesa perde sentido posicional */
 @media (max-width: 640px) {
-  .appContent {
-    /* Em mobile a fotografia perde sentido posicional */
+  .bgMesa {
     background-size: auto;
   }
 }
