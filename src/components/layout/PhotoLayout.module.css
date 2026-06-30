@@ -1,0 +1,207 @@
+/* ============================================================
+   PhotoLayout — Sistema de Coordenadas da Fotografia
+   A Biblioteca — Sprint VI, Correção de Composição
+   ============================================================
+   A fotografia de fundo é o gabarito.
+   Cada papel desenhado nela define um container exato.
+   Os componentes React devem parecer impressos sobre os papéis.
+
+   REGRAS:
+   - A fotografia define larguras, alturas, margens, respiros.
+   - Nenhum componente pode ultrapassar os limites do papel.
+   - Nenhuma margem arbitrária. Nenhum translate para compensar.
+   - Os wrappers possuem exatamente as dimensões do papel.
+   ============================================================ */
+
+/* ─────────────────────────────────────────────
+   CONTAINER PRINCIPAL — folha impressa
+   A fotografia rola junto com o conteúdo.
+   Não usar position: fixed. Não usar background-attachment: fixed.
+───────────────────────────────────────────── */
+
+.photoLayout {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  /*
+   * Mapeamento dos papéis da fotografia:
+   * [sidebar] [main] [right]
+   * Proporções extraídas da imagem: ~18% / ~52% / ~26%
+   * Gaps representam a madeira visível entre os papéis.
+   */
+  grid-template-columns: minmax(180px, 18%) minmax(0, 1fr) minmax(220px, 26%);
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header  header  header"
+    "sidebar main    right"
+    "footer-l footer-l footer-r";
+  gap: 0;
+
+  /* Subir para cobrir a TopBar (44px) — o pergaminho começa do topo */
+  margin-top: -44px;
+  padding-top: calc(44px + var(--esp-6));
+  padding-left: var(--esp-5);
+  padding-right: var(--esp-5);
+  padding-bottom: var(--esp-6);
+
+  /* Seções usam o Background papel todos — sobrepõe o background-mesa do appContent.
+     min-height: 100vh garante que a foto cubra a tela inteira,
+     sem deixar a mesa aparecer por baixo. */
+  background-image: url('/Background%20papel%20todos.png');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+/* ─────────────────────────────────────────────
+   PAPER WRAPPERS — Cada um mapeia um papel da foto
+───────────────────────────────────────────── */
+
+/* Cabeçalho — faixa branca superior */
+.paper-header {
+  grid-area: header;
+  /* O título ocupa exclusivamente a faixa branca superior.
+     Nunca invade a madeira. */
+  padding: var(--esp-4) var(--esp-6);
+  margin-bottom: var(--esp-4);
+}
+
+/* Coluna de filtros — papel vertical da esquerda */
+.paper-sidebar {
+  grid-area: sidebar;
+  /* A largura da coluna = largura exata do papel esquerdo.
+     Não ultrapassar. Não diminuir. */
+  padding: var(--esp-5) var(--esp-4);
+  align-self: stretch;
+  overflow-y: auto;
+  max-height: calc(100vh - var(--esp-20));
+  position: sticky;
+  top: var(--esp-5);
+}
+
+/* Lista principal — papel central */
+.paper-main {
+  grid-area: main;
+  /* Todo conteúdo começa neste papel.
+     Nunca iniciar antes. Nunca ultrapassar suas bordas. */
+  padding: var(--esp-5) var(--esp-6);
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* Painel lateral direito — papel vertical da direita */
+.paper-right {
+  grid-area: right;
+  /* Todos os widgets devem permanecer dentro dele. */
+  padding: var(--esp-5) var(--esp-4);
+  align-self: stretch;
+  overflow-y: auto;
+  max-height: calc(100vh - var(--esp-20));
+  position: sticky;
+  top: var(--esp-5);
+}
+
+/* Rodapé esquerdo */
+.paper-footer-left {
+  grid-area: footer-l;
+  padding: var(--esp-4) var(--esp-6);
+}
+
+/* Rodapé direito */
+.paper-footer-right {
+  grid-area: footer-r;
+  padding: var(--esp-4);
+}
+
+/* ─────────────────────────────────────────────
+   VARIANTE 2 COLUNAS — sem painel direito
+   (Fórmulas, Protocolos, Casos)
+───────────────────────────────────────────── */
+
+.photoLayout_twoCols {
+  grid-template-columns: minmax(180px, 18%) minmax(0, 1fr);
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer-l footer-l";
+}
+
+.photoLayout_twoCols .paper-right {
+  display: none;
+}
+
+/* No layout de 2 colunas (Caderno, Fórmulas, etc.) o papel da esquerda
+   está mais para dentro da foto — recuar o conteúdo da sidebar para a direita
+   e garantir que nenhuma borda separe o menu da área principal. */
+.photoLayout_twoCols .paper-sidebar {
+  padding-left: var(--esp-6);
+  padding-right: var(--esp-3);
+  border: none;
+}
+
+.photoLayout_twoCols .paper-main {
+  border: none;
+}
+
+/* ─────────────────────────────────────────────
+   BARRA DE BUSCA — retângulo horizontal do topo
+   Centralizada dentro do header.
+   Não aumentar largura. Não diminuir.
+───────────────────────────────────────────── */
+
+.paper-searchBar {
+  max-width: 560px;
+  width: 100%;
+}
+
+/* Botão principal — espaço à direita da busca */
+.paper-searchAction {
+  flex-shrink: 0;
+  margin-left: var(--esp-4);
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVIDADE — em mobile a fotografia perde
+   o sentido de posição, usa stack simples
+───────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .photoLayout,
+  .photoLayout_twoCols {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "main"
+      "footer-l";
+    padding: var(--esp-4) var(--esp-3);
+  }
+
+  .paper-sidebar {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .paper-right {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .photoLayout,
+  .photoLayout_twoCols {
+    padding: var(--esp-3) var(--esp-2);
+  }
+
+  .paper-header {
+    padding: var(--esp-3) var(--esp-3);
+  }
+
+  .paper-main {
+    padding: var(--esp-3);
+  }
+}

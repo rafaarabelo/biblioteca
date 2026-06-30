@@ -1,0 +1,67 @@
+/* ProtocolTimeline */
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.evento {
+  display: flex;
+  gap: var(--spacing-3);
+  align-items: flex-start;
+}
+
+.fio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.pontoOrigem {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--texto-terciario);
+  flex-shrink: 0;
+}
+
+.pontoAtual {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--terracota-500);
+  flex-shrink: 0;
+}
+
+.linha {
+  display: block;
+  width: 1px;
+  flex: 1;
+  min-height: 24px;
+  background: var(--borda-sutil);
+  margin: 4px 0;
+}
+
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: var(--spacing-4);
+}
+
+.rotulo {
+  font-size: var(--texto-xs);
+  font-weight: 500;
+  color: var(--texto-secundario);
+}
+
+.data {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+}

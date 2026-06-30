@@ -1,0 +1,45 @@
+/* CaseSearch */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--borda-sutil);
+  border-radius: 7px;
+  background: var(--superficie-primaria);
+  transition: border-color 0.15s ease;
+}
+
+.wrapper:focus-within {
+  border-color: var(--terracota-400, color-mix(in srgb, var(--terracota-500) 70%, white));
+}
+
+.icone {
+  color: var(--texto-terciario);
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--texto-sm);
+  color: var(--texto-primario);
+}
+
+.input::placeholder { color: var(--texto-terciario); }
+
+.limpar {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--texto-terciario);
+  padding: 0;
+  transition: color 0.1s ease;
+}
+
+.limpar:hover { color: var(--texto-primario); }

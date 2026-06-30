@@ -1,0 +1,48 @@
+/* ProtocolHeader */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+.titulo {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-3);
+}
+
+.h1 {
+  font-family: var(--fonte-serif);
+  font-size: var(--texto-xl);
+  font-weight: 600;
+  color: var(--texto-primario);
+  margin: 0;
+}
+
+.contador {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  background: var(--superficie-secundaria);
+  border: 1px solid var(--borda-sutil);
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+.novo {
+  font-size: var(--texto-sm);
+  color: var(--terracota-500);
+  text-decoration: none;
+  border: 1px solid var(--terracota-500);
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.novo:hover {
+  background: var(--terracota-500);
+  color: white;
+}

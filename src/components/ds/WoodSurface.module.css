@@ -1,0 +1,90 @@
+/* ============================================================
+   WoodSurface — Superfície de madeira
+   A Biblioteca — Design System
+   ============================================================
+   Simula uma prancha de madeira elegante (nogueira).
+   Usada como fundo de seções ou container decorativo.
+   ============================================================ */
+
+.wood {
+  position: relative;
+  background-color: var(--cor-madeira-nogueira);
+  background-image: var(--textura-madeira);
+  border-radius: var(--raio-xs);
+  padding: var(--esp-6);
+  color: var(--cor-papel-algodao);
+  overflow: hidden;
+}
+
+/* Brilho sutil — luz do canto superior direito */
+.wood::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--luz-brilho-sutil);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Borda entalhada (vinco na madeira) */
+.wood::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 250, 240, 0.06);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Variantes de tom ─────────────────────── */
+
+.woodClara {
+  background-color: var(--cor-madeira-mel);
+}
+
+.woodMedia {
+  background-color: var(--cor-madeira-media);
+}
+
+.woodEscura {
+  background-color: var(--cor-madeira-escura);
+}
+
+.woodProfunda {
+  background-color: var(--cor-madeira-profunda);
+}
+
+/* ── Com veios mais pronunciados ──────────── */
+
+.woodVeios {
+  background-image:
+    repeating-linear-gradient(
+      172deg,
+      rgba(255, 250, 240, 0.02) 0px,
+      transparent 1px,
+      transparent 6px,
+      rgba(0, 0, 0, 0.03) 7px,
+      transparent 8px,
+      transparent 14px
+    ),
+    var(--textura-madeira);
+}
+
+/* ── Tamanhos ─────────────────────────────── */
+
+.woodCompacto {
+  padding: var(--esp-4);
+}
+
+.woodEspacoso {
+  padding: var(--esp-8);
+}
+
+/* ── Inline (barra, faixa decorativa) ─────── */
+
+.woodInline {
+  padding: var(--esp-2) var(--esp-4);
+  border-radius: var(--raio-sm);
+}

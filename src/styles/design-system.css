@@ -1,0 +1,600 @@
+/* ============================================================
+   A Biblioteca — Design System Foundation
+   Sprint VI — Onda 1 (Foundation)
+   ============================================================
+   Este arquivo é a ÚNICA fonte de verdade para tokens visuais.
+   Nenhum componente ou página deve hardcodar valores.
+   Importado por globals.css.
+   ============================================================ */
+
+/* ─────────────────────────────────────────────
+   1. PALETA — Cores da Mesa de Pesquisa
+   Baseada na imagem aprovada: creme quente, papel algodão,
+   madeira nogueira, oliva, musgo, vinho, terracota, dourado.
+   Nunca branco puro. Nunca preto puro.
+───────────────────────────────────────────── */
+:root {
+  /* ── Terracota ──────────────────────────── */
+  --cor-terracota-50:  #FDF4F0;
+  --cor-terracota-100: #FAE4D8;
+  --cor-terracota-200: #F4C4A8;
+  --cor-terracota-300: #ECA07A;
+  --cor-terracota-400: #E07A52;
+  --cor-terracota-500: #C45F3A;
+  --cor-terracota-600: #A34E30;
+  --cor-terracota-700: #813D26;
+  --cor-terracota-800: #60301F;
+  --cor-terracota-900: #401F15;
+
+  /* ── Oliva / Sálvia ────────────────────── */
+  --cor-oliva-50:  #F4F6F0;
+  --cor-oliva-100: #E4EBD8;
+  --cor-oliva-200: #C8D6B0;
+  --cor-oliva-300: #A4BA82;
+  --cor-oliva-400: #7D9A58;
+  --cor-oliva-500: #5C7A3E;
+  --cor-oliva-600: #4A6432;
+  --cor-oliva-700: #3A4F28;
+  --cor-oliva-800: #2B3A1E;
+  --cor-oliva-900: #1C2614;
+
+  /* ── Musgo ──────────────────────────────── */
+  --cor-musgo-50:  #F0F5F2;
+  --cor-musgo-100: #D8EAE1;
+  --cor-musgo-200: #A8CEB8;
+  --cor-musgo-300: #7AB299;
+  --cor-musgo-400: #52967E;
+  --cor-musgo-500: #3A7A65;
+  --cor-musgo-600: #2E6352;
+  --cor-musgo-700: #234D40;
+  --cor-musgo-800: #18372E;
+  --cor-musgo-900: #0F221D;
+
+  /* ── Vinho ──────────────────────────────── */
+  --cor-vinho-50:  #F9F0F2;
+  --cor-vinho-100: #F0D8DE;
+  --cor-vinho-200: #D4A0AF;
+  --cor-vinho-300: #B86A82;
+  --cor-vinho-400: #9C4460;
+  --cor-vinho-500: #7A2E48;
+  --cor-vinho-600: #63253B;
+  --cor-vinho-700: #4D1D2F;
+  --cor-vinho-800: #381524;
+  --cor-vinho-900: #240E18;
+
+  /* ── Âmbar / Dourado Envelhecido ────────── */
+  --cor-dourado-50:  #FFFBF0;
+  --cor-dourado-100: #FFF3D0;
+  --cor-dourado-200: #FFE49A;
+  --cor-dourado-300: #E8C96A;
+  --cor-dourado-400: #C8A43E;
+  --cor-dourado-500: #A6872A;
+  --cor-dourado-600: #8A6F20;
+  --cor-dourado-700: #6E5818;
+  --cor-dourado-800: #524210;
+  --cor-dourado-900: #372C0A;
+
+  /* ── Neutros Quentes ────────────────────── */
+  --cor-neutro-0:   #FEFCF9;  /* quase-branco, nunca #FFF */
+  --cor-neutro-50:  #FAF9F7;
+  --cor-neutro-100: #F4F2EE;
+  --cor-neutro-200: #E8E4DE;
+  --cor-neutro-300: #D4CFC7;
+  --cor-neutro-400: #B8B2A8;
+  --cor-neutro-500: #908A80;
+  --cor-neutro-600: #706860;
+  --cor-neutro-700: #504840;
+  --cor-neutro-800: #342E28;
+  --cor-neutro-900: #1A1612;  /* quase-preto, nunca #000 */
+
+  /* ── Papel ──────────────────────────────── */
+  --cor-papel-creme:    #F0E7DC;
+  --cor-papel-algodao:  #F4EDE4;
+  --cor-papel-velho:    #EFE5DA;
+  --cor-papel-dobra:    #E5DBCE;
+  --cor-papel-borda:    #DED2C2;
+  --cor-papel-manchado: #D8CBBA;
+  --cor-papel-sombra:   #C9BAA6;
+
+  /* ── Madeira ────────────────────────────── */
+  --cor-madeira-clara:     #C4A882;
+  --cor-madeira-mel:       #A18A72;
+  --cor-madeira-media:     #8C5430;
+  --cor-madeira-nogueira:  #6E4B2E;
+  --cor-madeira-escura:    #553219;
+  --cor-madeira-profunda:  #403226;
+  --cor-madeira-sombra:    #2D2118;
+
+  /* ── Tinta / Escrita ────────────────────── */
+  --cor-tinta-preta:    #2A2118;
+  --cor-tinta-sepia:    #5C3D22;
+  --cor-tinta-marrom:   #4A3520;
+  --cor-tinta-azul:     #2C4A6E;
+  --cor-tinta-ferro:    #3A3A42;
+
+  /* ─────────────────────────────────────────────
+     2. SEMÂNTICA — Tokens derivados
+  ───────────────────────────────────────────── */
+
+  /* Fundos */
+  --fundo-mesa:       var(--cor-papel-creme);
+  --fundo-papel:      var(--cor-papel-algodao);
+  --fundo-caderno:    var(--cor-papel-velho);
+  --fundo-envelope:   var(--cor-papel-dobra);
+  --fundo-elevado:    var(--cor-neutro-0);
+  --fundo-rebaixado:  var(--cor-papel-manchado);
+
+  /* Texto */
+  --texto-titulo:     var(--cor-neutro-900);
+  --texto-corpo:      #3A332B;
+  --texto-secundario: #5C5347;
+  --texto-terciario:  #8A8175;
+  --texto-fantasma:   #B5AA9C;
+  --texto-invertido:  var(--cor-neutro-0);
+
+  /* Bordas */
+  --borda-sutil:     var(--cor-papel-borda);
+  --borda-media:     var(--cor-papel-sombra);
+  --borda-forte:     #CDBFAD;
+  --borda-dourada:   var(--cor-dourado-400);
+  --borda-madeira:   var(--cor-madeira-mel);
+
+  /* Status semânticos */
+  --cor-sucesso:      var(--cor-musgo-500);
+  --cor-sucesso-bg:   #EAF5F0;
+  --cor-erro:         #C0392B;
+  --cor-erro-bg:      #FDECEA;
+  --cor-alerta:       var(--cor-dourado-500);
+  --cor-alerta-bg:    #FFF8E1;
+  --cor-info:         var(--cor-tinta-azul);
+  --cor-info-bg:      #EDF4FA;
+
+  /* Interação */
+  --cor-primaria:       var(--cor-terracota-500);
+  --cor-primaria-hover: var(--cor-terracota-600);
+  --cor-primaria-fg:    var(--cor-neutro-0);
+  --cor-secundaria:     var(--cor-musgo-500);
+  --cor-secundaria-hover: var(--cor-musgo-600);
+  --cor-secundaria-fg:  var(--cor-neutro-0);
+  --cor-acento:         var(--cor-dourado-500);
+  --cor-acento-fg:      var(--cor-neutro-900);
+
+  /* ─────────────────────────────────────────────
+     3. TIPOGRAFIA
+  ───────────────────────────────────────────── */
+
+  /* Famílias — variáveis injetadas por next/font/google (layout.tsx),
+     com fallback para o nome da família e fontes de sistema. */
+  --tipo-serif:   var(--font-cormorant), 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --tipo-serif-body: var(--font-source-serif), 'Source Serif 4', 'Spectral', Georgia, serif;
+  --tipo-sans:    var(--font-instrument-sans), 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  --tipo-script:  var(--font-satisfy), 'Satisfy', 'Patrick Hand', cursive;
+  --tipo-mono:    var(--font-ibm-plex-mono), 'IBM Plex Mono', 'JetBrains Mono', 'Courier New', monospace;
+  --tipo-legenda: var(--font-inter), 'Inter', system-ui, sans-serif;
+
+  /* Escala tipográfica — harmônica (1.25 ratio) */
+  --tipo-2xs:  0.625rem;   /* 10px */
+  --tipo-xs:   0.75rem;    /* 12px */
+  --tipo-sm:   0.875rem;   /* 14px */
+  --tipo-base: 1rem;       /* 16px */
+  --tipo-md:   1.125rem;   /* 18px */
+  --tipo-lg:   1.25rem;    /* 20px */
+  --tipo-xl:   1.5rem;     /* 24px */
+  --tipo-2xl:  1.875rem;   /* 30px */
+  --tipo-3xl:  2.25rem;    /* 36px */
+  --tipo-4xl:  3rem;       /* 48px */
+  --tipo-5xl:  3.75rem;    /* 60px */
+
+  /* Pesos */
+  --peso-leve:    300;
+  --peso-normal:  400;
+  --peso-medio:   500;
+  --peso-semi:    600;
+  --peso-bold:    700;
+
+  /* Alturas de linha */
+  --lh-apertada: 1.15;
+  --lh-titulo:   1.25;
+  --lh-corpo:    1.6;
+  --lh-relaxada: 1.8;
+
+  /* Espaçamento de letras */
+  --ls-apertado:  -0.02em;
+  --ls-normal:    0;
+  --ls-largo:     0.02em;
+  --ls-aberto:    0.04em;
+  --ls-caps:      0.08em;
+
+  /* ─────────────────────────────────────────────
+     4. ESPAÇAMENTO — Escala de 4px
+  ───────────────────────────────────────────── */
+  --esp-px:  1px;
+  --esp-0:   0;
+  --esp-0-5: 0.125rem;  /* 2px */
+  --esp-1:   0.25rem;   /* 4px */
+  --esp-1-5: 0.375rem;  /* 6px */
+  --esp-2:   0.5rem;    /* 8px */
+  --esp-2-5: 0.625rem;  /* 10px */
+  --esp-3:   0.75rem;   /* 12px */
+  --esp-4:   1rem;      /* 16px */
+  --esp-5:   1.25rem;   /* 20px */
+  --esp-6:   1.5rem;    /* 24px */
+  --esp-7:   1.75rem;   /* 28px */
+  --esp-8:   2rem;      /* 32px */
+  --esp-10:  2.5rem;    /* 40px */
+  --esp-12:  3rem;      /* 48px */
+  --esp-14:  3.5rem;    /* 56px */
+  --esp-16:  4rem;      /* 64px */
+  --esp-20:  5rem;      /* 80px */
+  --esp-24:  6rem;      /* 96px */
+
+  /* ─────────────────────────────────────────────
+     5. BORDAS E RAIOS
+  ───────────────────────────────────────────── */
+  --raio-nenhum: 0;
+  --raio-xs:     2px;
+  --raio-sm:     4px;
+  --raio-md:     8px;
+  --raio-lg:     12px;
+  --raio-xl:     16px;
+  --raio-2xl:    24px;
+  --raio-total:  9999px;
+
+  --borda-fina:    1px solid var(--borda-sutil);
+  --borda-normal:  1px solid var(--borda-media);
+  --borda-grossa:  2px solid var(--borda-forte);
+
+  /* ─────────────────────────────────────────────
+     6. SOMBRAS — Luz do canto superior direito
+     Suaves, quentes, nunca pretas.
+     X negativo (luz da direita → sombra à esquerda).
+  ───────────────────────────────────────────── */
+  --sombra-0:    none;
+  --sombra-1:    -1px 1px 2px rgba(84, 50, 25, 0.04);
+  --sombra-2:    -1px 1px 3px rgba(84, 50, 25, 0.05);
+  --sombra-3:    -1px 2px 5px rgba(84, 50, 25, 0.06),
+                 0 1px 2px rgba(84, 50, 25, 0.03);
+  --sombra-4:    -2px 3px 8px rgba(84, 50, 25, 0.07),
+                 -1px 1px 3px rgba(84, 50, 25, 0.04);
+  --sombra-5:    -2px 4px 12px rgba(84, 50, 25, 0.08),
+                 -1px 2px 4px rgba(84, 50, 25, 0.04);
+  --sombra-6:    -3px 6px 16px rgba(84, 50, 25, 0.10),
+                 -1px 3px 6px rgba(84, 50, 25, 0.04);
+
+  /* Sombras internas (vincos, dobras de papel) */
+  --sombra-interna-1: inset 0 1px 2px rgba(84, 50, 25, 0.06);
+  --sombra-interna-2: inset 0 2px 6px rgba(84, 50, 25, 0.08);
+  --sombra-interna-3: inset 0 4px 12px rgba(84, 50, 25, 0.10);
+
+  /* Sombras de elevação para papel sobre madeira */
+  --sombra-papel:    -2px 3px 8px rgba(84, 50, 25, 0.10),
+                     -1px 1px 3px rgba(84, 50, 25, 0.06);
+  --sombra-caderno:  -3px 6px 16px rgba(84, 50, 25, 0.12),
+                     -1px 2px 5px rgba(84, 50, 25, 0.06);
+  --sombra-envelope: -2px 4px 12px rgba(84, 50, 25, 0.14),
+                     0 1px 3px rgba(84, 50, 25, 0.08);
+
+  /* ─────────────────────────────────────────────
+     7. ELEVAÇÃO (z-index)
+  ───────────────────────────────────────────── */
+  --z-mesa:       0;
+  --z-papel:      10;
+  --z-caderno:    20;
+  --z-card:       30;
+  --z-flutuante:  40;
+  --z-dropdown:   50;
+  --z-sticky:     60;
+  --z-overlay:    70;
+  --z-modal:      80;
+  --z-toast:      90;
+  --z-tooltip:    100;
+
+  /* ─────────────────────────────────────────────
+     8. TRANSIÇÕES
+  ───────────────────────────────────────────── */
+  --trans-rapida:   120ms ease;
+  --trans-normal:   200ms ease;
+  --trans-media:    300ms ease;
+  --trans-lenta:    400ms ease-out;
+  --trans-suave:    500ms cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  /* Transições específicas */
+  --trans-hover:    150ms ease;
+  --trans-expandir: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --trans-mola:     500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ─────────────────────────────────────────────
+     9. OPACIDADE
+  ───────────────────────────────────────────── */
+  --opacidade-0:     0;
+  --opacidade-5:     0.05;
+  --opacidade-10:    0.10;
+  --opacidade-20:    0.20;
+  --opacidade-30:    0.30;
+  --opacidade-40:    0.40;
+  --opacidade-50:    0.50;
+  --opacidade-60:    0.60;
+  --opacidade-70:    0.70;
+  --opacidade-80:    0.80;
+  --opacidade-90:    0.90;
+  --opacidade-100:   1;
+
+  /* Opacidades semânticas */
+  --opacidade-desabilitado: 0.45;
+  --opacidade-placeholder:  0.55;
+  --opacidade-sutil:        0.70;
+  --opacidade-texto-sec:    0.80;
+
+  /* ─────────────────────────────────────────────
+     10. LAYOUT — Breakpoints & Container
+  ───────────────────────────────────────────── */
+  --bp-sm:   640px;
+  --bp-md:   768px;
+  --bp-lg:   1024px;
+  --bp-xl:   1280px;
+  --bp-2xl:  1536px;
+
+  --container-sm:    640px;
+  --container-md:    768px;
+  --container-lg:    1024px;
+  --container-xl:    1100px;  /* largura máxima do conteúdo principal */
+  --container-2xl:   1280px;
+
+  /* Grid */
+  --grid-colunas:     12;
+  --grid-gap:         var(--esp-6);
+  --grid-gap-sm:      var(--esp-4);
+  --grid-margem:      var(--esp-8);
+  --grid-margem-sm:   var(--esp-4);
+
+  /* Sidebar */
+  --sidebar-largura:  268px;
+  --sidebar-largura-colapsada: 64px;
+
+  /* ─────────────────────────────────────────────
+     11. TEXTURAS — Referências para backgrounds
+  ───────────────────────────────────────────── */
+
+  /* Textura de papel — gradiente sutil simulando fibra */
+  --textura-papel:
+    linear-gradient(
+      135deg,
+      rgba(244, 237, 228, 0.4) 0%,
+      rgba(240, 231, 220, 0.2) 50%,
+      rgba(239, 229, 218, 0.4) 100%
+    );
+
+  /* Textura de papel envelhecido — manchas sutis */
+  --textura-papel-velho:
+    radial-gradient(
+      ellipse at 20% 30%,
+      rgba(210, 190, 160, 0.12) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at 80% 70%,
+      rgba(200, 180, 150, 0.08) 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(244, 237, 228, 0.3) 0%,
+      rgba(239, 229, 218, 0.5) 100%
+    );
+
+  /* Textura de madeira — veios suaves */
+  --textura-madeira:
+    repeating-linear-gradient(
+      175deg,
+      rgba(110, 75, 46, 0.03) 0px,
+      transparent 2px,
+      transparent 8px,
+      rgba(110, 75, 46, 0.02) 10px
+    ),
+    linear-gradient(
+      180deg,
+      rgba(140, 84, 48, 0.06) 0%,
+      rgba(110, 75, 46, 0.02) 50%,
+      rgba(85, 50, 25, 0.06) 100%
+    );
+
+  /* Textura de linho / tecido de encadernação */
+  --textura-linho:
+    repeating-linear-gradient(
+      0deg,
+      rgba(84, 50, 25, 0.02) 0px,
+      transparent 1px,
+      transparent 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(84, 50, 25, 0.02) 0px,
+      transparent 1px,
+      transparent 3px
+    );
+
+  /* ─────────────────────────────────────────────
+     12. LUZ — Degradês de iluminação
+     Fonte de luz: canto superior direito
+  ───────────────────────────────────────────── */
+  --luz-direcional:
+    linear-gradient(
+      135deg,
+      rgba(255, 250, 240, 0.12) 0%,
+      transparent 60%
+    );
+
+  --luz-papel:
+    linear-gradient(
+      135deg,
+      rgba(255, 252, 245, 0.20) 0%,
+      rgba(255, 250, 240, 0.05) 40%,
+      transparent 70%
+    );
+
+  --luz-brilho-sutil:
+    radial-gradient(
+      ellipse at 85% 15%,
+      rgba(255, 250, 240, 0.15) 0%,
+      transparent 50%
+    );
+}
+
+/* ─────────────────────────────────────────────
+   13. UTILITÁRIOS DE SUPERFÍCIE
+───────────────────────────────────────────── */
+
+/* Superfície de papel — base reutilizável */
+.superficie-papel {
+  background-color: var(--fundo-papel);
+  background-image: var(--textura-papel), var(--luz-papel);
+  border: var(--borda-fina);
+  border-radius: var(--raio-md);
+  box-shadow: var(--sombra-papel);
+  position: relative;
+}
+
+.superficie-papel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--luz-direcional);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Superfície de papel envelhecido */
+.superficie-papel-velho {
+  background-color: var(--cor-papel-velho);
+  background-image: var(--textura-papel-velho);
+  border: 1px solid var(--cor-papel-manchado);
+  border-radius: var(--raio-sm);
+  box-shadow: var(--sombra-caderno);
+}
+
+/* Superfície de madeira */
+.superficie-madeira {
+  background-color: var(--cor-madeira-nogueira);
+  background-image: var(--textura-madeira);
+  border-radius: var(--raio-xs);
+  position: relative;
+}
+
+.superficie-madeira::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--luz-brilho-sutil);
+  pointer-events: none;
+}
+
+/* Superfície de envelope */
+.superficie-envelope {
+  background-color: var(--fundo-envelope);
+  background-image: var(--textura-linho);
+  border: 1px solid var(--cor-papel-sombra);
+  border-radius: var(--raio-sm);
+  box-shadow: var(--sombra-envelope);
+}
+
+/* ─────────────────────────────────────────────
+   14. CLASSES DE TIPOGRAFIA
+───────────────────────────────────────────── */
+
+/* Títulos editoriais */
+.tipo-display {
+  font-family: var(--tipo-serif);
+  font-size: var(--tipo-4xl);
+  font-weight: var(--peso-leve);
+  line-height: var(--lh-apertada);
+  letter-spacing: var(--ls-apertado);
+  color: var(--texto-titulo);
+}
+
+.tipo-h1 {
+  font-family: var(--tipo-serif);
+  font-size: var(--tipo-3xl);
+  font-weight: var(--peso-leve);
+  line-height: var(--lh-apertada);
+  letter-spacing: var(--ls-apertado);
+  color: var(--texto-titulo);
+}
+
+.tipo-h2 {
+  font-family: var(--tipo-serif);
+  font-size: var(--tipo-2xl);
+  font-weight: var(--peso-normal);
+  line-height: var(--lh-titulo);
+  letter-spacing: var(--ls-apertado);
+  color: var(--texto-titulo);
+}
+
+.tipo-h3 {
+  font-family: var(--tipo-serif);
+  font-size: var(--tipo-xl);
+  font-weight: var(--peso-normal);
+  line-height: var(--lh-titulo);
+  color: var(--texto-titulo);
+}
+
+.tipo-h4 {
+  font-family: var(--tipo-serif);
+  font-size: var(--tipo-lg);
+  font-weight: var(--peso-medio);
+  line-height: var(--lh-titulo);
+  color: var(--texto-titulo);
+}
+
+.tipo-corpo {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-base);
+  font-weight: var(--peso-normal);
+  line-height: var(--lh-corpo);
+  color: var(--texto-corpo);
+}
+
+.tipo-corpo-sm {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-sm);
+  font-weight: var(--peso-normal);
+  line-height: var(--lh-corpo);
+  color: var(--texto-corpo);
+}
+
+.tipo-legenda {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  font-weight: var(--peso-normal);
+  line-height: var(--lh-corpo);
+  color: var(--texto-terciario);
+  letter-spacing: var(--ls-largo);
+}
+
+.tipo-overline {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-2xs);
+  font-weight: var(--peso-semi);
+  line-height: var(--lh-corpo);
+  color: var(--texto-terciario);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+}
+
+.tipo-manuscrito {
+  font-family: var(--tipo-script);
+  font-size: var(--tipo-lg);
+  font-weight: var(--peso-normal);
+  line-height: var(--lh-relaxada);
+  color: var(--cor-tinta-sepia);
+}
+
+.tipo-mono {
+  font-family: var(--tipo-mono);
+  font-size: var(--tipo-xs);
+  font-weight: var(--peso-normal);
+  line-height: var(--lh-corpo);
+  color: var(--texto-secundario);
+  letter-spacing: var(--ls-largo);
+}

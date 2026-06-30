@@ -1,0 +1,233 @@
+.comparacao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.seletores {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+.seletor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  flex: 1;
+  min-width: 140px;
+}
+
+.seletorLabel {
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--texto-terciario);
+  text-transform: uppercase;
+}
+
+.select {
+  padding: var(--spacing-2) var(--spacing-3);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 6px;
+  background: var(--superficie-primaria);
+  color: var(--texto-primario);
+  font-size: var(--texto-sm);
+  outline: none;
+  cursor: pointer;
+}
+
+.select:focus {
+  border-color: var(--terracota-500, #b45309);
+}
+
+.seta {
+  font-size: 18px;
+  color: var(--texto-terciario);
+  padding-bottom: 6px;
+  flex-shrink: 0;
+}
+
+.botao {
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--terracota-500, #b45309);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  align-self: flex-end;
+  white-space: nowrap;
+}
+
+.botao:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.botao:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.erro {
+  font-size: var(--texto-sm);
+  color: #dc2626;
+  margin: 0;
+}
+
+/* Resultado */
+.resultado {
+  background: var(--superficie-primaria);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 8px;
+  padding: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.resultadoHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.resultadoTitulo {
+  font-size: var(--texto-sm);
+  font-weight: 700;
+  font-family: var(--fonte-mono, monospace);
+  color: var(--texto-secundario);
+}
+
+.resultadoMotivo {
+  font-size: var(--texto-sm);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}
+
+.semMudancas {
+  font-size: var(--texto-sm);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Blocos de mudança */
+.mudancaBloco {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.mudancaRotulo {
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--texto-terciario);
+  text-transform: uppercase;
+}
+
+.mudancaLinhas {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+  font-size: var(--texto-sm);
+}
+
+.mudancaAntes {
+  color: var(--texto-terciario);
+  text-decoration: line-through;
+}
+
+.mudancaSeta {
+  color: var(--texto-terciario);
+  font-size: 12px;
+}
+
+.mudancaDepois {
+  color: var(--texto-primario);
+  font-weight: 600;
+}
+
+/* Diff de ingredientes */
+.ingredientesDiff {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.diffItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: 5px var(--spacing-2);
+  border-radius: 5px;
+  font-size: var(--texto-sm);
+}
+
+.adicionado {
+  background: color-mix(in srgb, #16a34a 8%, transparent);
+}
+
+.removido {
+  background: color-mix(in srgb, #dc2626 8%, transparent);
+}
+
+.alterado {
+  background: color-mix(in srgb, #ca8a04 8%, transparent);
+}
+
+.diffTipo {
+  font-weight: 700;
+  font-family: var(--fonte-mono, monospace);
+  width: 14px;
+  flex-shrink: 0;
+}
+
+.adicionado .diffTipo { color: #16a34a; }
+.removido   .diffTipo { color: #dc2626; }
+.alterado   .diffTipo { color: #ca8a04; }
+
+.diffNome {
+  flex: 1;
+  font-style: italic;
+  color: var(--texto-primario);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.diffConc {
+  font-family: var(--fonte-mono, monospace);
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  color: var(--texto-secundario);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.diffFase {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Sem versões */
+.semVersoes {
+  padding: var(--spacing-4);
+  text-align: center;
+}
+
+.semVersoesTexto {
+  font-size: var(--texto-sm);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}

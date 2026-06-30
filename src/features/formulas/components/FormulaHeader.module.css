@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+.esquerda {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-3);
+}
+
+.titulo {
+  font-family: var(--fonte-serif);
+  font-size: var(--texto-2xl);
+  font-weight: 700;
+  color: var(--texto-primario);
+  margin: 0;
+}
+
+.contagem {
+  font-size: var(--texto-sm);
+  color: var(--texto-terciario);
+}
+
+.botaoNovo {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--terracota-500, #b45309);
+  color: white;
+  border-radius: 6px;
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.botaoNovo:hover {
+  opacity: 0.9;
+}

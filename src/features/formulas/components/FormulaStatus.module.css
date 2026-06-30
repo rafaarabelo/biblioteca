@@ -1,0 +1,17 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--status-cor, var(--texto-terciario));
+  background: color-mix(in srgb, var(--status-cor, var(--borda-sutil)) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-cor, var(--borda-sutil)) 25%, transparent);
+}
+
+.compacto {
+  padding: 2px 8px;
+  font-size: 10px;
+}

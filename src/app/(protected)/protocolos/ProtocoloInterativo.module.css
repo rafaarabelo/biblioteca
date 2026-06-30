@@ -1,0 +1,44 @@
+/* ProtocoloInterativo */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+}
+
+.contagem {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+}
+
+.ordenar {
+  font-size: var(--texto-xs);
+  color: var(--texto-secundario);
+  background: transparent;
+  border: 1px solid var(--borda-sutil);
+  border-radius: 5px;
+  padding: 4px 8px;
+  cursor: pointer;
+  outline: none;
+}
+
+.filtrosMobile {
+  display: none;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+@media (max-width: 768px) {
+  .filtrosMobile { display: block; }
+}

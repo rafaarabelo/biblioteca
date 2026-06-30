@@ -1,0 +1,104 @@
+/* ============================================================
+   Notebook — Superfície de caderno de campo
+   A Biblioteca — Design System
+   ============================================================
+   Simula um caderno de anotações científico aberto.
+   Com espiral, margem vermelha, e linhas pautadas.
+   ============================================================ */
+
+.notebook {
+  position: relative;
+  background-color: var(--cor-papel-algodao);
+  border: 1px solid var(--cor-papel-borda);
+  border-radius: var(--raio-md);
+  box-shadow: var(--sombra-caderno);
+  padding: var(--esp-6);
+  padding-left: var(--esp-10);
+  overflow: hidden;
+
+  /* Linhas pautadas */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 27px,
+      rgba(84, 50, 25, 0.06) 27px,
+      rgba(84, 50, 25, 0.06) 28px
+    );
+  background-size: 100% 28px;
+  background-position: 0 12px;
+}
+
+/* Margem vermelha */
+.notebook::before {
+  content: '';
+  position: absolute;
+  left: 48px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(196, 95, 58, 0.20);
+  z-index: 2;
+}
+
+/* Espiral (pontos decorativos) */
+.notebook::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 16px;
+  bottom: 16px;
+  width: 20px;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 22px,
+      var(--cor-neutro-400) 22px,
+      var(--cor-neutro-400) 24px,
+      transparent 24px,
+      transparent 28px
+    );
+  background-size: 8px 28px;
+  background-position: center;
+  background-repeat: repeat-y;
+  border-radius: var(--raio-total);
+  opacity: 0.4;
+  z-index: 2;
+}
+
+/* ── Variantes ────────────────────────────── */
+
+.notebookSemEspiral {
+  padding-left: var(--esp-8);
+}
+
+.notebookSemEspiral::after {
+  display: none;
+}
+
+.notebookSemEspiral::before {
+  left: 32px;
+}
+
+.notebookLiso {
+  background-image: none;
+  padding-left: var(--esp-6);
+}
+
+.notebookLiso::before,
+.notebookLiso::after {
+  display: none;
+}
+
+/* ── Tamanhos ─────────────────────────────── */
+
+.notebookCompacto {
+  padding: var(--esp-4);
+  padding-left: var(--esp-8);
+}
+
+.notebookEspacoso {
+  padding: var(--esp-8);
+  padding-left: var(--esp-12);
+}

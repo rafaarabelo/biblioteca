@@ -1,0 +1,60 @@
+/* ReferenceSearch */
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icone {
+  position: absolute;
+  left: 12px;
+  color: var(--texto-terciario);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding: 9px 36px 9px 36px;
+  border: 1px solid var(--borda-suave);
+  border-radius: var(--radius-sm);
+  background: var(--superficie-primaria);
+  color: var(--texto-primario);
+  font-size: 0.875rem;
+  font-family: var(--font-sans);
+  transition: border-color 0.15s;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--texto-terciario);
+}
+
+.input:focus {
+  border-color: var(--terracota-500);
+}
+
+/* Remove aparência nativa do input[type=search] */
+.input::-webkit-search-decoration,
+.input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.limpar {
+  position: absolute;
+  right: 10px;
+  font-size: 0.6875rem;
+  color: var(--texto-terciario);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 3px;
+  transition: color 0.1s;
+}
+
+.limpar:hover {
+  color: var(--texto-primario);
+}

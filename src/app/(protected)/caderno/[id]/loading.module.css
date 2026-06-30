@@ -1,0 +1,47 @@
+/* loading.tsx — Detalhe da observação */
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--superficie-secundaria) 25%,
+    var(--superficie-terciaria) 50%,
+    var(--superficie-secundaria) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+.pagina {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.nav {
+  height: 52px;
+  border-bottom: 1px solid var(--borda-suave);
+  flex-shrink: 0;
+}
+
+.corpo {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  flex: 1;
+}
+
+.principal {
+  padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.lateral {
+  border-left: 1px solid var(--borda-suave);
+  background: var(--superficie-secundaria);
+}

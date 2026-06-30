@@ -1,0 +1,93 @@
+/* ============================================================
+   NotebookLayout — Caderno de Campo
+   A Biblioteca — Sprint VI, Direção de Arte
+   ============================================================
+   O pergaminho JÁ ESTÁ na fotografia de fundo (PhotoLayout).
+   Nenhum fundo branco adicional. Nenhuma borda vertical.
+   O conteúdo repousa diretamente sobre o pergaminho da imagem.
+   ============================================================ */
+
+.caderno {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Header — transparente, sobre o pergaminho */
+.header {
+  flex-shrink: 0;
+  padding: var(--esp-8) var(--esp-8) var(--esp-5);
+  /* Sem background, sem border — vive sobre o pergaminho */
+  background: transparent;
+  border: none;
+}
+
+/* Corpo — sidebar + conteúdo lado a lado */
+.corpo {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  gap: var(--esp-6);
+  padding: 0 var(--esp-6);
+}
+
+/* Sidebar — painel de papel apoiado sobre a mesa */
+.sidebar {
+  /* Creme semitransparente como papel apoiado */
+  background: color-mix(in srgb, var(--cor-papel-creme) 72%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid color-mix(in srgb, var(--cor-madeira-mel) 25%, transparent);
+  border-radius: var(--raio-md);
+  box-shadow: var(--sombra-2);
+
+  /* Sem border-right vertical — eliminada */
+  overflow-y: auto;
+  padding: var(--esp-5) var(--esp-4);
+  align-self: start;
+  position: sticky;
+  top: var(--esp-5);
+  max-height: calc(100vh - var(--esp-20));
+}
+
+/* Conteúdo principal — ocupa todo o restante */
+.conteudo {
+  overflow-y: auto;
+  padding: var(--esp-4) var(--esp-4) var(--esp-8);
+  /* Sem max-width fixo — usa toda a largura disponível */
+  max-width: none;
+  background: transparent;
+}
+
+/* ─── Responsividade ─────────────────────── */
+
+@media (max-width: 900px) {
+  .corpo {
+    grid-template-columns: 280px 1fr;
+    gap: var(--esp-4);
+    padding: 0 var(--esp-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .corpo {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0 var(--esp-3);
+  }
+
+  .sidebar {
+    display: none; /* oculto em mobile — filtros via modal */
+  }
+
+  .header {
+    padding: var(--esp-5) var(--esp-4) var(--esp-3);
+  }
+
+  .conteudo {
+    padding: var(--esp-4) var(--esp-2);
+  }
+}

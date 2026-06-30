@@ -1,0 +1,218 @@
+/* /formulas/[id] — Detalhe da Fórmula
+   Capítulo V */
+
+.pagina {
+  padding: var(--spacing-5) var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  max-width: 1100px;
+}
+
+/* ── Breadcrumb ── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--texto-xs);
+}
+
+.breadcrumbLink {
+  color: var(--texto-terciario);
+  text-decoration: none;
+  transition: color 0.1s ease;
+}
+
+.breadcrumbLink:hover { color: var(--terracota-500); }
+
+.breadcrumbSep   { color: var(--texto-terciario); }
+.breadcrumbAtual {
+  color: var(--texto-secundario);
+  font-family: var(--fonte-mono, monospace);
+}
+
+/* ── Grid 1fr + 280px ── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: var(--spacing-7);
+  align-items: start;
+}
+
+/* ── Coluna principal ── */
+.principal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-7);
+  min-width: 0;
+}
+
+/* ── Cabeçalho ── */
+.cabecalho {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.cabecalhoTop {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+.codigo {
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--texto-terciario);
+  font-family: var(--fonte-mono, monospace);
+}
+
+.titulo {
+  font-family: var(--fonte-serif);
+  font-size: 1.625rem;
+  font-weight: 600;
+  color: var(--texto-primario);
+  margin: 0;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.objetivo {
+  font-size: var(--texto-sm);
+  color: var(--texto-secundario);
+  font-style: italic;
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ── Tags ── */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  background: var(--superficie-secundaria);
+  border: 1px solid var(--borda-sutil);
+  padding: 2px 9px;
+  border-radius: 10px;
+}
+
+/* ── Meta da versão ativa ── */
+.versaoMeta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-3) var(--spacing-5);
+  background: var(--superficie-secundaria);
+  border-radius: 8px;
+  padding: var(--spacing-4);
+  border: 1px solid var(--borda-sutil);
+}
+
+.versaoMetaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.versaoMetaLabel {
+  font-size: 10px;
+  color: var(--texto-terciario);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.versaoMetaValor {
+  font-size: var(--texto-sm);
+  color: var(--texto-primario);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Seções ── */
+.secao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--borda-sutil);
+}
+
+.secaoTitulo {
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--texto-terciario);
+  margin: 0;
+}
+
+.textoSecao {
+  font-size: var(--texto-sm);
+  color: var(--texto-secundario);
+  margin: 0;
+  line-height: 1.65;
+  white-space: pre-line;
+}
+
+/* ── Lateral sticky ── */
+.lateral {
+  position: sticky;
+  top: var(--spacing-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.lateralBloco {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.lateralTitulo {
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--texto-terciario);
+  margin: 0;
+}
+
+/* ── Metadados ── */
+.meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  margin: 0;
+}
+
+.metaTerm {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  white-space: nowrap;
+}
+
+.metaDesc {
+  font-size: var(--texto-xs);
+  color: var(--texto-secundario);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lateral {
+    position: static;
+    padding-top: var(--spacing-6);
+    border-top: 1px solid var(--borda-sutil);
+  }
+}

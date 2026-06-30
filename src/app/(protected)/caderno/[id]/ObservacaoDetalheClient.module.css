@@ -1,0 +1,21 @@
+/* ObservacaoDetalheClient */
+
+.toolbar {
+  margin-bottom: var(--spacing-5);
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--borda-suave);
+}
+
+.conteudo {
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--texto-primario);
+}
+
+.paragrafo {
+  margin: 0 0 var(--spacing-4);
+}
+
+.paragrafo:last-child {
+  margin-bottom: 0;
+}

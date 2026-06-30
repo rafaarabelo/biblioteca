@@ -1,0 +1,46 @@
+/* AcervoInterativo */
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+}
+
+.contagem {
+  font-size: 0.75rem;
+  color: var(--texto-terciario);
+}
+
+.ordenar {
+  font-size: 0.75rem;
+  color: var(--texto-secundario);
+  background: transparent;
+  border: 1px solid var(--borda-suave);
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+  cursor: pointer;
+  outline: none;
+  font-family: var(--font-sans);
+}
+
+.ordenar:focus {
+  border-color: var(--terracota-500);
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+/* Filtros mobile: ocultos no desktop (sidebar do layout cuida disso) */
+.filtrosMobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .filtrosMobile {
+    display: block;
+  }
+}

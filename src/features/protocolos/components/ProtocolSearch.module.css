@@ -1,0 +1,60 @@
+/* ProtocolSearch */
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icone {
+  position: absolute;
+  left: 10px;
+  color: var(--texto-terciario);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 36px 8px 32px;
+  font-size: var(--texto-sm);
+  color: var(--texto-primario);
+  background: var(--superficie-primaria);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input::placeholder {
+  color: var(--texto-terciario);
+}
+
+.input:focus {
+  border-color: var(--terracota-400, color-mix(in srgb, var(--terracota-500) 70%, white));
+}
+
+/* Remove ícone nativo do tipo search */
+.input::-webkit-search-cancel-button { display: none; }
+
+.limpar {
+  position: absolute;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: var(--superficie-terciaria);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--texto-terciario);
+  padding: 0;
+  transition: background 0.15s ease;
+}
+
+.limpar:hover {
+  background: var(--borda-sutil);
+  color: var(--texto-primario);
+}

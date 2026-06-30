@@ -1,0 +1,569 @@
+/* ============================================================
+   EditorialCard — Coração visual de A Biblioteca
+   Sprint VI — Onda 2
+   ============================================================
+   REGRAS:
+   - ZERO cores hardcoded (apenas tokens)
+   - ZERO radius hardcoded (apenas tokens)
+   - ZERO sombras hardcoded (apenas tokens)
+   - Todos os slots opcionais — layout nunca quebra
+   ============================================================ */
+
+/* ─────────────────────────────────────────────
+   VARIÁVEIS LOCAIS (overridable por variante)
+───────────────────────────────────────────── */
+
+.card {
+  --card-bg: var(--fundo-papel);
+  --card-texture: var(--textura-papel);
+  --card-light: var(--luz-papel);
+  --card-border: var(--borda-sutil);
+  --card-radius: var(--raio-md);
+  --card-shadow: var(--sombra-2);
+  --card-padding-x: var(--esp-5);
+  --card-padding-y: var(--esp-5);
+  --card-accent: var(--cor-terracota-400);
+  --card-transition: var(--trans-normal);
+
+  position: relative;
+  background-color: var(--card-bg);
+  background-image: var(--card-texture);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  transition:
+    box-shadow var(--card-transition),
+    transform var(--card-transition),
+    border-color var(--card-transition),
+    opacity var(--card-transition);
+  overflow: hidden;
+  container-type: inline-size;
+}
+
+/* Camada de luz direcional */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--card-light);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────────────
+   VARIANTES
+───────────────────────────────────────────── */
+
+/* paper (default) — papel algodão limpo */
+.variant_paper {
+  --card-bg: var(--fundo-papel);
+  --card-texture: var(--textura-papel);
+  --card-light: var(--luz-papel);
+  --card-border: var(--borda-sutil);
+  --card-radius: var(--raio-md);
+  --card-shadow: var(--sombra-2);
+}
+
+/* paper-soft — papel mais suave, menos contraste */
+.variant_paper_soft {
+  --card-bg: var(--cor-neutro-50);
+  --card-texture: none;
+  --card-light: var(--luz-direcional);
+  --card-border: var(--cor-neutro-200);
+  --card-radius: var(--raio-md);
+  --card-shadow: var(--sombra-1);
+}
+
+/* paper-aged — papel envelhecido com manchas */
+.variant_paper_aged {
+  --card-bg: var(--cor-papel-velho);
+  --card-texture: var(--textura-papel-velho);
+  --card-light: none;
+  --card-border: var(--cor-papel-manchado);
+  --card-radius: var(--raio-sm);
+  --card-shadow: var(--sombra-caderno);
+}
+
+/* paper-note — bilhete / nota rápida */
+.variant_paper_note {
+  --card-bg: var(--cor-dourado-50);
+  --card-texture: none;
+  --card-light: var(--luz-direcional);
+  --card-border: var(--cor-dourado-200);
+  --card-radius: var(--raio-xs);
+  --card-shadow: var(--sombra-1);
+}
+
+/* paper-card — ficha bibliográfica com barra lateral */
+.variant_paper_card {
+  --card-bg: var(--fundo-papel);
+  --card-texture: var(--textura-papel);
+  --card-light: var(--luz-papel);
+  --card-border: var(--borda-sutil);
+  --card-radius: var(--raio-xs) var(--raio-md) var(--raio-md) var(--raio-xs);
+  --card-shadow: var(--sombra-2);
+  border-left: 3px solid var(--card-accent);
+}
+
+/* editorial — artigo recortado, destaque superior */
+.variant_editorial {
+  --card-bg: var(--fundo-papel);
+  --card-texture: var(--textura-papel);
+  --card-light: var(--luz-papel);
+  --card-border: var(--borda-sutil);
+  --card-radius: var(--raio-md);
+  --card-shadow: var(--sombra-3);
+  border-top: 2px solid var(--card-accent);
+}
+
+/* minimal — mínimo visual, foco no conteúdo */
+.variant_minimal {
+  --card-bg: transparent;
+  --card-texture: none;
+  --card-light: none;
+  --card-border: transparent;
+  --card-radius: var(--raio-sm);
+  --card-shadow: var(--sombra-0);
+}
+
+.variant_minimal:hover {
+  --card-bg: var(--cor-neutro-50);
+  --card-border: var(--borda-sutil);
+}
+
+/* notebook — caderno de campo */
+.variant_notebook {
+  --card-bg: var(--fundo-caderno);
+  --card-texture: var(--textura-papel-velho);
+  --card-light: none;
+  --card-border: var(--cor-papel-sombra);
+  --card-radius: var(--raio-sm);
+  --card-shadow: var(--sombra-caderno);
+  padding-left: calc(var(--card-padding-x) + var(--esp-6));
+  border-left: 1px solid var(--cor-terracota-200);
+}
+
+/* Margem de caderno */
+.variant_notebook::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: calc(var(--card-padding-x) + var(--esp-3));
+  bottom: 0;
+  width: 1px;
+  background-color: var(--cor-terracota-200);
+  opacity: var(--opacidade-50);
+  pointer-events: none;
+}
+
+/* archive — documento arquivado, tom sépia */
+.variant_archive {
+  --card-bg: var(--cor-papel-creme);
+  --card-texture: var(--textura-papel-velho);
+  --card-light: none;
+  --card-border: var(--cor-papel-manchado);
+  --card-radius: var(--raio-sm);
+  --card-shadow: var(--sombra-papel);
+  opacity: var(--opacidade-90);
+}
+
+/* ─────────────────────────────────────────────
+   TAMANHOS
+───────────────────────────────────────────── */
+
+.size_compact {
+  --card-padding-x: var(--esp-3);
+  --card-padding-y: var(--esp-3);
+}
+
+.size_normal {
+  --card-padding-x: var(--esp-5);
+  --card-padding-y: var(--esp-5);
+}
+
+.size_spacious {
+  --card-padding-x: var(--esp-7);
+  --card-padding-y: var(--esp-7);
+}
+
+/* ─────────────────────────────────────────────
+   ESTADOS
+───────────────────────────────────────────── */
+
+/* Interativo (base) */
+.interactive {
+  cursor: pointer;
+  user-select: none;
+}
+
+.interactive:hover {
+  box-shadow: var(--sombra-4);
+  transform: translateY(-2px);
+  border-color: var(--borda-media);
+}
+
+.interactive:active {
+  box-shadow: var(--sombra-1);
+  transform: translateY(0);
+  transition-duration: 80ms;
+}
+
+.interactive:focus-visible {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: 2px;
+  box-shadow: var(--sombra-3);
+}
+
+/* selected */
+.state_selected {
+  border-color: var(--cor-primaria);
+  box-shadow:
+    var(--sombra-3),
+    0 0 0 1px var(--cor-primaria);
+}
+
+/* active */
+.state_active {
+  border-color: var(--cor-primaria);
+  background-color: color-mix(in srgb, var(--card-bg) 92%, var(--cor-primaria));
+}
+
+/* disabled */
+.state_disabled {
+  opacity: var(--opacidade-desabilitado);
+  pointer-events: none;
+  filter: grayscale(0.3);
+}
+
+/* loading */
+.state_loading {
+  pointer-events: none;
+}
+
+.state_loading .content {
+  opacity: var(--opacidade-30);
+}
+
+.state_loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 30%,
+      color-mix(in srgb, var(--card-bg) 60%, transparent) 50%,
+      transparent 70%
+    );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+  border-radius: inherit;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* favorite */
+.state_favorite {
+  border-color: var(--cor-dourado-400);
+  box-shadow:
+    var(--sombra-2),
+    0 0 0 1px var(--cor-dourado-300);
+}
+
+/* hover (estado explícito, sem :hover) */
+.state_hover {
+  box-shadow: var(--sombra-4);
+  transform: translateY(-2px);
+  border-color: var(--borda-media);
+}
+
+/* ─────────────────────────────────────────────
+   LAYOUT PRINCIPAL
+───────────────────────────────────────────── */
+
+.layout {
+  display: flex;
+  align-items: stretch;
+  min-height: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.hasLeading .layout {
+  gap: var(--esp-4);
+}
+
+.hasTrailing .layout {
+  gap: var(--esp-3);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+  padding: var(--card-padding-y) var(--card-padding-x);
+}
+
+/* Se não tem leading nem trailing, padding fica direto no content */
+.hasLeading .content {
+  padding-left: 0;
+}
+
+.hasTrailing .content {
+  padding-right: 0;
+}
+
+/* Card sem leading sem trailing — padding no content */
+.card:not(.hasLeading):not(.hasTrailing) .content {
+  padding: var(--card-padding-y) var(--card-padding-x);
+}
+
+/* ─────────────────────────────────────────────
+   SLOTS
+───────────────────────────────────────────── */
+
+/* Decoration (absoluto, cobrindo) */
+.slot_decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+/* Ribbon (absoluto, canto) */
+.slot_ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Leading */
+.slot_leading {
+  flex-shrink: 0;
+  display: flex;
+  align-items: stretch;
+  padding: var(--card-padding-y) 0 var(--card-padding-y) var(--card-padding-x);
+}
+
+/* Quando accent color é definida mas sem leading node explícito */
+.hasLeading:not(:has(.slot_leading > *)) .slot_leading {
+  width: 4px;
+  background-color: var(--card-accent);
+  border-radius: var(--raio-total);
+}
+
+/* Trailing */
+.slot_trailing {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: var(--card-padding-y) var(--card-padding-x) var(--card-padding-y) 0;
+}
+
+/* Header */
+.slot_header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-1);
+}
+
+/* Eyebrow */
+.slot_eyebrow {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-2xs);
+  font-weight: var(--peso-semi);
+  line-height: var(--lh-corpo);
+  color: var(--texto-terciario);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+}
+
+/* Title */
+.slot_title {
+  font-family: var(--tipo-serif);
+  font-size: var(--tipo-lg);
+  font-weight: var(--peso-medio);
+  line-height: var(--lh-titulo);
+  color: var(--texto-titulo);
+  letter-spacing: var(--ls-apertado);
+}
+
+.size_compact .slot_title {
+  font-size: var(--tipo-base);
+}
+
+.size_spacious .slot_title {
+  font-size: var(--tipo-xl);
+}
+
+/* Subtitle */
+.slot_subtitle {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-sm);
+  font-weight: var(--peso-normal);
+  line-height: var(--lh-corpo);
+  color: var(--texto-secundario);
+}
+
+/* Status (posicionado inline com header) */
+.slot_status {
+  margin-top: var(--esp-1);
+}
+
+/* Body */
+.slot_body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+}
+
+/* Metadata */
+.slot_metadata {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  color: var(--texto-terciario);
+  line-height: var(--lh-corpo);
+}
+
+/* Tags */
+.slot_tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-1-5);
+  align-items: center;
+}
+
+/* Footer */
+.slot_footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-3);
+  padding-top: var(--esp-3);
+  border-top: 1px solid var(--borda-sutil);
+  margin-top: auto;
+}
+
+/* Actions (dentro do footer, à direita) */
+.slot_actions {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  margin-left: auto;
+}
+
+/* Children (escape hatch) */
+.slot_children {
+  position: relative;
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVIDADE — Container Queries
+───────────────────────────────────────────── */
+
+/* Tablet (< 600px de container) */
+@container (max-width: 600px) {
+  .slot_title {
+    font-size: var(--tipo-base);
+  }
+
+  .size_spacious .slot_title {
+    font-size: var(--tipo-lg);
+  }
+
+  .content {
+    gap: var(--esp-2);
+  }
+
+  .slot_footer {
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile (< 380px de container) */
+@container (max-width: 380px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .slot_leading {
+    padding: var(--esp-2) var(--card-padding-x) 0;
+    flex-direction: row;
+    align-items: center;
+    height: auto;
+  }
+
+  .slot_trailing {
+    padding: 0 var(--card-padding-x) var(--esp-2);
+    justify-content: flex-end;
+  }
+
+  .hasLeading .content,
+  .hasTrailing .content {
+    padding: var(--esp-3) var(--card-padding-x) var(--card-padding-y);
+  }
+
+  .slot_footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .slot_actions {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   ACESSIBILIDADE
+───────────────────────────────────────────── */
+
+/* Movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .interactive:hover {
+    transform: none;
+  }
+
+  .interactive:active {
+    transform: none;
+  }
+
+  .state_loading::after {
+    animation: none;
+  }
+}
+
+/* Alto contraste */
+@media (forced-colors: active) {
+  .card {
+    border: 2px solid CanvasText;
+  }
+
+  .interactive:focus-visible {
+    outline: 3px solid Highlight;
+  }
+
+  .state_selected {
+    border-color: Highlight;
+  }
+
+  .state_disabled {
+    opacity: 0.5;
+  }
+}

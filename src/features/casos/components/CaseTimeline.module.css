@@ -1,0 +1,152 @@
+/* CaseTimeline */
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Expandir */
+.expandir {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0 var(--spacing-4);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.1s ease;
+}
+
+.expandir:hover { color: var(--terracota-500); }
+
+/* Lista */
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.item {
+  display: flex;
+  gap: var(--spacing-3);
+  align-items: flex-start;
+}
+
+/* Conector lateral */
+.conector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20px;
+  flex-shrink: 0;
+  padding-top: var(--spacing-4);
+}
+
+.marcador {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--terracota-500);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.linha {
+  display: block;
+  width: 1px;
+  flex: 1;
+  min-height: var(--spacing-3);
+  background: var(--borda-sutil);
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+/* Conteúdo */
+.conteudo {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: var(--spacing-3);
+}
+
+/* Nova evolução */
+.nova {
+  display: flex;
+  gap: var(--spacing-3);
+  align-items: flex-start;
+}
+
+.novaConector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.novaLinha {
+  display: block;
+  width: 1px;
+  height: var(--spacing-4);
+  background: var(--borda-sutil);
+}
+
+.novaMarcador {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px dashed var(--borda-sutil);
+}
+
+.novaBtn {
+  font-size: var(--texto-sm);
+  color: var(--terracota-500);
+  background: transparent;
+  border: 1px dashed var(--terracota-500);
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  margin-top: var(--spacing-2);
+}
+
+.novaBtn:hover {
+  background: color-mix(in srgb, var(--terracota-500) 8%, transparent);
+}
+
+/* Vazio */
+.vazio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-5) 0;
+}
+
+.vazioTexto {
+  font-size: var(--texto-sm);
+  color: var(--texto-terciario);
+  margin: 0;
+  font-style: italic;
+}
+
+.vazioAcao {
+  font-size: var(--texto-sm);
+  color: var(--terracota-500);
+  background: transparent;
+  border: 1px dashed var(--terracota-500);
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  width: fit-content;
+  transition: all 0.12s ease;
+}
+
+.vazioAcao:hover {
+  background: color-mix(in srgb, var(--terracota-500) 8%, transparent);
+}

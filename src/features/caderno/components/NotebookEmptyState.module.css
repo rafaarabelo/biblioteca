@@ -1,0 +1,60 @@
+/* ============================================================
+   NotebookEmptyState — Caderno de Campo
+   A Biblioteca — Sprint VI, Direção de Arte
+   ============================================================
+   Centralizado no pergaminho. Contraste editorial.
+   Sem fundo adicional — vive sobre a textura da foto.
+   ============================================================ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--esp-16) var(--esp-8);
+  gap: var(--esp-4);
+  min-height: 320px;
+}
+
+.icone {
+  font-size: 2.5rem;
+  color: #857467;
+  display: block;
+  margin-bottom: var(--esp-2);
+  opacity: 0.5;
+}
+
+.titulo {
+  font-family: var(--tipo-serif-body);
+  font-size: var(--tipo-lg);
+  font-weight: var(--peso-medio);
+  color: #3F2E22;
+  margin: 0;
+  letter-spacing: var(--ls-apertado);
+}
+
+.descricao {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-sm);
+  color: #5D4B3F;
+  margin: 0;
+  max-width: 360px;
+  line-height: var(--lh-relaxada);
+  font-style: italic;
+}
+
+.acao {
+  margin-top: var(--esp-3);
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-sm);
+  color: var(--cor-terracota-500);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color var(--trans-hover);
+}
+
+.acao:hover {
+  border-bottom-color: var(--cor-terracota-500);
+}

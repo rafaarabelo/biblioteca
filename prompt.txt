@@ -1,0 +1,232 @@
+Correção de composição da Biblioteca (alinhamento com mockup)
+
+Pare qualquer tentativa de melhorar a estética.
+
+A fotografia de fundo já está aprovada.
+
+O problema agora é exclusivamente de composição.
+
+Considere a fotografia como um gabarito físico.
+
+Os papéis desenhados na imagem NÃO são decoração.
+
+Eles representam exatamente onde cada componente React deve ficar.
+
+Não altere a fotografia.
+
+Não recorte.
+
+Não redimensione.
+
+Não aplique blur.
+
+Não substitua.
+
+Toda a interface deve ser posicionada em cima dela.
+
+Regra 1
+
+O background deve rolar junto com a página.
+
+Hoje ele parece fixo enquanto os componentes se movem.
+
+Isso quebra completamente a ilusão.
+
+Quero que a fotografia faça parte do fluxo da página.
+
+Ela deve acompanhar naturalmente todo o scroll.
+
+O comportamento esperado é semelhante a uma folha impressa gigante.
+
+Nunca usar:
+
+background-attachment: fixed
+position: fixed
+
+A fotografia deve estar dentro do layout.
+
+Ela deve aumentar de altura conforme o conteúdo cresce.
+
+Regra 2
+
+Cada espaço vazio da fotografia é um container.
+
+Não invente grids.
+
+Não centralize automaticamente.
+
+Não distribua componentes usando flex ou grid sem considerar a imagem.
+
+Cada componente deve encaixar exatamente sobre o espaço reservado.
+
+Mapeamento obrigatório
+Barra de busca
+
+Usar exatamente o retângulo horizontal do topo.
+
+Não aumentar largura.
+
+Não diminuir.
+
+Centralizar dentro dele.
+
+Botão principal
+
+Usar exatamente o espaço vazio à direita da busca.
+
+Mesmo tamanho.
+
+Mesmo alinhamento.
+
+Coluna de filtros
+
+Usar exatamente o papel vertical da esquerda.
+
+A largura da coluna deve ser exatamente a largura do papel.
+
+Não ultrapassar.
+
+Não diminuir.
+
+Lista principal
+
+Usar exatamente o papel central.
+
+Toda a listagem deve começar nele.
+
+Nunca iniciar antes.
+
+Nunca ultrapassar suas bordas.
+
+Painel lateral direito
+
+Usar exatamente o papel vertical da direita.
+
+Todos os widgets devem permanecer dentro dele.
+
+Cabeçalho da página
+
+O título deve ocupar exclusivamente a faixa branca superior.
+
+Nunca invadir a madeira.
+
+Área de conteúdo
+
+Todo conteúdo começa somente após o cabeçalho.
+
+Nunca sobre a madeira.
+
+Regra 3
+
+Nenhum componente pode ultrapassar os limites do papel correspondente.
+
+Se um card for maior:
+
+aumente o conteúdo da página
+
+nunca aumente o papel
+
+Regra 4
+
+A fotografia define:
+
+larguras
+
+alturas
+
+margens
+
+respiros
+
+espaçamentos
+
+A interface deve obedecer à fotografia.
+
+Não o contrário.
+
+Regra 5
+
+Se existir diferença entre o CSS atual e a fotografia:
+
+a fotografia vence.
+
+Ajustes observados nas telas
+Mesa
+
+A Aurora está deslocada.
+
+O manifesto não ocupa totalmente o papel direito.
+
+As atividades estão começando fora do caderno.
+
+Caderno
+
+A coluna de filtros ficou larga demais.
+
+Ela invade o papel seguinte.
+
+O texto central não está centralizado dentro do papel.
+
+Acervo
+
+A coluna esquerda está boa.
+
+A lista principal precisa começar exatamente no papel central.
+
+Fórmulas
+
+Os filtros estão ultrapassando o papel esquerdo.
+
+A listagem está flutuando.
+
+Protocolos
+
+Mesmo problema.
+
+Os componentes não respeitam o desenho do mockup.
+
+Casos
+
+O conteúdo principal está fora do papel.
+
+O botão ficou deslocado.
+
+Implementação
+
+Criar um sistema de coordenadas baseado na fotografia.
+
+Cada papel deve possuir um wrapper correspondente.
+
+Exemplo:
+
+.photoLayout
+
+.paper-header
+
+.paper-sidebar
+
+.paper-main
+
+.paper-right
+
+.paper-footer-left
+
+.paper-footer-right
+
+Cada componente React deve ser renderizado apenas dentro do wrapper correspondente.
+
+Não utilizar margens arbitrárias.
+
+Não utilizar translate para compensar erros.
+
+Os wrappers devem possuir exatamente as dimensões do papel desenhado na fotografia.
+
+Objetivo
+
+Quando eu ocultar todos os componentes React, devo enxergar apenas a fotografia.
+
+Quando eu mostrar novamente a interface, todos os elementos devem parecer impressos exatamente sobre os papéis da imagem.
+
+O usuário não deve conseguir distinguir onde termina a fotografia e onde começa a interface.
+
+Essa é a meta desta etapa.

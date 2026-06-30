@@ -1,0 +1,93 @@
+/* ReferenceLoading — Shimmer skeletons */
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--superficie-terciaria) 25%,
+    color-mix(in srgb, var(--superficie-terciaria) 70%, var(--superficie-primaria)) 50%,
+    var(--superficie-terciaria) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 2s infinite linear;
+  border-radius: 4px;
+}
+
+/* Lista */
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+/* Card skeleton */
+.card {
+  display: flex;
+  border: 1px solid var(--borda-suave);
+  border-radius: var(--radius-md);
+  background: var(--superficie-primaria);
+  overflow: hidden;
+}
+
+.acento {
+  width: 4px;
+  flex-shrink: 0;
+  background: var(--borda-suave);
+}
+
+.corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: var(--spacing-4) var(--spacing-4) var(--spacing-3);
+  flex: 1;
+}
+
+/* Elementos */
+.topo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.tipoPill {
+  height: 10px;
+  width: 80px;
+}
+
+.titulo {
+  height: 14px;
+  width: 90%;
+}
+
+.tituloLinha2 {
+  height: 14px;
+  width: 65%;
+}
+
+.citacao {
+  height: 11px;
+  width: 70%;
+}
+
+.rodape {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.barras {
+  height: 10px;
+  width: 36px;
+}
+
+.tag {
+  height: 16px;
+  width: 48px;
+  border-radius: 999px;
+}

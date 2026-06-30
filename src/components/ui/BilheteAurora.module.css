@@ -1,0 +1,237 @@
+/* ============================================================
+   BilheteAurora — Estilos do Componente de Papel
+   Biblioteca Cosmetológica Rafa Rabelo
+   ============================================================ */
+
+/* ── Wrapper externo ──────────────────────────────────────── */
+.wrapper {
+  opacity: 0;
+  transform: translateY(8px) rotate(-0.5deg);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.wrapperMounted {
+  opacity: 1;
+  transform: translateY(0) rotate(-0.5deg);
+}
+
+.wrapperAberto {
+  transform: translateY(0) rotate(0deg) !important;
+}
+
+/* ── Bilhete (o botão clicável) ───────────────────────────── */
+.bilhete {
+  position: relative;
+  cursor: pointer;
+  transition:
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 400ms ease;
+  transform-origin: top center;
+  border-radius: 2px;
+  box-shadow:
+    0 2px 8px rgba(90, 70, 40, 0.12),
+    0 1px 3px rgba(90, 70, 40, 0.08),
+    0 8px 24px rgba(90, 70, 40, 0.06);
+}
+
+.bilhete:hover:not(.bilheteAberto) {
+  transform: translateY(-3px);
+  box-shadow:
+    0 6px 20px rgba(90, 70, 40, 0.16),
+    0 2px 6px rgba(90, 70, 40, 0.10);
+}
+
+.bilheteAberto {
+  cursor: default;
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 40px rgba(90, 70, 40, 0.20),
+    0 4px 12px rgba(90, 70, 40, 0.12);
+}
+
+/* ── Papel texturizado ────────────────────────────────────── */
+.papel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  background:
+    repeating-linear-gradient(
+      transparent,
+      transparent 26px,
+      rgba(196, 95, 58, 0.09) 26px,
+      rgba(196, 95, 58, 0.09) 27px
+    ),
+    linear-gradient(
+      150deg,
+      #F4EDD8 0%,
+      #EDE2C4 35%,
+      #E8D9BC 70%,
+      #F0E6CF 100%
+    );
+  padding: 1.25rem 1.25rem 1.25rem 1.75rem;
+  min-width: 220px;
+}
+
+/* ── Linha de margem (caderno) ────────────────────────────── */
+.margem {
+  position: absolute;
+  top: 0;
+  left: 36px;
+  bottom: 0;
+  width: 1px;
+  background: rgba(196, 95, 58, 0.20);
+  pointer-events: none;
+}
+
+/* ── Canto dobrado ────────────────────────────────────────── */
+.canto {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 20px 20px;
+  border-color: transparent transparent rgba(196, 160, 100, 0.40) transparent;
+  transition: border-width 200ms ease;
+  pointer-events: none;
+}
+
+.bilhete:hover:not(.bilheteAberto) .canto {
+  border-width: 0 0 24px 24px;
+}
+
+/* ── Preview (estado fechado) ─────────────────────────────── */
+.preview {
+  transition: opacity 200ms ease, max-height 200ms ease;
+  max-height: 120px;
+  overflow: hidden;
+}
+
+.previewEscondido {
+  opacity: 0;
+  max-height: 0;
+}
+
+.previewTexto {
+  font-family: var(--tipo-serif-body);
+  font-size: 0.875rem;
+  font-style: italic;
+  color: #3D2B1A;
+  line-height: 1.7;
+  margin-bottom: 0.625rem;
+  letter-spacing: 0.005em;
+}
+
+.previewRodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sigPreview {
+  font-family: var(--tipo-script);
+  font-size: 1.125rem;
+  color: #5C3D22;
+  opacity: 0.85;
+}
+
+.hint {
+  font-family: var(--tipo-sans);
+  font-size: 0.6875rem;
+  color: rgba(90, 70, 50, 0.45);
+  font-style: italic;
+}
+
+/* ── Conteúdo (estado aberto) ─────────────────────────────── */
+.conteudo {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 300ms ease;
+}
+
+.conteudoAberto {
+  max-height: 640px;
+  opacity: 1;
+  transition:
+    max-height 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 400ms ease 150ms;
+}
+
+.saudacao {
+  font-family: var(--tipo-script);
+  font-size: 1.125rem;
+  color: #5C3D22;
+  margin-bottom: 0.75rem;
+}
+
+.paragrafo {
+  font-family: var(--tipo-serif-body);
+  font-size: 0.875rem;
+  color: #3D2B1A;
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.005em;
+}
+
+/* ── AssinaturaAurora ─────────────────────────────────────── */
+.assinaturaWrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+  padding-top: 0.625rem;
+  border-top: 1px dashed rgba(196, 95, 58, 0.20);
+}
+
+.assinaturaTexto {
+  font-family: var(--tipo-script);
+  font-size: 1.375rem;
+  color: #5C3D22;
+  display: inline-block;
+}
+
+/* Cada caractere começa invisível */
+.sigChar {
+  display: inline-block;
+  opacity: 0;
+}
+
+/* A classe é adicionada quando a animação deve iniciar */
+.sigCharVisivel {
+  animation: charAppear 180ms ease forwards;
+}
+
+@keyframes charAppear {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Botão Fechar ─────────────────────────────────────────── */
+.fechar {
+  display: block;
+  font-family: var(--tipo-sans);
+  font-size: 0.6875rem;
+  color: rgba(90, 70, 50, 0.45);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 150ms ease;
+  margin-top: 0.25rem;
+}
+
+.fechar:hover {
+  color: rgba(90, 70, 50, 0.75);
+}

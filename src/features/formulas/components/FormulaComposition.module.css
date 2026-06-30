@@ -1,0 +1,75 @@
+.composicao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.grupo {
+  background: var(--superficie-primaria);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.grupoHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-2) var(--spacing-3);
+  background: var(--superficie-secundaria);
+  border-bottom: 1px solid var(--borda-sutil);
+}
+
+.faseLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--fase-cor, var(--texto-terciario));
+}
+
+.faseAbrev {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  background: color-mix(in srgb, var(--fase-cor, var(--borda-sutil)) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fase-cor, var(--borda-sutil)) 30%, transparent);
+}
+
+.grupoContagem {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  background: var(--superficie-terciaria, var(--borda-sutil));
+  padding: 1px 6px;
+  border-radius: 8px;
+}
+
+.grupoItens {
+  padding: 0 var(--spacing-3);
+}
+
+/* Modo compacto */
+.compacto {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Vazio */
+.vazio {
+  padding: var(--spacing-4);
+  text-align: center;
+}
+
+.vazioTexto {
+  font-size: var(--texto-sm);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}

@@ -1,0 +1,135 @@
+/* ReferenceMetadata */
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.secao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.rotulo {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--texto-terciario);
+}
+
+/* Tipo de Estudo */
+.tipoChip {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.tipoIcone {
+  font-size: 1.125rem;
+  line-height: 1;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.tipoLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--texto-primario);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.tipoDesc {
+  font-size: 0.75rem;
+  color: var(--texto-terciario);
+  margin: 2px 0 0;
+  line-height: 1.45;
+}
+
+/* Nível de Evidência */
+.nivelWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nivelLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--texto-primario);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.nivelDesc {
+  font-size: 0.75rem;
+  color: var(--texto-terciario);
+  margin: 2px 0 0;
+  line-height: 1.45;
+}
+
+/* Identificadores / Dados bibliográficos */
+.dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  margin: 0;
+}
+
+.dt {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--texto-terciario);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-top: 1px;
+}
+
+.dd {
+  font-size: 0.8125rem;
+  color: var(--texto-secundario);
+  margin: 0;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.link {
+  color: var(--terracota-500);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  word-break: break-all;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tag {
+  font-size: 0.6875rem;
+  color: var(--texto-terciario);
+  background: var(--superficie-terciaria);
+  border: 1px solid var(--borda-suave);
+  border-radius: 999px;
+  padding: 2px 9px;
+  line-height: 1.4;
+}
+
+/* Data */
+.data {
+  font-size: 0.8125rem;
+  color: var(--texto-terciario);
+}

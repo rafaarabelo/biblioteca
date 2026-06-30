@@ -1,0 +1,109 @@
+/* ============================================================
+   TopBar — Borda superior da mesa
+   A Biblioteca — Sprint VI, Onda 4
+   ============================================================
+   Extremamente discreto. Não compete com o conteúdo.
+   Funciona como a moldura superior da superfície de trabalho.
+   ============================================================ */
+
+.topbar {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--esp-6);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  flex-shrink: 0;
+
+  /* Transparente — foto do appContent aparece através */
+  background: transparent;
+  border-bottom: none;
+}
+
+.topbar::before {
+  display: none;
+}
+
+.esquerda {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+/* Título oculto — branding já existe na sidebar */
+.titulo {
+  display: none;
+}
+
+.subtitulo {
+  display: none;
+}
+
+.direita {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  position: relative;
+}
+
+.temaBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--raio-sm);
+  background: transparent;
+  color: var(--cor-papel-borda);
+  cursor: pointer;
+  transition:
+    color var(--trans-hover),
+    background-color var(--trans-hover);
+  opacity: var(--opacidade-60);
+}
+
+.temaBtn:hover {
+  color: var(--cor-papel-algodao);
+  background-color: color-mix(in srgb, var(--cor-papel-algodao) 12%, transparent);
+  opacity: var(--opacidade-100);
+}
+
+.temaBtn:focus-visible {
+  outline: 2px solid var(--cor-dourado-400);
+  outline-offset: 2px;
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVIDADE
+───────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .topbar {
+    padding: 0 var(--esp-4);
+  }
+}
+
+/* ─────────────────────────────────────────────
+   ACESSIBILIDADE
+───────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .temaBtn {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .topbar {
+    background: Canvas;
+    border-bottom: 2px solid CanvasText;
+  }
+
+  .temaBtn:focus-visible {
+    outline: 3px solid Highlight;
+  }
+}

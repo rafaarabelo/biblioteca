@@ -1,0 +1,80 @@
+/* ============================================================
+   Envelope — Superfície de envelope / carta
+   A Biblioteca — Design System
+   ============================================================
+   Simula um envelope ou pasta de documentos.
+   Textura de linho, borda mais presente.
+   ============================================================ */
+
+.envelope {
+  position: relative;
+  background-color: var(--fundo-envelope);
+  background-image: var(--textura-linho);
+  border: 1px solid var(--cor-papel-sombra);
+  border-radius: var(--raio-sm);
+  box-shadow: var(--sombra-envelope);
+  padding: var(--esp-6);
+  overflow: hidden;
+}
+
+/* Vinco diagonal sutil (dobra do envelope) */
+.envelope::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background:
+    linear-gradient(
+      225deg,
+      var(--cor-papel-sombra) 0%,
+      var(--cor-papel-sombra) 50%,
+      transparent 50%
+    );
+  opacity: 0.4;
+  border-radius: 0 var(--raio-sm) 0 0;
+  z-index: 2;
+}
+
+/* ── Variantes ────────────────────────────── */
+
+.envelopeSemDobra::before {
+  display: none;
+}
+
+.envelopeAberto {
+  border-top: 2px solid var(--cor-dourado-400);
+}
+
+.envelopeAberto::before {
+  display: none;
+}
+
+/* ── Tamanhos ─────────────────────────────── */
+
+.envelopeCompacto {
+  padding: var(--esp-4);
+}
+
+.envelopeEspacoso {
+  padding: var(--esp-8);
+}
+
+/* ── Com selo/lacre decorativo ────────────── */
+
+.envelopeLacre {
+  position: relative;
+}
+
+.lacre {
+  position: absolute;
+  top: var(--esp-4);
+  right: var(--esp-4);
+  width: 24px;
+  height: 24px;
+  border-radius: var(--raio-total);
+  background: var(--cor-terracota-500);
+  box-shadow: var(--sombra-1);
+  z-index: 3;
+}

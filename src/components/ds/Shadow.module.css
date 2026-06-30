@@ -1,0 +1,52 @@
+/* ============================================================
+   Shadow — Container com sombra decorativa
+   A Biblioteca — Design System
+   ============================================================
+   Wrapper que adiciona sombra editorial a qualquer conteúdo.
+   Útil para imagens, quadros, e elementos flutuantes.
+   ============================================================ */
+
+.shadow {
+  position: relative;
+  display: inline-block;
+}
+
+/* ── Níveis ───────────────────────────────── */
+
+.shadow1 { box-shadow: var(--sombra-1); }
+.shadow2 { box-shadow: var(--sombra-2); }
+.shadow3 { box-shadow: var(--sombra-3); }
+.shadow4 { box-shadow: var(--sombra-4); }
+.shadow5 { box-shadow: var(--sombra-5); }
+.shadow6 { box-shadow: var(--sombra-6); }
+
+.shadowPapel   { box-shadow: var(--sombra-papel); }
+.shadowCaderno { box-shadow: var(--sombra-caderno); }
+.shadowEnvelope { box-shadow: var(--sombra-envelope); }
+
+/* ── Interna ──────────────────────────────── */
+
+.shadowInterna1 { box-shadow: var(--sombra-interna-1); }
+.shadowInterna2 { box-shadow: var(--sombra-interna-2); }
+.shadowInterna3 { box-shadow: var(--sombra-interna-3); }
+
+/* ── Com hover ────────────────────────────── */
+
+.shadowHover {
+  transition: box-shadow var(--trans-normal), transform var(--trans-normal);
+}
+
+.shadowHover:hover {
+  box-shadow: var(--sombra-5);
+  transform: translateY(-1px);
+}
+
+/* ── Display ──────────────────────────────── */
+
+.shadowBlock {
+  display: block;
+}
+
+.shadowFull {
+  width: 100%;
+}

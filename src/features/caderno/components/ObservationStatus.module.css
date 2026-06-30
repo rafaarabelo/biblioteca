@@ -1,0 +1,50 @@
+/* ObservationStatus — Indicador de maturidade epistêmica */
+/* A Biblioteca — Sprint VI, Direção de Arte */
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  font-size: var(--tipo-xs);
+  font-weight: var(--peso-medio);
+  line-height: 1;
+}
+
+/* Pontos de maturidade (1–5) */
+.pontos {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.ponto {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  opacity: 0.3;
+  transition: opacity 0.1s ease;
+}
+
+.pontoAtivo {
+  opacity: 1;
+  background: currentColor;
+}
+
+.label {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  color: inherit;
+}
+
+/* Compacto: sem label, apenas pontos */
+.compacto .label {
+  display: none;
+}
+
+/* Cores por maturidade — editorial */
+.cor_neutro   { color: #857467; }
+.cor_ambar    { color: var(--cor-dourado-400); }
+.cor_azul     { color: var(--cor-neutro-400); }
+.cor_verde    { color: var(--cor-oliva-500); }
+.cor_vermelho { color: var(--cor-terracota-500); }

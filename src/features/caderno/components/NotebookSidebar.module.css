@@ -1,0 +1,191 @@
+/* ============================================================
+   NotebookSidebar — Filtros do Caderno de Campo
+   A Biblioteca — Sprint VI, Direção de Arte
+   ============================================================
+   Painel de papel sobre a mesa.
+   Cores e tipografia editorial.
+   Sem linha vertical separadora. Texto recuado para dentro do papel.
+   ============================================================ */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-5);
+  /* Sem borda direita — nada separa o menu da área de observações */
+  border: none;
+  /* Recuar o conteúdo para a direita, mantendo tudo dentro do papel */
+  padding-left: var(--esp-4);
+  padding-right: var(--esp-2);
+}
+
+.grupo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-1);
+}
+
+.grupoLabel {
+  font-family: var(--tipo-mono);
+  font-size: var(--tipo-2xs);
+  font-weight: var(--peso-semi);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-caps);
+  color: #857467;
+  margin: 0 0 var(--esp-2);
+  padding-left: var(--esp-1);
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Filtro genérico */
+.filtroItem,
+.filtroSimples,
+.filtroStatus {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2-5);
+  padding: var(--esp-1-5) var(--esp-2-5);
+  border: none;
+  background: transparent;
+  border-radius: var(--raio-sm);
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-sm);
+  color: #5D4B3F;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: background var(--trans-hover), color var(--trans-hover);
+}
+
+.filtroItem:hover,
+.filtroSimples:hover,
+.filtroStatus:hover {
+  background: color-mix(in srgb, var(--cor-madeira-mel) 12%, transparent);
+  color: #3F2E22;
+}
+
+.filtroItem.ativo,
+.filtroSimples.ativo {
+  background: color-mix(in srgb, var(--cor-terracota-500) 10%, transparent);
+  color: var(--cor-terracota-500);
+  font-weight: var(--peso-medio);
+}
+
+/* ─── Ícones de linha — substituem os emojis ───
+   O emoji vindo do componente é ocultado (font-size: 0)
+   e um glifo de linha é desenhado via ::before, na cor do texto. */
+.filtroIcone {
+  font-size: 0;            /* esconde o emoji original */
+  line-height: 1;
+  flex-shrink: 0;
+  width: 1.05em;
+  height: 1.05em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  position: relative;
+}
+
+.filtroIcone::before {
+  font-family: var(--tipo-serif-body);
+  font-size: 0.95rem;
+  font-weight: var(--peso-normal);
+  line-height: 1;
+  color: currentColor;
+  opacity: 0.85;
+}
+
+/* Favoritos — estrela de contorno / preenchida */
+.filtroSimples .filtroIcone::before { content: '\2729'; }      /* ☆ contorno fino */
+.filtroSimples.ativo .filtroIcone::before { content: '\2605'; } /* ★ preenchida */
+
+/* Tipos — ordem corresponde a TIPOS_LISTA:
+   observacao, hipotese, pergunta_clinica, insight, lembrete, ideia, descoberta */
+.lista .filtroItem:nth-child(1) .filtroIcone::before { content: '\25C9'; } /* ◉ observação */
+.lista .filtroItem:nth-child(2) .filtroIcone::before { content: '\223F'; } /* ∿ hipótese */
+.lista .filtroItem:nth-child(3) .filtroIcone::before { content: '?';     } /* ? pergunta */
+.lista .filtroItem:nth-child(4) .filtroIcone::before { content: '\2736'; } /* ✶ insight */
+.lista .filtroItem:nth-child(5) .filtroIcone::before { content: '\25AB'; } /* ▫ lembrete */
+.lista .filtroItem:nth-child(6) .filtroIcone::before { content: '\25CB'; } /* ○ ideia */
+.lista .filtroItem:nth-child(7) .filtroIcone::before { content: '\2192'; } /* → descoberta */
+
+/* Status com ponto colorido */
+.filtroStatus {
+  gap: var(--esp-2-5);
+}
+
+.statusPonto {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.status_neutro    { color: #857467; }
+.status_ambar     { color: var(--cor-dourado-400); }
+.status_verde     { color: var(--cor-oliva-500); }
+.status_vermelho  { color: var(--cor-terracota-500); }
+.status_azul      { color: var(--cor-neutro-400); }
+
+.filtroStatus.ativo {
+  font-weight: var(--peso-medio);
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+
+.filtroStatus.status_neutro.ativo    { background: color-mix(in srgb, #857467 8%, transparent); }
+.filtroStatus.status_ambar.ativo     { background: color-mix(in srgb, var(--cor-dourado-400) 10%, transparent); }
+.filtroStatus.status_verde.ativo     { background: color-mix(in srgb, var(--cor-oliva-500) 10%, transparent); }
+.filtroStatus.status_vermelho.ativo  { background: color-mix(in srgb, var(--cor-terracota-500) 10%, transparent); }
+.filtroStatus.status_azul.ativo      { background: color-mix(in srgb, var(--cor-neutro-400) 10%, transparent); }
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding-left: var(--esp-1);
+}
+
+.tag {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-2xs);
+  padding: 3px 10px;
+  background: color-mix(in srgb, var(--cor-papel-creme) 50%, transparent);
+  border-radius: 999px;
+  color: #5D4B3F;
+  cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--cor-madeira-mel) 25%, transparent);
+  transition: border-color var(--trans-hover), color var(--trans-hover);
+}
+
+.tag:hover {
+  border-color: var(--cor-terracota-500);
+  color: var(--cor-terracota-500);
+}
+
+/* Limpar */
+.limpar {
+  margin-top: var(--esp-3);
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  color: #857467;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--esp-1) var(--esp-2-5);
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--trans-hover);
+}
+
+.limpar:hover {
+  color: #3F2E22;
+}

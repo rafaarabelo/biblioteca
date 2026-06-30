@@ -1,0 +1,61 @@
+/* CaseStatus */
+
+/* Compacto: ponto + label inline */
+.compacto {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ponto {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.labelCompacto {
+  font-size: var(--texto-xs);
+  color: var(--texto-secundario);
+}
+
+/* Progressão completa */
+.progressao {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.etapa {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.etapaPonto {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--superficie-terciaria);
+  border: 1px solid var(--borda-sutil);
+  flex-shrink: 0;
+  transition: background-color 0.12s ease;
+}
+
+.etapaAtiva {
+  width: 10px;
+  height: 10px;
+  border: none;
+}
+
+.etapaPassada {
+  opacity: 0.45;
+  border: none;
+}
+
+.etapaLabel {
+  font-size: var(--texto-xs);
+  font-weight: 500;
+}

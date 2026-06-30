@@ -1,0 +1,105 @@
+/* ============================================================
+   SectionTitle — Título de seção editorial
+   A Biblioteca — Design System
+   ============================================================
+   Títulos com ornamento decorativo lateral (linha, folha, traço).
+   Estilo editorial de revista científica / publicação acadêmica.
+   ============================================================ */
+
+.section {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  margin-bottom: var(--esp-5);
+}
+
+.sectionTexto {
+  font-family: var(--tipo-serif-body);
+  font-size: var(--tipo-lg);
+  font-weight: var(--peso-normal);
+  line-height: var(--lh-titulo);
+  color: var(--texto-titulo);
+  letter-spacing: var(--ls-apertado);
+  white-space: nowrap;
+}
+
+/* Linha decorativa à direita do título */
+.sectionLinha {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--borda-media) 0%,
+    transparent 100%
+  );
+}
+
+/* ── Variantes ────────────────────────────── */
+
+.sectionSm .sectionTexto {
+  font-size: var(--tipo-base);
+}
+
+.sectionLg .sectionTexto {
+  font-size: var(--tipo-xl);
+}
+
+.sectionXl .sectionTexto {
+  font-size: var(--tipo-2xl);
+  font-weight: var(--peso-leve);
+}
+
+/* Com overline (categoria acima do título) */
+.sectionOverline {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--esp-1);
+}
+
+.overlineTexto {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-2xs);
+  font-weight: var(--peso-semi);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--texto-terciario);
+}
+
+/* Sem linha decorativa */
+.sectionSemLinha .sectionLinha {
+  display: none;
+}
+
+/* Com ornamento à esquerda */
+.sectionOrnamento::before {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 1em;
+  background: var(--cor-terracota-400);
+  border-radius: var(--raio-total);
+  flex-shrink: 0;
+}
+
+/* Centralizado */
+.sectionCentralizado {
+  justify-content: center;
+}
+
+.sectionCentralizado .sectionLinha {
+  max-width: 80px;
+}
+
+.sectionCentralizado .sectionLinha:first-of-type {
+  background: linear-gradient(
+    270deg,
+    var(--borda-media) 0%,
+    transparent 100%
+  );
+}
+
+/* Action slot (link, botão discreto) */
+.sectionAction {
+  flex-shrink: 0;
+  margin-left: auto;
+}

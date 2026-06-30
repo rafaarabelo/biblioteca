@@ -1,0 +1,73 @@
+.ingrediente {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-2) 0;
+  border-bottom: 1px solid var(--borda-sutil);
+}
+
+.ingrediente:last-child {
+  border-bottom: none;
+}
+
+.faseIndicador {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--fase-cor, var(--texto-terciario));
+  background: color-mix(in srgb, var(--fase-cor, var(--borda-sutil)) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fase-cor, var(--borda-sutil)) 25%, transparent);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.corpo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  flex: 1;
+  min-width: 0;
+}
+
+.nome {
+  font-size: var(--texto-sm);
+  color: var(--texto-primario);
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.concentracao {
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  color: var(--texto-secundario);
+  font-family: var(--fonte-mono, monospace);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-basis: 100%;
+  padding-top: 2px;
+}
+
+.funcao {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+}
+
+.obs {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  font-style: italic;
+}

@@ -1,0 +1,835 @@
+/* ============================================================
+   Mesa de Pesquisa — Cenografia Editorial
+   A Biblioteca — Sprint VI, Onda 6 (Direção de Arte)
+   ============================================================
+   Pense como uma fotografia de uma mesa de pesquisa.
+   Não como uma página web.
+
+   Camadas de profundidade:
+   1. Madeira (appMain background)
+   2. Seções de luz (contexto direcional)
+   3. Papéis (Paper, Notebook, Envelope — cada um com peso próprio)
+   4. Cards (Editorial — fichas sobre papéis)
+   5. Decorações (Ribbon, Botanical — apenas quando funcionais)
+
+   Princípios:
+   - Silêncio antes de informação
+   - Ritmo ASSIMÉTRICO — papéis não estão na régua
+   - Diferença de escala cria hierarquia visual
+   - Nunca scrapbook, nunca vintage, nunca Canva
+   ============================================================ */
+
+/* ─────────────────────────────────────────────
+   CONTEXTO DA PÁGINA — madeira como palco
+   A fotografia é o gabarito. Cada seção encaixa
+   sobre um papel específico da imagem.
+───────────────────────────────────────────── */
+
+.page {
+  /* Tokens de luz sobre madeira — sobrescrevem contexto claro */
+  --foreground:     var(--cor-papel-algodao);
+  --muted-fg:       var(--cor-madeira-clara);
+  --border:         var(--cor-madeira-mel);
+  --muted:          color-mix(in srgb, var(--cor-papel-algodao) 8%, transparent);
+  /* Título de seção editorial sobre madeira — Spectral leve, creme */
+  --titulo-secao:   var(--cor-papel-borda);
+
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  /* A foto define os espaçamentos — padding respeita as margens visíveis */
+  padding: var(--esp-6) var(--esp-5);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  /* Nunca scroll horizontal */
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────────
+   DECORAÇÃO DE CANTO — elemento de cena
+   Não decorativo. Ancora o canto e dá profundidade.
+───────────────────────────────────────────── */
+
+.decoracaoCanto {
+  position: absolute;
+  top: calc(-1 * var(--esp-4));
+  right: 0;
+  pointer-events: none;
+  opacity: var(--opacidade-20);
+  z-index: 0;
+}
+
+/* ─────────────────────────────────────────────
+   SAUDAÇÃO — Nota e busca em linha
+   A pesquisadora abriu a mesa e foi identificada.
+───────────────────────────────────────────── */
+
+.saudacao {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--esp-8);
+  animation: fadeUp var(--trans-suave) both;
+  position: relative;
+  z-index: 1;
+  margin-bottom: var(--esp-10);
+}
+
+.saudacaoTexto { flex: 1; }
+
+.titulo {
+  font-family: var(--tipo-serif);
+  font-size: var(--tipo-4xl);
+  font-weight: var(--peso-medio);
+  color: var(--cor-papel-algodao);
+  letter-spacing: var(--ls-apertado);
+  line-height: var(--lh-apertada);
+  margin-bottom: var(--esp-2);
+  text-shadow: 0 1px 3px color-mix(in srgb, var(--cor-madeira-sombra) 40%, transparent);
+}
+
+.frase {
+  /* Manuscrita de diário — Shadows Into Light */
+  font-family: var(--tipo-script);
+  font-size: var(--tipo-lg);
+  color: var(--cor-papel-borda);
+  opacity: var(--opacidade-60);
+  line-height: var(--lh-relaxada);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────
+   BUSCA — Impressa na folha superior, não componente flutuante
+───────────────────────────────────────────── */
+
+.searchPaper {
+  width: 280px;
+  flex-shrink: 0;
+  /* Sombra mínima — parece parte da folha, não um componente */
+  box-shadow: var(--sombra-1);
+}
+
+.searchLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  cursor: text;
+}
+
+.searchIcon {
+  flex-shrink: 0;
+  color: var(--texto-terciario);
+  opacity: var(--opacidade-60);
+  display: flex;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-sm);
+  color: var(--texto-corpo);
+  outline: none;
+  min-width: 0;
+}
+
+.searchInput::placeholder {
+  color: var(--texto-fantasma);
+  font-style: italic;
+}
+
+.searchPaper:focus-within {
+  box-shadow: var(--sombra-3), 0 0 0 2px var(--cor-dourado-300);
+}
+
+.searchKbd {
+  font-family: var(--tipo-mono);
+  font-size: var(--tipo-2xs);
+  color: var(--texto-terciario);
+  letter-spacing: var(--ls-largo);
+  opacity: var(--opacidade-40);
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────
+   TÍTULO DE SEÇÃO EDITORIAL — sobre madeira
+   Spectral serif, leve. Não é um h2 de software.
+   É uma etiqueta de gaveta de arquivo.
+───────────────────────────────────────────── */
+
+.secaoTitulo {
+  font-family: var(--tipo-serif-body);
+  font-size: var(--tipo-lg);
+  font-weight: var(--peso-normal);
+  letter-spacing: var(--ls-normal);
+  color: var(--titulo-secao);
+  margin: 0;
+  line-height: var(--lh-titulo);
+}
+
+.secaoLinha {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--cor-papel-algodao) 20%, transparent) 0%,
+    transparent 100%
+  );
+}
+
+.secaoHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  margin-bottom: var(--esp-4);
+}
+
+.sectionLink {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-2xs);
+  color: var(--cor-madeira-clara);
+  text-decoration: none;
+  letter-spacing: var(--ls-largo);
+  transition: color var(--trans-hover);
+  opacity: var(--opacidade-50);
+  cursor: pointer;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.sectionLink:hover {
+  color: var(--cor-dourado-400);
+  opacity: var(--opacidade-100);
+}
+
+/* ─────────────────────────────────────────────
+   O QUE MERECE SUA ATENÇÃO HOJE
+   5 fichas sobre a mesa — tamanhos DIFERENTES.
+   Uma pesquisadora não imprime tudo no mesmo formato.
+───────────────────────────────────────────── */
+
+.atencaoSection {
+  margin-bottom: var(--esp-14);
+}
+
+.atencaoScroll {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--esp-3);
+  padding-bottom: var(--esp-4);
+  padding-top: var(--esp-2);
+  /* Nunca scroll horizontal — cards se adaptam à largura */
+  overflow: hidden;
+}
+
+/* Ficha base */
+.atencaoCard {
+  flex: 1 1 200px;
+  max-width: 280px;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+  position: relative;
+  animation: fadeUp var(--trans-suave) both;
+  transition: transform var(--trans-normal), box-shadow var(--trans-normal);
+  overflow: visible;
+  cursor: pointer;
+}
+
+.atencaoCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-5);
+  z-index: 5;
+}
+
+/* Fichas com TAMANHOS diferentes — cada tipo de documento tem seu formato */
+.atencaoCard_0 {
+  animation-delay: 0ms;
+}
+
+.atencaoCard_1 {
+  animation-delay: 60ms;
+}
+
+.atencaoCard_2 {
+  animation-delay: 120ms;
+}
+
+.atencaoCard_3 {
+  animation-delay: 180ms;
+}
+
+.atencaoCardTitulo {
+  font-family: var(--tipo-serif);
+  font-size: var(--tipo-md);
+  font-weight: var(--peso-medio);
+  color: var(--texto-titulo);
+  line-height: var(--lh-titulo);
+  letter-spacing: var(--ls-apertado);
+  margin: 0;
+  flex: 1;
+}
+
+.atencaoCardSub {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  color: var(--texto-secundario);
+  line-height: var(--lh-corpo);
+  margin: 0;
+}
+
+.atencaoCardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-2);
+  padding-top: var(--esp-2-5);
+  border-top: 1px solid var(--borda-sutil);
+  margin-top: auto;
+}
+
+.atencaoCardData {
+  font-family: var(--tipo-mono);
+  font-size: var(--tipo-2xs);
+  color: var(--texto-terciario);
+  letter-spacing: var(--ls-largo);
+}
+
+/* Envelope da Aurora — formato de carta */
+.atencaoEnvelope {
+  flex: 1 1 180px;
+  max-width: 240px;
+  min-width: 160px;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+  position: relative;
+  transition: transform var(--trans-normal);
+  cursor: pointer;
+  animation: fadeUp var(--trans-suave) 240ms both;
+}
+
+.atencaoEnvelope:hover {
+  transform: translateY(-3px);
+}
+
+.envelopeTitulo {
+  font-family: var(--tipo-mono);
+  font-size: var(--tipo-2xs);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--texto-terciario);
+  margin: 0;
+}
+
+.envelopePreview {
+  font-family: var(--tipo-script);
+  font-size: var(--tipo-sm);
+  color: var(--cor-tinta-sepia);
+  line-height: var(--lh-relaxada);
+  font-style: italic;
+  margin: 0;
+  flex: 1;
+}
+
+.envelopeLink {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-2xs);
+  color: var(--cor-terracota-500);
+  text-decoration: none;
+  letter-spacing: var(--ls-largo);
+  margin-top: auto;
+}
+
+.envelopeLink:hover { text-decoration: underline; }
+
+.atencaoVazio {
+  flex: 1 1 100%;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.atencaoVazioTexto {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────
+   ATIVIDADES + CADERNO — 2 colunas
+   Atividades = papel central. Caderno = papel direito.
+   As atividades devem começar dentro do caderno/paper correto.
+───────────────────────────────────────────── */
+
+.atividadesCaderno {
+  display: grid;
+  grid-template-columns: 1fr 270px;
+  gap: var(--esp-6);
+  align-items: start;
+  margin-bottom: var(--esp-10);
+}
+
+.atividadesSection { min-width: 0; }
+
+/* Timeline — linha vertical à esquerda conectando as atividades */
+.atividadesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+/* Linha vertical da timeline — traço contínuo */
+.atividadesList::before {
+  content: '';
+  position: absolute;
+  left: 68px; /* alinhada com o centro da coluna de ícones */
+  top: var(--esp-5);
+  bottom: var(--esp-5);
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in srgb, var(--cor-papel-algodao) 15%, transparent) 15%,
+    color-mix(in srgb, var(--cor-papel-algodao) 15%, transparent) 85%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.atividadeItem {
+  display: grid;
+  grid-template-columns: 64px 28px 1fr auto;
+  align-items: center;
+  gap: var(--esp-2);
+  padding: var(--esp-2-5) var(--esp-2);
+  border-radius: var(--raio-sm);
+  text-decoration: none;
+  color: var(--cor-papel-borda);
+  transition: background var(--trans-hover);
+  animation: fadeUp var(--trans-suave) both;
+  position: relative;
+  z-index: 1;
+}
+
+.atividadeItem:hover {
+  background: color-mix(in srgb, var(--cor-papel-algodao) 7%, transparent);
+}
+
+.atividadeHora {
+  font-family: var(--tipo-mono);
+  font-size: var(--tipo-2xs);
+  color: var(--cor-madeira-clara);
+  letter-spacing: var(--ls-largo);
+  text-align: right;
+  opacity: var(--opacidade-90);
+  white-space: nowrap;
+}
+
+/* Ícone da atividade — ponto na timeline */
+.atividadeIcone {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--tipo-sm);
+  background: color-mix(in srgb, var(--cor-papel-algodao) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cor-papel-algodao) 18%, transparent);
+  border-radius: var(--raio-total);
+  position: relative;
+  z-index: 2;
+}
+
+.atividadeDescricao {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-sm);
+  color: var(--cor-papel-borda);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.atividadesVazio {
+  padding: var(--esp-5);
+  text-align: center;
+}
+
+.atividadesVazioTexto {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Caderno de Campo */
+.cadernoPanel { min-width: 0; }
+
+.cadernoPaper {
+  position: relative;
+  overflow: hidden;
+}
+
+.cadernoStats {
+  list-style: none;
+  margin: 0 0 var(--esp-5);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+}
+
+.cadernoStatItem {
+  display: grid;
+  grid-template-columns: 8px 1fr auto;
+  align-items: center;
+  gap: var(--esp-2);
+}
+
+.cadernoStatDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cadernoStatDot[data-color="amber"]  { background: var(--cor-dourado-400); }
+.cadernoStatDot[data-color="blue"]   { background: var(--cor-neutro-400); }
+.cadernoStatDot[data-color="purple"] { background: color-mix(in srgb, var(--cor-terracota-400) 60%, var(--cor-madeira-mel)); }
+.cadernoStatDot[data-color="green"]  { background: var(--cor-oliva-500); }
+.cadernoStatDot[data-color="red"]    { background: var(--cor-terracota-500); }
+.cadernoStatDot[data-color="gray"]   { background: var(--cor-neutro-400); opacity: 0.5; }
+
+.cadernoStatLabel {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  color: var(--texto-secundario);
+}
+
+.cadernoStatNum {
+  font-family: var(--tipo-mono);
+  font-size: var(--tipo-sm);
+  font-weight: var(--peso-semi);
+  color: var(--texto-titulo);
+}
+
+.cadernoNota {
+  border: none;
+  padding: var(--esp-3) 0 0;
+  border-top: 1px solid var(--borda-sutil);
+  margin: 0;
+}
+
+.cadernoNota p {
+  font-family: var(--tipo-script);
+  font-size: var(--tipo-xs);
+  color: var(--texto-terciario);
+  line-height: var(--lh-relaxada);
+  margin: 0;
+  opacity: var(--opacidade-70);
+}
+
+.cadernoNotaAssinatura {
+  display: block;
+  font-family: var(--tipo-script);
+  font-size: var(--tipo-lg);
+  color: var(--texto-terciario);
+  margin-top: var(--esp-1);
+  opacity: var(--opacidade-50);
+}
+
+.cadernoVazio {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0 0 var(--esp-5);
+}
+
+/* ─────────────────────────────────────────────
+   CONEXÕES + NOTAS — papel central + papel direito
+   Os componentes não devem ultrapassar os papéis.
+───────────────────────────────────────────── */
+
+.conexoesNotas {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--esp-6);
+  align-items: start;
+  margin-bottom: var(--esp-10);
+}
+
+.conexoesSection,
+.notasSection { min-width: 0; }
+
+.conexoesSubtitulo {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  color: var(--cor-madeira-clara);
+  opacity: var(--opacidade-50);
+  font-style: italic;
+  margin: calc(-1 * var(--esp-2)) 0 var(--esp-4);
+}
+
+/* Fluxo de conexões — nós conectados por setas */
+.fluxoConexoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--esp-2);
+  padding: var(--esp-4) 0;
+  overflow: hidden;
+}
+
+.fluxoNodoWrapper {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.fluxoNodo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-1);
+  padding: var(--esp-3) var(--esp-4);
+  background: color-mix(in srgb, var(--cor-papel-algodao) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cor-papel-algodao) 18%, transparent);
+  border-radius: var(--raio-md);
+  text-decoration: none;
+  min-width: 96px;
+  text-align: center;
+  transition: background var(--trans-hover), transform var(--trans-normal);
+}
+
+.fluxoNodo:hover {
+  background: color-mix(in srgb, var(--cor-papel-algodao) 16%, transparent);
+  transform: translateY(-2px);
+}
+
+.fluxoNodoIcone { font-size: var(--tipo-lg); opacity: var(--opacidade-80); }
+
+.fluxoNodoTexto {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  color: var(--cor-papel-borda);
+  line-height: var(--lh-titulo);
+  max-width: 90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fluxoNodoTipo {
+  font-family: var(--tipo-mono);
+  font-size: var(--tipo-2xs);
+  color: var(--cor-madeira-clara);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  opacity: var(--opacidade-60);
+}
+
+.fluxoSeta {
+  color: var(--cor-madeira-clara);
+  font-size: var(--tipo-base);
+  opacity: var(--opacidade-40);
+  flex-shrink: 0;
+  padding: 0 var(--esp-2);
+}
+
+.conexoesPlaceholder {
+  position: relative;
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.conexoesPlaceholderTexto {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-sm);
+  color: var(--texto-terciario);
+  text-align: center;
+  font-style: italic;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  max-width: 320px;
+}
+
+/* Notebook de notas — apenas a folha pautada, sem espiral nem margem */
+.notasNotebook {
+  min-height: 150px;
+  padding: var(--esp-4) var(--esp-5);
+  padding-left: var(--esp-5);
+}
+
+.notasNotebook::before,
+.notasNotebook::after {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────
+   HERO — Aurora + Manifesto
+   Aurora = papel esquerdo (bilhete compacto).
+   Manifesto = papel direito (ocupa totalmente).
+   Ambos encaixam nos papéis da fotografia.
+───────────────────────────────────────────── */
+
+.hero {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: var(--esp-6);
+  align-items: start;
+  animation: fadeUp var(--trans-suave) 200ms both;
+}
+
+.bilheteCol {
+  width: 230px;
+  /* Bilhete preso na mesa — leve rotação, objeto físico */
+  transform: rotate(-1.2deg);
+  filter: drop-shadow(-1px 2px 3px rgba(84, 50, 25, 0.10));
+}
+
+.auroraPaper {
+  position: relative;
+  min-height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ribbons nos bilhetes da Aurora e cards de atenção — fitinha fina decorativa, sem texto */
+.bilheteCol span[class*="ribbon"],
+.auroraPaper span[class*="ribbon"],
+.atencaoCard span[class*="ribbon"] {
+  width: 10px;
+  padding: var(--esp-4) 0 var(--esp-1);
+  font-size: 0;
+  color: transparent;
+  opacity: 0.7;
+  right: var(--esp-2);
+}
+
+.auroraVazio {
+  font-family: var(--tipo-script);
+  font-size: var(--tipo-sm);
+  color: var(--texto-terciario);
+  text-align: center;
+  font-style: italic;
+  margin: 0;
+}
+
+.manifesto { }
+
+.manifestoPaper {
+  position: relative;
+  /* Folha generosa — não um card, uma folha aberta sobre a mesa */
+  padding: var(--esp-10) var(--esp-8);
+}
+
+.manifestoTexto { margin: 0; padding: 0; border: none; }
+
+.manifestoTexto p {
+  font-family: var(--tipo-serif-body);
+  font-size: var(--tipo-base);
+  font-style: italic;
+  color: var(--texto-corpo);
+  line-height: var(--lh-relaxada);
+  margin-bottom: var(--esp-3);
+  opacity: var(--opacidade-80);
+}
+
+.manifestoTexto p:last-child { margin-bottom: 0; }
+
+.manifestoAssinatura {
+  margin-top: var(--esp-5);
+  padding-top: var(--esp-3);
+  border-top: 1px solid var(--borda-sutil);
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-0-5);
+}
+
+.manifestoSig {
+  font-family: var(--tipo-script);
+  font-size: var(--tipo-lg);
+  color: var(--cor-tinta-sepia);
+}
+
+.manifestoCredencial {
+  font-family: var(--tipo-mono);
+  font-size: var(--tipo-2xs);
+  letter-spacing: var(--ls-caps);
+  color: var(--texto-terciario);
+}
+
+/* ─────────────────────────────────────────────
+   DIVISORES — espaçamento editorial não-uniforme
+───────────────────────────────────────────── */
+
+.divisor {
+  margin: var(--esp-10) 0 var(--esp-12);
+}
+
+.divisorSutil {
+  margin: var(--esp-8) 0 var(--esp-10);
+}
+
+/* ─────────────────────────────────────────────
+   ANIMAÇÃO
+───────────────────────────────────────────── */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(var(--esp-4)); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVIDADE
+───────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .page { padding: var(--esp-5) var(--esp-4); }
+  .saudacao { flex-direction: column; align-items: flex-start; gap: var(--esp-4); }
+  .searchPaper { width: 100%; max-width: 380px; }
+  .atividadesCaderno { grid-template-columns: 1fr; }
+  .cadernoPanel { max-width: 380px; }
+  .conexoesNotas { grid-template-columns: 1fr; }
+  .notasSection { max-width: 380px; }
+  .hero { grid-template-columns: 1fr; gap: var(--esp-6); }
+  .bilheteCol { width: 100%; max-width: 260px; }
+}
+
+@media (max-width: 768px) {
+  .page { padding: var(--esp-4) var(--esp-3); }
+  .titulo { font-size: var(--tipo-2xl); }
+  .atividadesList::before { display: none; }
+  .atividadeItem { grid-template-columns: 52px 24px 1fr auto; gap: var(--esp-1-5); }
+}
+
+/* ─────────────────────────────────────────────
+   ACESSIBILIDADE
+───────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .saudacao, .hero, .atividadeItem,
+  .atencaoCard_0, .atencaoCard_1, .atencaoCard_2, .atencaoCard_3 { animation: none; }
+  .atencaoCard:hover, .atencaoEnvelope:hover { transform: none; transition: none; }
+}
+
+@media (forced-colors: active) {
+  .titulo { text-shadow: none; }
+  .searchPaper:focus-within { box-shadow: none; outline: 3px solid Highlight; }
+  .fluxoNodo, .atividadeIcone { border: 2px solid CanvasText; }
+}

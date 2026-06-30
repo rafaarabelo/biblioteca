@@ -1,0 +1,54 @@
+/* ProtocolEvidence — 5 segmentos de maturidade */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.compacto {
+  gap: 4px;
+}
+
+.segmentos {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.segmento {
+  display: block;
+  width: 10px;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+/* Alturas crescentes — transmitem progressão */
+.segmento:nth-child(1) { height: 4px; }
+.segmento:nth-child(2) { height: 7px; }
+.segmento:nth-child(3) { height: 10px; }
+.segmento:nth-child(4) { height: 13px; }
+.segmento:nth-child(5) { height: 16px; }
+
+.ativo {
+  /* backgroundColor vem do inline style (cor dinâmica) */
+}
+
+.inativo {
+  background-color: var(--superficie-terciaria);
+}
+
+.compacto .segmento {
+  width: 7px;
+}
+.compacto .segmento:nth-child(1) { height: 3px; }
+.compacto .segmento:nth-child(2) { height: 5px; }
+.compacto .segmento:nth-child(3) { height: 7px; }
+.compacto .segmento:nth-child(4) { height: 9px; }
+.compacto .segmento:nth-child(5) { height: 11px; }
+
+.label {
+  font-size: var(--texto-xs);
+  color: var(--texto-secundario);
+  white-space: nowrap;
+}

@@ -1,0 +1,73 @@
+.wrapper {
+  overflow-x: auto;
+  padding-bottom: var(--spacing-2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--borda-sutil) transparent;
+}
+
+.trilha {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  list-style: none;
+  margin: 0;
+  padding: var(--spacing-3) 0;
+  min-width: max-content;
+}
+
+.fase {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.faseConteudo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: var(--superficie-secundaria, var(--surface));
+  border: 1px solid var(--borda-sutil);
+  border-radius: var(--raio-sm, 6px);
+  padding: var(--spacing-2) var(--spacing-3);
+  min-width: 80px;
+}
+
+.faseNum {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--terracota-500, var(--cor-terracota-500));
+  color: white;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.faseInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.faseNome {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--texto-primario);
+  white-space: nowrap;
+}
+
+.faseDuracao {
+  font-size: 0.6875rem;
+  color: var(--texto-terciario);
+  font-family: var(--tipo-mono, monospace);
+}
+
+.conector {
+  color: var(--texto-terciario);
+  font-size: 0.875rem;
+  opacity: 0.5;
+  flex-shrink: 0;
+}

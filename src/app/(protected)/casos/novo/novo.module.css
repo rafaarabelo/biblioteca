@@ -1,0 +1,55 @@
+/* /casos/novo */
+
+.pagina {
+  max-width: 760px;
+  padding: var(--spacing-5) var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--texto-xs);
+}
+
+.breadcrumbLink {
+  color: var(--texto-terciario);
+  text-decoration: none;
+  transition: color 0.1s ease;
+}
+
+.breadcrumbLink:hover { color: var(--terracota-500); }
+
+.breadcrumbSep {
+  color: var(--texto-terciario);
+}
+
+.breadcrumbAtual {
+  color: var(--texto-secundario);
+}
+
+.cabecalho {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.titulo {
+  font-family: var(--fonte-serif);
+  font-size: var(--texto-2xl);
+  font-weight: 600;
+  color: var(--texto-primario);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitulo {
+  font-size: var(--texto-sm);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+  line-height: 1.5;
+}

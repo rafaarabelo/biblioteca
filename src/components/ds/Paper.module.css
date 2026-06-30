@@ -1,0 +1,109 @@
+/* ============================================================
+   Paper — Superfície de papel reutilizável
+   A Biblioteca — Design System
+   ============================================================
+   Simula uma folha de papel físico sobre a mesa.
+   Variantes: algodão (padrão), velho, caderno, cartão.
+   ============================================================ */
+
+.paper {
+  position: relative;
+  background-color: var(--fundo-papel);
+  background-image: var(--textura-papel), var(--luz-papel);
+  border: 1px solid var(--borda-sutil);
+  border-radius: var(--raio-md);
+  box-shadow: var(--sombra-papel);
+  padding: var(--esp-6);
+  overflow: hidden;
+}
+
+/* Efeito de luz suave do canto superior direito */
+.paper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--luz-direcional);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Variantes ────────────────────────────── */
+
+.paperVelho {
+  background-color: var(--cor-papel-velho);
+  background-image: var(--textura-papel-velho);
+  border-color: var(--cor-papel-manchado);
+  box-shadow: var(--sombra-caderno);
+}
+
+.paperCaderno {
+  background-color: var(--cor-papel-algodao);
+  border-color: var(--cor-papel-borda);
+  border-radius: var(--raio-sm);
+  box-shadow: var(--sombra-caderno);
+  /* Linhas de caderno */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 31px,
+      rgba(196, 95, 58, 0.08) 31px,
+      rgba(196, 95, 58, 0.08) 32px
+    ),
+    var(--luz-papel);
+  background-size: 100% 32px, 100% 100%;
+  background-position: 0 8px, 0 0;
+}
+
+.paperCartao {
+  background-color: var(--cor-papel-dobra);
+  border-color: var(--cor-papel-sombra);
+  border-radius: var(--raio-sm);
+  box-shadow: var(--sombra-2);
+  padding: var(--esp-4);
+}
+
+/* ── Tamanhos ─────────────────────────────── */
+
+.paperCompacto {
+  padding: var(--esp-4);
+}
+
+.paperEspacoso {
+  padding: var(--esp-8);
+}
+
+/* ── Elevações ────────────────────────────── */
+
+.paperPlano {
+  box-shadow: var(--sombra-0);
+}
+
+.paperElevado {
+  box-shadow: var(--sombra-4);
+}
+
+.paperFlutuante {
+  box-shadow: var(--sombra-5);
+  transform: translateY(-1px);
+}
+
+/* ── Interativo ───────────────────────────── */
+
+.paperInterativo {
+  transition:
+    box-shadow var(--trans-normal),
+    transform var(--trans-normal);
+  cursor: pointer;
+}
+
+.paperInterativo:hover {
+  box-shadow: var(--sombra-4);
+  transform: translateY(-2px);
+}
+
+.paperInterativo:active {
+  box-shadow: var(--sombra-2);
+  transform: translateY(0);
+}

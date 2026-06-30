@@ -1,0 +1,460 @@
+/* ============================================================
+   Sidebar — Estante Editorial
+   A Biblioteca — Sprint VI, Onda 3
+   ============================================================
+   Não é um menu. É um móvel.
+   Base: madeira nogueira com textura sutil.
+   Itens: papéis organizados sobre a estante.
+   ZERO cores hardcoded. ZERO sombras hardcoded. ZERO radius hardcoded.
+   ============================================================ */
+
+/* ─────────────────────────────────────────────
+   CONTAINER — Superfície de madeira
+───────────────────────────────────────────── */
+
+.sidebar {
+  width: var(--sidebar-largura);
+  min-width: var(--sidebar-largura);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Papel creme — estante editorial clara */
+  background-color: var(--cor-papel-algodao);
+  background-image: var(--textura-papel);
+  border-right: 1px solid var(--borda-sutil);
+  box-shadow: 2px 0 8px rgba(84, 50, 25, 0.06);
+
+  /* Scrollbar discreta */
+  scrollbar-width: thin;
+  scrollbar-color: var(--borda-forte) transparent;
+}
+
+.sidebar::before {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────
+   CABEÇALHO — Placa de identificação
+───────────────────────────────────────────── */
+
+.cabecalho {
+  position: relative;
+  z-index: 1;
+  padding: var(--esp-6) var(--esp-5) var(--esp-5);
+  border-bottom: 1px solid var(--borda-sutil);
+  flex-shrink: 0;
+}
+
+.cabecalhoLink {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  text-decoration: none;
+  color: var(--texto-titulo);
+  transition: opacity var(--trans-hover);
+}
+
+.cabecalhoLink:hover {
+  opacity: var(--opacidade-70);
+}
+
+/* Logo botânico */
+.logo {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-terracota-600);
+}
+
+.logoSvg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Texto do cabeçalho */
+.cabecalhoTexto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-0-5);
+}
+
+.titulo {
+  font-family: var(--tipo-serif);
+  font-size: var(--tipo-lg);
+  font-weight: var(--peso-medio);
+  line-height: var(--lh-apertada);
+  color: var(--texto-titulo);
+  letter-spacing: var(--ls-apertado);
+}
+
+.subtitulo {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-2xs);
+  font-weight: var(--peso-normal);
+  color: var(--texto-terciario);
+  letter-spacing: var(--ls-largo);
+}
+
+/* ─────────────────────────────────────────────
+   NAVEGAÇÃO — Papéis organizados na estante
+───────────────────────────────────────────── */
+
+.nav {
+  position: relative;
+  z-index: 1;
+  /* 170px do topo = cabecalho ~95px + 75px de respiro */
+  padding: var(--esp-5) var(--esp-4);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+}
+
+.navGrupo {
+  display: flex;
+  flex-direction: column;
+  /* Respiro de índice de livro — não menu de software */
+  gap: var(--esp-5);
+}
+
+.navGrupoLabel {
+  font-family: var(--tipo-sans);
+  font-size: 10px;
+  font-weight: var(--peso-normal);
+  font-style: italic;
+  color: var(--texto-fantasma);
+  letter-spacing: var(--ls-largo);
+  padding: var(--esp-3) var(--esp-3) var(--esp-1);
+  opacity: var(--opacidade-60);
+}
+
+/* ── Item de navegação ─────────────────────── */
+
+.navItem {
+  display: flex;
+  align-items: center;
+  /* 14px gap ícone → texto — blueprint */
+  gap: 14px;
+  /* 12px vertical, 14px horizontal — blueprint */
+  padding: 12px 14px;
+  /* 40px altura total — blueprint */
+  min-height: 40px;
+  /* 198px largura — blueprint */
+  max-width: 198px;
+  border-radius: var(--raio-sm);
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-sm);
+  font-weight: var(--peso-normal);
+  color: var(--texto-secundario);
+  text-decoration: none;
+  position: relative;
+  transition:
+    background-color var(--trans-hover),
+    color var(--trans-hover);
+  border-left: 3px solid transparent;
+}
+
+.navItem:hover:not(.navItemDesabilitado) {
+  background-color: var(--cor-papel-manchado);
+  color: var(--texto-titulo);
+}
+
+.navItem:focus-visible {
+  outline: 2px solid var(--cor-terracota-400);
+  outline-offset: 2px;
+  color: var(--texto-titulo);
+}
+
+/* Ativo — faixa vertical de marcador */
+.navItemAtivo {
+  background-color: var(--cor-papel-dobra);
+  color: var(--texto-titulo);
+  font-weight: var(--peso-medio);
+  border-left-color: var(--cor-terracota-500);
+}
+
+/* Desabilitado */
+.navItemDesabilitado {
+  opacity: var(--opacidade-desabilitado);
+  cursor: not-allowed;
+}
+
+/* Ícone */
+.navItemIcone {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: currentColor;
+  opacity: var(--opacidade-70);
+}
+
+.navItemAtivo .navItemIcone {
+  opacity: var(--opacidade-100);
+  color: var(--cor-terracota-500);
+}
+
+/* Label */
+.navItemLabel {
+  flex: 1;
+  line-height: var(--lh-titulo);
+}
+
+/* Badge — anotação editorial discreta, não badge de software */
+.navItemBadge {
+  font-family: var(--tipo-sans);
+  font-size: 10px;
+  font-style: italic;
+  font-weight: var(--peso-normal);
+  letter-spacing: var(--ls-normal);
+  color: var(--texto-fantasma);
+  background: none;
+  border: none;
+  padding: 0;
+  flex-shrink: 0;
+  opacity: var(--opacidade-60);
+}
+
+/* ── Divisor entre grupos ─────────────────── */
+
+.navDivisor {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--borda-media),
+    transparent
+  );
+  margin: var(--esp-3) var(--esp-3);
+  opacity: var(--opacidade-60);
+}
+
+/* ─────────────────────────────────────────────
+   AURORA — Bilhete de papel preso à estante
+   Superfície: Paper (DS) — não duplicar tokens.
+   Aqui vivem apenas: posição, rotação, transição.
+───────────────────────────────────────────── */
+
+.aurora {
+  position: relative;
+  z-index: 1;
+  width: 200px;
+  min-height: 235px;
+  margin: var(--esp-3) auto;
+  /* Bilhete preso na estante — leve rotação, objeto físico */
+  transform: rotate(-1deg);
+  transition: transform var(--trans-normal), box-shadow var(--trans-normal);
+  overflow: hidden;
+  flex-shrink: 0;
+  /* Sombra curta — papel apoiado, não flutuando */
+  box-shadow: var(--sombra-2);
+}
+
+.aurora:hover {
+  transform: rotate(-0.3deg) translateY(-1px);
+  box-shadow: var(--sombra-3);
+}
+
+/* Ribbon — fitinha fina decorativa, sem texto */
+.auroraRibbon {
+  z-index: var(--z-card);
+  width: 10px;
+  padding: var(--esp-4) 0 var(--esp-1);
+  font-size: 0;
+  color: transparent;
+  opacity: 0.7;
+  right: var(--esp-2);
+}
+
+.auroraTitulo {
+  font-family: var(--tipo-script);
+  font-size: var(--tipo-sm);
+  color: var(--cor-tinta-sepia);
+  margin: 0 0 var(--esp-1);
+  line-height: var(--lh-titulo);
+}
+
+.auroraTexto {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  color: var(--texto-terciario);
+  line-height: var(--lh-corpo);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────
+   RODAPÉ — Discreto, repousa na base
+───────────────────────────────────────────── */
+
+.rodape {
+  position: relative;
+  z-index: 1;
+  /* 26px da borda inferior — blueprint */
+  padding: var(--esp-3) var(--esp-4) 26px;
+  border-top: 1px solid var(--borda-sutil);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+}
+
+/* Perfil: 205px × 62px — blueprint */
+.perfil {
+  width: 205px;
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+}
+
+/* Perfil */
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--raio-total);
+  background-color: var(--cor-terracota-700);
+  color: var(--cor-papel-algodao);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-2xs);
+  font-weight: var(--peso-semi);
+  letter-spacing: var(--ls-largo);
+  flex-shrink: 0;
+  border: 1px solid var(--cor-terracota-600);
+}
+
+.perfilInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.perfilNome {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  font-weight: var(--peso-medio);
+  color: var(--texto-titulo);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: var(--lh-titulo);
+}
+
+.perfilRole {
+  font-family: var(--tipo-mono);
+  font-size: var(--tipo-2xs);
+  color: var(--texto-terciario);
+  letter-spacing: var(--ls-largo);
+  opacity: var(--opacidade-80);
+}
+
+/* Ações do rodapé */
+.rodapeAcoes {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-1);
+}
+
+.rodapeBotao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--raio-sm);
+  background: transparent;
+  color: var(--texto-terciario);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    color var(--trans-hover),
+    background-color var(--trans-hover);
+}
+
+.rodapeBotao:hover {
+  color: var(--texto-titulo);
+  background-color: var(--cor-papel-manchado);
+}
+
+.rodapeBotao:focus-visible {
+  outline: 2px solid var(--cor-terracota-400);
+  outline-offset: 2px;
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVIDADE
+───────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 200px;
+    min-width: 200px;
+  }
+
+  .aurora {
+    margin: var(--esp-2);
+  }
+
+  .navItem {
+    padding: var(--esp-2) var(--esp-2);
+    font-size: var(--tipo-xs);
+  }
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   ACESSIBILIDADE
+───────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora,
+  .aurora:hover {
+    transform: none;
+    transition: none;
+  }
+
+  .navItem {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .sidebar {
+    border-right: 2px solid CanvasText;
+    background: Canvas;
+  }
+
+  .navItem:focus-visible {
+    outline: 3px solid Highlight;
+    color: CanvasText;
+  }
+
+  .navItemAtivo {
+    border-left-color: Highlight;
+    color: CanvasText;
+  }
+}

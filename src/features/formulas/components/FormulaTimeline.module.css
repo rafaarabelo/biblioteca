@@ -1,0 +1,105 @@
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.titulo {
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--texto-terciario);
+  text-transform: uppercase;
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  gap: var(--spacing-3);
+}
+
+.trilha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 16px;
+  padding-top: 6px;
+}
+
+.bola {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--borda-sutil);
+  border: 2px solid var(--superficie-primaria);
+  box-shadow: 0 0 0 1px var(--borda-sutil);
+  flex-shrink: 0;
+}
+
+.bolaAtiva {
+  background: var(--terracota-500, #b45309);
+  box-shadow: 0 0 0 1px var(--terracota-500, #b45309);
+}
+
+.linha {
+  flex: 1;
+  width: 1px;
+  background: var(--borda-sutil);
+  min-height: 20px;
+  margin-top: 4px;
+}
+
+/* Conteúdo */
+.conteudo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: var(--spacing-4);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+}
+
+.versaoNum {
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  font-family: var(--fonte-mono, monospace);
+  color: var(--texto-terciario);
+}
+
+.data {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+}
+
+.descricao {
+  font-size: var(--texto-sm);
+  color: var(--texto-secundario);
+  margin: 0;
+}
+
+.descricaoSemMotivo {
+  font-size: var(--texto-sm);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}
+
+.tituloVersao {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  font-style: italic;
+}

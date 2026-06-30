@@ -1,0 +1,103 @@
+/* ============================================================
+   Ribbon — Fita decorativa / marcador
+   A Biblioteca — Design System
+   ============================================================
+   Fita de seda/cetim usada como marcador de página,
+   separador decorativo, ou destaque de seção.
+   ============================================================ */
+
+.ribbon {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--esp-1) var(--esp-3);
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-xs);
+  font-weight: var(--peso-medio);
+  letter-spacing: var(--ls-largo);
+  border-radius: var(--raio-xs);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Brilho sutil de cetim */
+.ribbon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Cores ────────────────────────────────── */
+
+.ribbonTerracota {
+  background-color: var(--cor-terracota-500);
+  color: var(--cor-neutro-0);
+}
+
+.ribbonMusgo {
+  background-color: var(--cor-musgo-500);
+  color: var(--cor-neutro-0);
+}
+
+.ribbonDourado {
+  background-color: var(--cor-dourado-500);
+  color: var(--cor-neutro-900);
+}
+
+.ribbonVinho {
+  background-color: var(--cor-vinho-500);
+  color: var(--cor-neutro-0);
+}
+
+.ribbonOliva {
+  background-color: var(--cor-oliva-500);
+  color: var(--cor-neutro-0);
+}
+
+.ribbonNeutro {
+  background-color: var(--cor-neutro-300);
+  color: var(--cor-neutro-700);
+}
+
+/* ── Variante marcador (vertical, lateral) ── */
+
+.ribbonMarcador {
+  position: absolute;
+  top: 0;
+  right: var(--esp-4);
+  width: 28px;
+  padding: var(--esp-6) var(--esp-1) var(--esp-2);
+  border-radius: 0 0 var(--raio-xs) var(--raio-xs);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: var(--tipo-2xs);
+  box-shadow: var(--sombra-1);
+}
+
+/* Ponta em V do marcador */
+.ribbonMarcador::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* ── Variante banner (topo de card) ───────── */
+
+.ribbonBanner {
+  display: flex;
+  width: 100%;
+  padding: var(--esp-1-5) var(--esp-4);
+  border-radius: var(--raio-sm) var(--raio-sm) 0 0;
+  justify-content: center;
+}

@@ -1,0 +1,167 @@
+/* ReferenceCard — ficha bibliográfica */
+
+.card {
+  display: flex;
+  border: 1px solid var(--borda-suave);
+  border-radius: var(--radius-md);
+  background: var(--superficie-primaria);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--borda-media, color-mix(in srgb, var(--terracota-500) 25%, var(--borda-suave)));
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+/* Acento lateral — cor por nível de evidência */
+.acento {
+  width: 4px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.acento_verde_escuro { background: #15803d; }
+.acento_verde        { background: #16a34a; }
+.acento_oliva        { background: #65a30d; }
+.acento_ambar        { background: #ca8a04; }
+.acento_laranja      { background: #ea580c; }
+.acento_terracota    { background: var(--terracota-500); }
+.acento_neutro       { background: var(--borda-suave); }
+
+/* Corpo */
+.corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--spacing-4) var(--spacing-4) var(--spacing-3);
+  flex: 1;
+  min-width: 0;
+}
+
+/* Topo */
+.topo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.tipo {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--texto-terciario);
+}
+
+.favorito {
+  margin-left: auto;
+  font-size: 0.875rem;
+  color: var(--ambar-500, #f59e0b);
+}
+
+/* Título */
+.titulo {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--texto-primario);
+  line-height: 1.35;
+  margin: 0;
+  /* 2 linhas máximo */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Citação */
+.citacao {
+  font-size: 0.8125rem;
+  color: var(--texto-secundario);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.autores {
+  font-style: normal;
+}
+
+.ano {
+  color: var(--texto-terciario);
+}
+
+.journal {
+  color: var(--texto-terciario);
+  font-style: italic;
+}
+
+/* Abstract */
+.abstract {
+  font-size: 0.8125rem;
+  color: var(--texto-secundario);
+  line-height: 1.6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Rodapé */
+.rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.rodapeEsq {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.doi,
+.pmid {
+  font-size: 0.5625rem;
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.doi {
+  background: color-mix(in srgb, #3b82f6 12%, transparent);
+  color: #3b82f6;
+}
+
+.pmid {
+  background: color-mix(in srgb, var(--salvia-700, #15803d) 12%, transparent);
+  color: var(--salvia-700, #15803d);
+}
+
+.tag {
+  font-size: 0.6125rem;
+  color: var(--texto-terciario);
+  background: var(--superficie-terciaria);
+  border: 1px solid var(--borda-suave);
+  border-radius: 999px;
+  padding: 1px 7px;
+}
+
+.conexoes {
+  font-size: 0.6875rem;
+  color: var(--texto-terciario);
+  white-space: nowrap;
+}

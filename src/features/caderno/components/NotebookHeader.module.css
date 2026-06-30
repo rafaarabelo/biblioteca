@@ -1,0 +1,95 @@
+/* ============================================================
+   NotebookHeader — Caderno de Campo
+   A Biblioteca — Sprint VI, Direção de Arte
+   ============================================================
+   Tipografia editorial sobre o pergaminho.
+   Título: Spectral (tipo-serif-body)
+   Subtítulo: Caveat/Script (tipo-script)
+   UI: Instrument Sans (tipo-sans)
+   ============================================================ */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-5);
+  flex-wrap: wrap;
+}
+
+.titulo {
+  display: flex;
+  align-items: baseline;
+  gap: var(--esp-3);
+  flex: 1;
+  min-width: 0;
+}
+
+.nome {
+  font-family: var(--tipo-serif-body);
+  font-size: var(--tipo-2xl);
+  font-weight: var(--peso-medio);
+  color: #3F2E22;
+  letter-spacing: var(--ls-apertado);
+  line-height: var(--lh-titulo);
+  margin: 0;
+}
+
+.contagem {
+  font-size: var(--tipo-2xs);
+  color: #857467;
+  font-family: var(--tipo-mono);
+  background: color-mix(in srgb, var(--cor-papel-creme) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cor-madeira-mel) 20%, transparent);
+  border-radius: 999px;
+  padding: 2px 10px;
+  line-height: 1.5;
+}
+
+.descricao {
+  font-family: var(--tipo-script);
+  font-size: var(--tipo-base);
+  color: #857467;
+  margin: 0;
+  flex-shrink: 0;
+  font-style: normal;
+  line-height: var(--lh-relaxada);
+}
+
+.botaoRegistrar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  padding: var(--esp-2) var(--esp-5);
+  background: var(--cor-terracota-500);
+  color: var(--cor-papel-algodao);
+  border-radius: var(--raio-sm);
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-sm);
+  font-weight: var(--peso-medio);
+  text-decoration: none;
+  letter-spacing: var(--ls-normal);
+  transition: background var(--trans-hover), transform var(--trans-hover);
+  flex-shrink: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.botaoRegistrar:hover {
+  background: color-mix(in srgb, var(--cor-terracota-500) 85%, black);
+  transform: translateY(-1px);
+}
+
+.botaoIcone {
+  font-size: var(--tipo-base);
+  line-height: 1;
+  font-weight: 300;
+}
+
+@media (max-width: 640px) {
+  .descricao {
+    display: none;
+  }
+
+  .nome {
+    font-size: var(--tipo-xl);
+  }
+}

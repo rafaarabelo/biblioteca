@@ -1,0 +1,341 @@
+/* ============================================================
+   ObservationEditor — Editor de Pesquisa
+   Biblioteca Cosmetológica Rafa Rabelo
+   ============================================================
+   Aparência de caderno de pesquisa.
+   Espaço em branco generoso. Tipografia confortável.
+   Nunca um formulário administrativo.
+   ============================================================ */
+
+.editor,
+.revisao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  max-width: 760px;
+  padding: var(--spacing-8) var(--spacing-8) var(--spacing-6);
+}
+
+/* ─── Seletor de tipo ─────────────────────── */
+.tipoSeletor {
+  display: flex;
+  gap: var(--spacing-1);
+  flex-wrap: wrap;
+}
+
+.tipoOpcao {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: var(--spacing-1) var(--spacing-3);
+  border: 1px solid var(--borda-suave);
+  border-radius: 999px;
+  background: transparent;
+  font-size: 0.75rem;
+  color: var(--texto-terciario);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+
+.tipoOpcao:hover {
+  background: var(--superficie-secundaria);
+  color: var(--texto-secundario);
+}
+
+.tipoAtivo {
+  background: var(--superficie-terciaria);
+  color: var(--texto-primario);
+  border-color: var(--terracota-400, color-mix(in srgb, var(--terracota-500) 70%, white));
+  font-weight: 500;
+}
+
+.tipoOpcaoIcone {
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.tipoOpcaoLabel {
+  line-height: 1;
+}
+
+/* ─── Título ──────────────────────────────── */
+.titulo {
+  font-family: var(--font-serif);
+  font-size: 1.625rem;
+  font-weight: 600;
+  color: var(--texto-primario);
+  border: none;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  padding: 0;
+  width: 100%;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.titulo:focus {
+  border-bottom-color: var(--borda-suave);
+}
+
+.titulo::placeholder {
+  color: var(--texto-terciario);
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* ─── Conteúdo ────────────────────────────── */
+.conteudo {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--texto-primario);
+  border: none;
+  background: transparent;
+  padding: 0;
+  width: 100%;
+  resize: vertical;
+  min-height: 240px;
+  outline: none;
+  font-family: inherit;
+}
+
+.conteudo::placeholder {
+  color: var(--texto-terciario);
+  font-style: italic;
+}
+
+/* ─── Footer ──────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--borda-suave);
+}
+
+.footerEsquerda {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  flex: 1;
+}
+
+.footerDireita {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-shrink: 0;
+}
+
+/* ─── Status seletor ──────────────────────── */
+.statusSeletor {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.statusLabel {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--texto-terciario);
+  flex-shrink: 0;
+}
+
+.statusSelect {
+  font-size: 0.8125rem;
+  color: var(--texto-secundario);
+  border: 1px solid var(--borda-suave);
+  background: var(--superficie-secundaria);
+  border-radius: var(--radius-sm);
+  padding: 3px 8px;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.12s ease;
+}
+
+.statusSelect:focus {
+  border-color: var(--terracota-400, color-mix(in srgb, var(--terracota-500) 70%, white));
+}
+
+/* ─── Tag input ───────────────────────────── */
+.tagInput {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  min-height: 28px;
+}
+
+.tagChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.6875rem;
+  padding: 2px 8px;
+  background: var(--superficie-terciaria);
+  border-radius: 999px;
+  color: var(--texto-secundario);
+  border: 1px solid var(--borda-suave);
+}
+
+.tagRemover {
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  color: var(--texto-terciario);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.1s ease;
+}
+
+.tagRemover:hover {
+  color: var(--texto-primario);
+}
+
+.tagInputField {
+  flex: 1;
+  min-width: 80px;
+  border: none;
+  background: transparent;
+  font-size: 0.8125rem;
+  color: var(--texto-primario);
+  font-family: inherit;
+  outline: none;
+}
+
+.tagInputField::placeholder {
+  color: var(--texto-terciario);
+  font-style: italic;
+}
+
+/* ─── Atalho de teclado ───────────────────── */
+.atalho {
+  font-size: 0.6875rem;
+  color: var(--texto-terciario);
+  font-family: var(--font-mono, monospace);
+}
+
+/* ─── Botões ──────────────────────────────── */
+.botaoRegistrar {
+  padding: var(--spacing-2) var(--spacing-5);
+  background: var(--terracota-500);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s ease;
+}
+
+.botaoRegistrar:hover:not(:disabled) {
+  background: var(--terracota-600, color-mix(in srgb, var(--terracota-500) 85%, black));
+}
+
+.botaoRegistrar:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.botaoCancelar {
+  padding: var(--spacing-2) var(--spacing-4);
+  background: transparent;
+  border: 1px solid var(--borda-suave);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  color: var(--texto-secundario);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s ease;
+}
+
+.botaoCancelar:hover {
+  background: var(--superficie-secundaria);
+}
+
+/* ─── Erro ────────────────────────────────── */
+.erro {
+  font-size: 0.8125rem;
+  color: var(--terracota-600, #c2410c);
+  margin: 0;
+}
+
+/* ─── Revisão específica ──────────────────── */
+.revisaoTitulo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--borda-suave);
+}
+
+.revisaoLabel {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--texto-terciario);
+  font-weight: 600;
+}
+
+.revisaoNome {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--texto-primario);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.revisaoMeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.justificativaWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.obrigatorio {
+  color: var(--terracota-500);
+}
+
+.justificativa {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--texto-primario);
+  border: 1px solid var(--borda-suave);
+  border-radius: var(--radius-sm);
+  background: var(--superficie-secundaria);
+  padding: var(--spacing-3);
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s ease;
+}
+
+.justificativa:focus {
+  border-color: var(--terracota-400, color-mix(in srgb, var(--terracota-500) 70%, white));
+}
+
+.revisaoAcoes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--borda-suave);
+}

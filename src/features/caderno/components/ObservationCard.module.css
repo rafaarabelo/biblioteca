@@ -1,0 +1,161 @@
+/* ============================================================
+   ObservationCard — Caderno de Campo
+   A Biblioteca — Sprint VI, Direção de Arte
+   ============================================================
+   Cards sobre o pergaminho. Fundo semitransparente
+   para manter a textura da foto visível por trás.
+   Cores editoriais: #3F2E22, #5D4B3F, #857467, #9A8B7C
+   ============================================================ */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  padding: var(--esp-4) var(--esp-5);
+  padding-left: calc(var(--esp-5) + 4px); /* espaço para o acento */
+  /* Fundo papel semitransparente — não opaco branco */
+  background: color-mix(in srgb, var(--cor-papel-algodao) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cor-madeira-mel) 20%, transparent);
+  border-radius: var(--raio-md);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: border-color var(--trans-hover), box-shadow var(--trans-normal), transform var(--trans-normal);
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--cor-terracota-500) 35%, var(--cor-madeira-mel));
+  box-shadow: var(--sombra-3);
+  transform: translateY(-2px);
+}
+
+/* ─── Linha de acento lateral ─────────────── */
+.acento {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: var(--raio-md) 0 0 var(--raio-md);
+}
+
+/* Identidades por tipo */
+.tipo_observacao  .acento { background: var(--cor-oliva-500); }
+.tipo_hipotese    .acento { background: var(--cor-dourado-400); background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.3) 2px, rgba(255,255,255,0.3) 4px); }
+.tipo_pergunta_clinica .acento { background: var(--cor-neutro-400); }
+.tipo_insight     .acento { background: var(--cor-terracota-500); }
+.tipo_lembrete    .acento { background: var(--cor-dourado-400); }
+.tipo_ideia       .acento { background: color-mix(in srgb, var(--cor-dourado-400) 70%, var(--cor-terracota-500)); background-image: repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(255,255,255,0.4) 2px, rgba(255,255,255,0.4) 4px); }
+.tipo_descoberta  .acento { background: color-mix(in srgb, var(--cor-terracota-500) 80%, black); }
+
+/* Fundo discreto por tipo — semitransparente */
+.tipo_observacao         { background: color-mix(in srgb, var(--cor-papel-algodao) 78%, transparent); }
+.tipo_hipotese           { background: color-mix(in srgb, var(--cor-papel-creme) 72%, transparent); }
+.tipo_pergunta_clinica   { background: color-mix(in srgb, var(--cor-papel-algodao) 75%, transparent); }
+.tipo_insight            { background: color-mix(in srgb, var(--cor-papel-algodao) 80%, transparent); }
+.tipo_lembrete           { background: color-mix(in srgb, var(--cor-papel-creme) 68%, transparent); }
+.tipo_ideia              { background: color-mix(in srgb, var(--cor-papel-creme) 65%, transparent); }
+.tipo_descoberta         { background: color-mix(in srgb, var(--cor-papel-algodao) 82%, transparent); }
+
+/* ─── Indicador de tipo ───────────────────── */
+.tipoIndicador {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-1);
+  margin-bottom: 2px;
+}
+
+.tipoIcone {
+  font-size: var(--tipo-sm);
+  line-height: 1;
+}
+
+.tipoLabel {
+  font-family: var(--tipo-mono);
+  font-size: var(--tipo-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-caps);
+  font-weight: var(--peso-semi);
+  color: #857467;
+}
+
+/* ─── Favorito ────────────────────────────── */
+.favoritoMarca {
+  position: absolute;
+  top: var(--esp-3);
+  right: var(--esp-4);
+  font-size: var(--tipo-sm);
+  color: var(--cor-dourado-400);
+  line-height: 1;
+}
+
+/* ─── Título ──────────────────────────────── */
+.titulo {
+  font-family: var(--tipo-serif-body);
+  font-size: var(--tipo-base);
+  font-weight: var(--peso-semi);
+  color: #3F2E22;
+  line-height: var(--lh-titulo);
+  margin: 0;
+  letter-spacing: var(--ls-apertado);
+}
+
+/* ─── Excerpto ────────────────────────────── */
+.excerpto {
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-sm);
+  color: #5D4B3F;
+  line-height: var(--lh-relaxada);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Footer ──────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-2);
+  margin-top: var(--esp-2);
+  flex-wrap: wrap;
+}
+
+.footerMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+}
+
+.versoes {
+  font-size: var(--tipo-2xs);
+  font-family: var(--tipo-mono);
+  color: #857467;
+  background: color-mix(in srgb, var(--cor-papel-creme) 50%, transparent);
+  padding: 2px 7px;
+  border-radius: var(--raio-sm);
+}
+
+.tags {
+  display: flex;
+  gap: 4px;
+}
+
+.tag {
+  font-family: var(--tipo-sans);
+  font-size: 0.625rem;
+  padding: 2px 7px;
+  background: color-mix(in srgb, var(--cor-papel-creme) 50%, transparent);
+  border-radius: 999px;
+  color: #857467;
+  border: 1px solid color-mix(in srgb, var(--cor-madeira-mel) 18%, transparent);
+}
+
+.data {
+  font-family: var(--tipo-mono);
+  font-size: var(--tipo-2xs);
+  color: #9A8B7C;
+}

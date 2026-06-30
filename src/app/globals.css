@@ -1,0 +1,288 @@
+/* ============================================================
+   A Biblioteca — Estilos Globais
+   Sprint VI — Design System centralizado
+   ============================================================
+   Este arquivo importa o Design System e define apenas:
+   - Diretivas Tailwind (utilitários mínimos, fora das telas Biblioteca)
+   - Reset base
+   - Estilos globais de corpo/tipografia
+   O Design System (tokens, superfícies, tipografia) vive em
+   src/styles/design-system.css — essa é a fonte da verdade.
+   ============================================================ */
+
+@import '../styles/design-system.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────
+   Aliases retrocompatíveis — Sprint anterior
+   Mapeia os tokens antigos para os novos do DS.
+   Remover na Sprint VII após migração das páginas.
+───────────────────────────────────────────── */
+:root {
+  /* Paleta Terracota (alias) */
+  --terracota-50:  var(--cor-terracota-50);
+  --terracota-100: var(--cor-terracota-100);
+  --terracota-200: var(--cor-terracota-200);
+  --terracota-300: var(--cor-terracota-300);
+  --terracota-400: var(--cor-terracota-400);
+  --terracota-500: var(--cor-terracota-500);
+  --terracota-600: var(--cor-terracota-600);
+  --terracota-700: var(--cor-terracota-700);
+  --terracota-800: var(--cor-terracota-800);
+  --terracota-900: var(--cor-terracota-900);
+
+  /* Paleta Verde Sálvia → Musgo (alias) */
+  --salvia-50:  var(--cor-musgo-50);
+  --salvia-100: var(--cor-musgo-100);
+  --salvia-200: var(--cor-musgo-200);
+  --salvia-300: var(--cor-musgo-300);
+  --salvia-400: var(--cor-musgo-400);
+  --salvia-500: var(--cor-musgo-500);
+  --salvia-600: var(--cor-musgo-600);
+  --salvia-700: var(--cor-musgo-700);
+  --salvia-800: var(--cor-musgo-800);
+  --salvia-900: var(--cor-musgo-900);
+
+  /* Paleta Âmbar → Dourado (alias) */
+  --ambar-50:  var(--cor-dourado-50);
+  --ambar-100: var(--cor-dourado-100);
+  --ambar-200: var(--cor-dourado-200);
+  --ambar-300: var(--cor-dourado-300);
+  --ambar-400: var(--cor-dourado-400);
+  --ambar-500: var(--cor-dourado-500);
+  --ambar-600: var(--cor-dourado-600);
+  --ambar-700: var(--cor-dourado-700);
+  --ambar-800: var(--cor-dourado-800);
+  --ambar-900: var(--cor-dourado-900);
+
+  /* Neutros (alias) */
+  --neutro-0:   var(--cor-neutro-0);
+  --neutro-50:  var(--cor-neutro-50);
+  --neutro-100: var(--cor-neutro-100);
+  --neutro-200: var(--cor-neutro-200);
+  --neutro-300: var(--cor-neutro-300);
+  --neutro-400: var(--cor-neutro-400);
+  --neutro-500: var(--cor-neutro-500);
+  --neutro-600: var(--cor-neutro-600);
+  --neutro-700: var(--cor-neutro-700);
+  --neutro-800: var(--cor-neutro-800);
+  --neutro-900: var(--cor-neutro-900);
+
+  /* Papel & Madeira (alias) */
+  --papel-fundo:     var(--cor-papel-creme);
+  --papel-claro:     var(--cor-papel-algodao);
+  --papel-medio:     var(--cor-papel-velho);
+  --papel-sombra:    var(--cor-papel-dobra);
+  --papel-borda:     var(--cor-papel-borda);
+
+  --madeira-clara:   var(--cor-madeira-mel);
+  --madeira-media:   var(--cor-madeira-media);
+  --madeira-escura:  var(--cor-madeira-nogueira);
+  --madeira-nogueira: var(--cor-madeira-escura);
+  --madeira-sombra:  var(--cor-madeira-profunda);
+
+  /* Tokens semânticos (alias para componentes existentes) */
+  --background:        var(--fundo-mesa);
+  --foreground:        var(--texto-corpo);
+  --surface:           var(--fundo-papel);
+  --surface-elevated:  var(--fundo-elevado);
+  --border:            var(--borda-sutil);
+  --border-strong:     var(--borda-forte);
+
+  --primary:           var(--cor-primaria);
+  --primary-hover:     var(--cor-primaria-hover);
+  --primary-fg:        var(--cor-primaria-fg);
+
+  --secondary:         var(--cor-secundaria);
+  --secondary-hover:   var(--cor-secundaria-hover);
+  --secondary-fg:      var(--cor-secundaria-fg);
+
+  --accent:            var(--cor-acento);
+  --accent-fg:         var(--cor-acento-fg);
+
+  --muted:             var(--cor-papel-manchado);
+  --muted-fg:          var(--texto-terciario);
+
+  --error:             var(--cor-erro);
+  --error-fg:          #FFFFFF;
+  --error-bg:          var(--cor-erro-bg);
+
+  --success:           var(--cor-sucesso);
+  --success-fg:        #FFFFFF;
+  --success-bg:        var(--cor-sucesso-bg);
+
+  --warning:           var(--cor-alerta);
+  --warning-fg:        var(--cor-neutro-900);
+  --warning-bg:        var(--cor-alerta-bg);
+
+  /* Tipografia (alias) */
+  --font-serif:        var(--tipo-serif);
+  --font-sans:         var(--tipo-sans);
+  --font-mono:         var(--tipo-mono);
+  --font-script:       var(--tipo-script);
+
+  --fonte-serif:       var(--tipo-serif);
+  --fonte-mono:        var(--tipo-mono);
+  --fonte-script:      var(--tipo-script);
+
+  /* Escala de texto (alias) */
+  --texto-xs:   var(--tipo-xs);
+  --texto-sm:   var(--tipo-sm);
+  --texto-base: var(--tipo-base);
+  --texto-lg:   var(--tipo-md);
+  --texto-xl:   var(--tipo-lg);
+  --texto-2xl:  var(--tipo-xl);
+  --texto-3xl:  var(--tipo-2xl);
+
+  /* Espaçamentos (alias) */
+  --space-1:  var(--esp-1);
+  --space-2:  var(--esp-2);
+  --space-3:  var(--esp-3);
+  --space-4:  var(--esp-4);
+  --space-6:  var(--esp-6);
+  --space-8:  var(--esp-8);
+  --space-12: var(--esp-12);
+  --space-16: var(--esp-16);
+
+  --spacing-1:  var(--esp-1);
+  --spacing-2:  var(--esp-2);
+  --spacing-3:  var(--esp-3);
+  --spacing-4:  var(--esp-4);
+  --spacing-5:  var(--esp-5);
+  --spacing-6:  var(--esp-6);
+  --spacing-7:  var(--esp-7);
+  --spacing-8:  var(--esp-8);
+  --spacing-9:  2.25rem;
+  --spacing-10: var(--esp-10);
+  --spacing-12: var(--esp-12);
+  --spacing-16: var(--esp-16);
+
+  /* Raios (alias) */
+  --radius-sm:   var(--raio-sm);
+  --radius-md:   var(--raio-md);
+  --radius-lg:   var(--raio-lg);
+  --radius-xl:   var(--raio-xl);
+  --radius-full: var(--raio-total);
+
+  /* Sombras (alias) */
+  --shadow-1: var(--sombra-2);
+  --shadow-2: var(--sombra-3);
+  --shadow-3: var(--sombra-4);
+  --shadow-4: var(--sombra-5);
+  --shadow-5: var(--sombra-6);
+
+  /* Transições (alias) */
+  --transition-fast:   var(--trans-rapida);
+  --transition-normal: var(--trans-normal);
+  --transition-slow:   var(--trans-lenta);
+
+  /* Superfícies portuguesas (alias) */
+  --superficie-primaria:   var(--fundo-papel);
+  --superficie-secundaria: var(--cor-papel-manchado);
+  --superficie-terciaria:  color-mix(in srgb, var(--cor-madeira-mel) 10%, transparent);
+  --superficie-elevada:    var(--fundo-elevado);
+
+  /* Bordas (alias) */
+  --borda-suave: color-mix(in srgb, var(--cor-madeira-mel) 22%, transparent);
+  --borda-hover: color-mix(in srgb, var(--cor-terracota-500) 40%, var(--cor-madeira-mel));
+
+  /* Texto (alias) — aponta para o token canônico do DS.
+     --texto-secundario e --texto-terciario já são canônicos no DS;
+     não redefinir aqui para evitar auto-referência. */
+  --texto-primario:   var(--texto-corpo);
+
+  /* Areia (alias) — usado por cards de feature */
+  --areia-50:  var(--cor-papel-creme);
+  --areia-400: var(--cor-madeira-mel);
+}
+
+/* ─────────────────────────────────────────────
+   Dark Mode — mantido para completude
+───────────────────────────────────────────── */
+.dark {
+  --background:        var(--cor-neutro-900);
+  --foreground:        var(--cor-neutro-100);
+  --surface:           var(--cor-neutro-800);
+  --surface-elevated:  var(--cor-neutro-700);
+  --border:            var(--cor-neutro-700);
+  --border-strong:     var(--cor-neutro-600);
+  --muted:             var(--cor-neutro-800);
+  --muted-fg:          var(--cor-neutro-400);
+
+  --shadow-1: 0 1px 3px rgba(0,0,0,0.30);
+  --shadow-2: 0 4px 6px rgba(0,0,0,0.35);
+  --shadow-3: 0 10px 15px rgba(0,0,0,0.40);
+  --shadow-4: 0 20px 25px rgba(0,0,0,0.45);
+  --shadow-5: 0 25px 50px rgba(0,0,0,0.60);
+}
+
+/* ─────────────────────────────────────────────
+   Reset & Base
+───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--tipo-sans);
+  background-color: var(--fundo-mesa);
+  color: var(--texto-corpo);
+  line-height: var(--lh-corpo);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--tipo-serif);
+  font-weight: var(--peso-normal);
+  line-height: var(--lh-titulo);
+  margin: 0;
+}
+
+p { margin: 0; }
+a { color: inherit; }
+
+code, pre, .font-mono {
+  font-family: var(--tipo-mono);
+}
+
+/* Focus acessível */
+:focus-visible {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: 2px;
+  border-radius: var(--raio-sm);
+}
+
+/* Seleção */
+::selection {
+  background-color: var(--cor-terracota-100);
+  color: var(--cor-terracota-800);
+}
+
+/* Scrollbar discreta */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--borda-forte);
+  border-radius: var(--raio-total);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--texto-terciario);
+}

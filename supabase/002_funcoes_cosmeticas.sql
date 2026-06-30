@@ -1,0 +1,45 @@
+-- ============================================================
+-- Seed 002: Funções Cosméticas (nomenclatura INCI)
+-- Biblioteca Cosmetológica Rafa Rabelo
+-- ============================================================
+
+INSERT INTO public.funcoes_cosmeticas (nome, nome_inci, descricao, categoria) VALUES
+('Emoliente', 'Emollient', 'Suaviza e amaciia a pele ou cabelo, melhorando a textura superficial.', 'cuidado da pele'),
+('Humectante', 'Humectant', 'Retém a umidade na pele, capturando água do ambiente ou das camadas mais profundas.', 'cuidado da pele'),
+('Oclusivo', 'Occlusive', 'Forma barreira física que reduz a evaporação de água pela superfície da pele.', 'cuidado da pele'),
+('Surfactante', 'Surfactant', 'Reduz a tensão superficial. Usado para limpeza, emulsificação ou espumação.', 'limpeza'),
+('Surfactante de Limpeza', 'Surfactant - Cleansing', 'Remove sujeira, oleosidade e impurezas da superfície da pele ou cabelo.', 'limpeza'),
+('Emulsificante', 'Emulsifying', 'Estabiliza misturas óleo-em-água ou água-em-óleo.', 'formulação'),
+('Espessante', 'Viscosity Increasing Agent', 'Aumenta a viscosidade da formulação, melhorando textura e espalhabilidade.', 'formulação'),
+('Conservante', 'Preservative', 'Inibe o crescimento microbiano (bactérias, fungos, leveduras) na formulação.', 'segurança'),
+('Antioxidante', 'Antioxidant', 'Neutraliza radicais livres, protegendo ingredientes e a pele do estresse oxidativo.', 'cuidado da pele'),
+('Quelante', 'Chelating Agent', 'Liga-se a íons metálicos, prevenindo sua ação catalisadora de reações indesejadas.', 'formulação'),
+('Regulador de pH', 'Buffering', 'Mantém o pH da formulação em faixa ideal para eficácia e segurança.', 'formulação'),
+('Filtro Solar', 'UV Absorber', 'Absorve, reflete ou dispersa radiação UV, protegendo contra danos actínicos.', 'fotoproteção'),
+('Filtro UVA', 'UV Filter', 'Protege especificamente contra radiação UVA (320-400nm).', 'fotoproteção'),
+('Filtro UVB', 'UV Filter', 'Protege especificamente contra radiação UVB (280-320nm).', 'fotoproteção'),
+('Ativo Despigmentante', 'Skin Conditioning', 'Interfere na melanogênese, reduzindo hiperpigmentação.', 'cuidado da pele'),
+('Ativo Clareador', 'Brightening', 'Melhora o brilho e uniformidade do tom de pele, reduzindo manchas.', 'cuidado da pele'),
+('Ativo Anti-Aging', 'Anti-aging', 'Combate sinais do envelhecimento cutâneo: rugas, flacidez, ressecamento.', 'cuidado da pele'),
+('Agente Condicionador de Pele', 'Skin Conditioning', 'Melhora a condição e aparência da pele (textura, maciez, luminosidade).', 'cuidado da pele'),
+('Agente Condicionador de Cabelo', 'Hair Conditioning', 'Melhora textura, brilho e penteabilidade dos fios.', 'cuidado capilar'),
+('Protetor Capilar', 'Hair Protecting', 'Protege os fios contra danos físicos, térmicos ou químicos.', 'cuidado capilar'),
+('Agente de Fixação', 'Film Forming', 'Forma película sobre superfície, com efeito fixador ou protetor.', 'cuidado capilar'),
+('Formador de Filme', 'Film Forming', 'Cria película contínua sobre a pele ou cabelo, com propriedades diversas.', 'formulação'),
+('Esfoliante Químico', 'Exfoliant', 'Dissolve as ligações entre células mortas da camada córnea, promovendo renovação celular.', 'cuidado da pele'),
+('Calmante', 'Soothing', 'Reduz irritação, vermelhidão e desconforto cutâneo.', 'cuidado da pele'),
+('Anti-inflamatório', 'Anti-inflammatory', 'Modula a resposta inflamatória cutânea.', 'cuidado da pele'),
+('Antimicrobiano', 'Antimicrobial', 'Inibe ou elimina microrganismos patogênicos na pele.', 'cuidado da pele'),
+('Perfumante', 'Fragrance', 'Confere ou mascara odor na formulação.', 'sensoriais'),
+('Opacificante', 'Opacifying', 'Confere opacidade ou perolescência à formulação.', 'sensoriais'),
+('Solvente', 'Solvent', 'Dissolve outros ingredientes da formulação.', 'formulação'),
+('Solubilizante', 'Solubilizing', 'Aumenta a solubilidade de ingredientes lipofílicos em fase aquosa.', 'formulação'),
+('Veículo', 'Vehicle', 'Carrega e libera ativos na pele ou cabelo.', 'formulação'),
+('Regulador de Oleosidade', 'Sebum Control', 'Regula a produção ou aparência da oleosidade cutânea.', 'cuidado da pele'),
+('Regenerador Celular', 'Cell Renewal', 'Estimula a renovação e regeneração das células cutâneas.', 'cuidado da pele'),
+('Estimulador de Colágeno', 'Collagen Stimulator', 'Induz a produção de colágeno e outros componentes da matriz extracelular.', 'cuidado da pele'),
+('Barreira de Proteção', 'Skin Protecting', 'Reforça a função barreira da pele, reduzindo a perda transepidérmica de água.', 'cuidado da pele'),
+('Ativo Anti-Acne', 'Anti-acne', 'Combate a acne através de mecanismos específicos (comedolítico, antibacteriano, anti-inflamatório).', 'cuidado da pele'),
+('Veículo Permeante', 'Penetration Enhancer', 'Aumenta a penetração de outros ativos através da barreira cutânea.', 'formulação'),
+('Protetor Solar Físico', 'Physical Sunscreen', 'Reflete e dispersa fisicamente a radiação UV (minerais: ZnO, TiO2).', 'fotoproteção')
+ON CONFLICT (nome) DO NOTHING;

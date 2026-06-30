@@ -1,0 +1,159 @@
+/* ReferenciaDetalheClient */
+
+/* Favorito */
+.favBtn {
+  font-size: 1.25rem;
+  color: var(--texto-terciario);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.15s, transform 0.1s;
+}
+
+.favBtn:hover {
+  color: var(--ambar-500, #f59e0b);
+  transform: scale(1.1);
+}
+
+.favAtivo {
+  color: var(--ambar-500, #f59e0b);
+}
+
+/* Ações laterais */
+.acoes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.btnEditar {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--texto-primario);
+  background: var(--superficie-secundaria);
+  border: 1px solid var(--borda-suave);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: border-color 0.12s;
+  text-align: left;
+}
+
+.btnEditar:hover {
+  border-color: var(--terracota-500);
+}
+
+.btnArquivar {
+  font-size: 0.8125rem;
+  color: var(--texto-terciario);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.12s, border-color 0.12s;
+}
+
+.btnArquivar:hover {
+  color: var(--vermelho-500, #ef4444);
+  border-color: color-mix(in srgb, var(--vermelho-500, #ef4444) 30%, transparent);
+}
+
+/* Conteúdo principal */
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.bloco {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.blocoTitulo {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--texto-terciario);
+  margin: 0;
+}
+
+.texto {
+  font-size: 0.9375rem;
+  color: var(--texto-secundario);
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.texto p {
+  margin: 0;
+}
+
+.abstract {
+  font-size: 0.9375rem;
+  color: var(--texto-secundario);
+  line-height: 1.75;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: var(--spacing-4);
+  background: var(--superficie-secundaria);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--borda-suave);
+}
+
+.abstract p {
+  margin: 0;
+}
+
+.limitacoes {
+  color: var(--texto-terciario);
+  font-size: 0.875rem;
+}
+
+.notasPessoais {
+  border-left: 2px solid var(--terracota-200, color-mix(in srgb, var(--terracota-500) 30%, white));
+  padding-left: var(--spacing-3);
+  font-style: italic;
+}
+
+/* Vazio */
+.vazio {
+  font-size: 0.875rem;
+  color: var(--texto-terciario);
+  margin: 0;
+}
+
+.linkEditar {
+  color: var(--terracota-500);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* Editor inline */
+.editorWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.editorTitulo {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--texto-primario);
+  margin: 0;
+}

@@ -1,0 +1,64 @@
+/* CaseHistory */
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.numero {
+  font-size: 10px;
+  color: var(--texto-terciario);
+  font-family: var(--fonte-mono, monospace);
+  padding-top: 2px;
+  flex-shrink: 0;
+  width: 22px;
+  text-align: right;
+}
+
+.corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icone {
+  font-size: 10px;
+  color: var(--terracota-500);
+}
+
+.data {
+  font-size: 10px;
+  color: var(--texto-terciario);
+}
+
+.trecho {
+  font-size: var(--texto-xs);
+  color: var(--texto-secundario);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.vazio {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}

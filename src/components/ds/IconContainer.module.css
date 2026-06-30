@@ -1,0 +1,126 @@
+/* ============================================================
+   IconContainer — Container para ícones
+   A Biblioteca — Design System
+   ============================================================
+   Moldura redonda ou quadrada para ícones, com cores e tamanhos.
+   ============================================================ */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--raio-md);
+}
+
+/* ── Tamanhos ─────────────────────────────── */
+
+.iconXs {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+}
+
+.iconSm {
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+}
+
+.iconMd {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.iconLg {
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+}
+
+.iconXl {
+  width: 56px;
+  height: 56px;
+  font-size: 26px;
+}
+
+/* ── Formas ───────────────────────────────── */
+
+.iconRedondo {
+  border-radius: var(--raio-total);
+}
+
+.iconQuadrado {
+  border-radius: var(--raio-sm);
+}
+
+/* ── Variantes de cor ─────────────────────── */
+
+.iconTerracota {
+  background-color: var(--cor-terracota-50);
+  color: var(--cor-terracota-600);
+}
+
+.iconMusgo {
+  background-color: var(--cor-musgo-50);
+  color: var(--cor-musgo-600);
+}
+
+.iconDourado {
+  background-color: var(--cor-dourado-50);
+  color: var(--cor-dourado-700);
+}
+
+.iconVinho {
+  background-color: var(--cor-vinho-50);
+  color: var(--cor-vinho-600);
+}
+
+.iconOliva {
+  background-color: var(--cor-oliva-50);
+  color: var(--cor-oliva-600);
+}
+
+.iconNeutro {
+  background-color: var(--cor-neutro-100);
+  color: var(--cor-neutro-600);
+}
+
+/* Variante sólida (ícone claro sobre fundo escuro) */
+.iconSolido.iconTerracota {
+  background-color: var(--cor-terracota-500);
+  color: var(--cor-neutro-0);
+}
+
+.iconSolido.iconMusgo {
+  background-color: var(--cor-musgo-500);
+  color: var(--cor-neutro-0);
+}
+
+.iconSolido.iconDourado {
+  background-color: var(--cor-dourado-500);
+  color: var(--cor-neutro-900);
+}
+
+.iconSolido.iconVinho {
+  background-color: var(--cor-vinho-500);
+  color: var(--cor-neutro-0);
+}
+
+.iconSolido.iconOliva {
+  background-color: var(--cor-oliva-500);
+  color: var(--cor-neutro-0);
+}
+
+.iconSolido.iconNeutro {
+  background-color: var(--cor-neutro-700);
+  color: var(--cor-neutro-0);
+}
+
+/* Variante fantasma (só contorno) */
+.iconFantasma {
+  background-color: transparent;
+  border: 1px solid currentColor;
+  opacity: 0.6;
+}

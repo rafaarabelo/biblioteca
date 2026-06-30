@@ -1,0 +1,154 @@
+/* EvolutionCard */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background: var(--superficie-primaria);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 8px;
+}
+
+/* Cabeçalho */
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icone {
+  font-size: 12px;
+  color: var(--terracota-500);
+}
+
+.tipo {
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--texto-secundario);
+}
+
+.posicao {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  font-family: var(--fonte-mono, monospace);
+}
+
+.data {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  flex-shrink: 0;
+}
+
+/* Descrição */
+.descricao { }
+
+.texto {
+  font-size: var(--texto-sm);
+  color: var(--texto-primario);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Seções */
+.secao {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: var(--spacing-3);
+  border-top: 1px solid var(--borda-sutil);
+}
+
+.secaoTitulo {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--texto-terciario);
+  margin: 0;
+}
+
+.secaoTexto {
+  font-size: var(--texto-sm);
+  color: var(--texto-secundario);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.secaoAlerta {
+  background: color-mix(in srgb, #dc2626 4%, transparent);
+  border-top-color: transparent;
+  margin: 0 calc(-1 * var(--spacing-4));
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: 0 0 7px 7px;
+}
+
+.secaoAlerta .secaoTitulo {
+  color: #dc2626;
+}
+
+.secaoAlerta .secaoTexto {
+  color: #991b1b;
+}
+
+/* Rodapé */
+.rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  padding-top: var(--spacing-2);
+}
+
+/* Satisfação */
+.satisfacao {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.satisfacaoLabel {
+  font-size: 10px;
+  color: var(--texto-terciario);
+}
+
+.satisfacaoDots {
+  display: flex;
+  gap: 3px;
+}
+
+.dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--superficie-terciaria);
+  border: 1px solid var(--borda-sutil);
+}
+
+.dotAtivo {
+  background: var(--terracota-500);
+  border-color: var(--terracota-500);
+}
+
+/* Protocolo */
+.protocolo {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.1s ease;
+}
+
+.protocolo:hover {
+  color: var(--terracota-500);
+}

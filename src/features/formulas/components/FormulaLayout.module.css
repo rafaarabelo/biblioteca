@@ -1,0 +1,36 @@
+.pagina {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--spacing-5) var(--spacing-6);
+  gap: var(--spacing-5);
+}
+
+.corpo {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--spacing-6);
+  align-items: start;
+  flex: 1;
+}
+
+.sidebar {
+  position: sticky;
+  top: var(--spacing-5);
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.principal {
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .corpo {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+    max-height: none;
+  }
+}

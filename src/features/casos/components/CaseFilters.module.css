@@ -1,0 +1,127 @@
+/* CaseFilters */
+
+.filtros {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.secao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.secaoTitulo {
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--texto-terciario);
+  margin: 0;
+}
+
+/* Favorito */
+.favorito {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--texto-sm);
+  color: var(--texto-secundario);
+  background: transparent;
+  border: 1px solid var(--borda-sutil);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.favoritoAtivo {
+  color: #b45309;
+  border-color: #b45309;
+  background: color-mix(in srgb, #b45309 6%, transparent);
+}
+
+/* Status */
+.statusLista {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.statusItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--texto-sm);
+  color: var(--texto-secundario);
+  background: transparent;
+  border: none;
+  padding: 4px 0;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.1s ease;
+  border-radius: 4px;
+}
+
+.statusItem:hover { color: var(--texto-primario); }
+
+.statusAtivo { font-weight: 500; color: var(--texto-primario); }
+
+.ponto {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--superficie-terciaria);
+  border: 1px solid var(--borda-sutil);
+  flex-shrink: 0;
+  transition: background-color 0.1s ease;
+}
+
+/* Tags */
+.tagsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tagItem {
+  font-size: var(--texto-xs);
+  color: var(--texto-secundario);
+  background: var(--superficie-secundaria);
+  border: 1px solid var(--borda-sutil);
+  padding: 3px 9px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.tagItem:hover {
+  border-color: var(--terracota-500);
+  color: var(--terracota-500);
+}
+
+.tagAtiva {
+  background: color-mix(in srgb, var(--terracota-500) 10%, transparent);
+  border-color: var(--terracota-500);
+  color: var(--terracota-500);
+  font-weight: 500;
+}
+
+/* Limpar */
+.limpar {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  text-align: left;
+  text-decoration: underline;
+  transition: color 0.1s ease;
+}
+
+.limpar:hover { color: var(--texto-primario); }

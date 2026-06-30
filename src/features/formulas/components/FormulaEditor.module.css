@@ -1,0 +1,324 @@
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  max-width: 720px;
+}
+
+.secao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.secaoHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  color: var(--texto-secundario);
+}
+
+.obrigatorio {
+  color: var(--terracota-500, #b45309);
+  margin-left: 2px;
+}
+
+.ajuda {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  font-style: italic;
+}
+
+/* Inputs */
+.input {
+  padding: var(--spacing-2) var(--spacing-3);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 6px;
+  background: var(--superficie-primaria);
+  color: var(--texto-primario);
+  font-size: var(--texto-sm);
+  outline: none;
+  transition: border-color 0.15s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: var(--terracota-500, #b45309);
+}
+
+.textarea {
+  padding: var(--spacing-3);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 6px;
+  background: var(--superficie-primaria);
+  color: var(--texto-primario);
+  font-size: var(--texto-sm);
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.15s ease;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.textarea:focus {
+  border-color: var(--terracota-500, #b45309);
+}
+
+.motivoDestaque {
+  border-color: var(--terracota-500, #b45309);
+  background: color-mix(in srgb, var(--terracota-500, #b45309) 4%, var(--superficie-primaria));
+}
+
+.inputPequeno {
+  padding: var(--spacing-1) var(--spacing-2);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 4px;
+  background: var(--superficie-primaria);
+  color: var(--texto-primario);
+  font-size: var(--texto-sm);
+  outline: none;
+  width: 70px;
+}
+
+.inputPequeno:focus {
+  border-color: var(--terracota-500, #b45309);
+}
+
+.inputUnidade {
+  padding: var(--spacing-1) var(--spacing-2);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 4px;
+  background: var(--superficie-primaria);
+  color: var(--texto-primario);
+  font-size: var(--texto-sm);
+  outline: none;
+  width: 40px;
+  text-align: center;
+}
+
+.inputFuncao {
+  padding: var(--spacing-1) var(--spacing-2);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 4px;
+  background: var(--superficie-primaria);
+  color: var(--texto-primario);
+  font-size: var(--texto-sm);
+  outline: none;
+  flex: 1;
+}
+
+.inputPequenoStandalone {
+  max-width: 120px;
+}
+
+.selectPequeno {
+  padding: var(--spacing-1) var(--spacing-2);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 4px;
+  background: var(--superficie-primaria);
+  color: var(--texto-primario);
+  font-size: var(--texto-xs);
+  outline: none;
+  cursor: pointer;
+  max-width: 140px;
+}
+
+/* Botões */
+.botaoAdicionarAtivo {
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  color: var(--terracota-500, #b45309);
+  background: none;
+  border: 1px solid currentColor;
+  border-radius: 5px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+.botaoAdicionarAtivo:hover {
+  background: color-mix(in srgb, var(--terracota-500, #b45309) 8%, transparent);
+}
+
+.botaoCancelar {
+  font-size: var(--texto-sm);
+  color: var(--texto-terciario);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 var(--spacing-2);
+  white-space: nowrap;
+}
+
+.botaoCancelar:hover {
+  color: var(--texto-primario);
+}
+
+.botaoRemover {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--texto-terciario);
+  font-size: 16px;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+
+.botaoRemover:hover {
+  color: #dc2626;
+}
+
+/* Busca de ativos */
+.buscaAtivo {
+  background: var(--superficie-primaria);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 8px;
+  padding: var(--spacing-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.buscaAtivoInput {
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
+}
+
+.buscandoTexto {
+  font-size: var(--texto-sm);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}
+
+.listaAtivos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ativoOpcao {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 6px var(--spacing-3);
+  border: none;
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  font-size: var(--texto-sm);
+  color: var(--texto-primario);
+  transition: background 0.1s ease;
+}
+
+.ativoOpcao:hover {
+  background: var(--superficie-secundaria);
+}
+
+.ativoNome {
+  font-style: italic;
+}
+
+/* Ingredientes */
+.semIngredientes {
+  font-size: var(--texto-sm);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+  padding: var(--spacing-3);
+  text-align: center;
+  border: 1px dashed var(--borda-sutil);
+  border-radius: 6px;
+}
+
+.ingredientes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 8px;
+  padding: var(--spacing-3);
+}
+
+.ingredienteItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) 0;
+  border-bottom: 1px solid var(--borda-sutil);
+  flex-wrap: wrap;
+}
+
+.ingredienteItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.ingredienteNome {
+  font-size: var(--texto-sm);
+  font-style: italic;
+  color: var(--texto-primario);
+  min-width: 140px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.concGroup {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Erro e ação */
+.erro {
+  font-size: var(--texto-sm);
+  color: #dc2626;
+  margin: 0;
+  padding: var(--spacing-3);
+  background: color-mix(in srgb, #dc2626 8%, transparent);
+  border-radius: 6px;
+  border: 1px solid color-mix(in srgb, #dc2626 20%, transparent);
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: var(--spacing-2);
+  border-top: 1px solid var(--borda-sutil);
+}
+
+.botaoSalvar {
+  padding: var(--spacing-2) var(--spacing-6);
+  background: var(--terracota-500, #b45309);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.botaoSalvar:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.botaoSalvar:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

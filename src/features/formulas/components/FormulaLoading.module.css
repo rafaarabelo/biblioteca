@@ -1,0 +1,90 @@
+@keyframes pulso {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.8; }
+}
+
+.pulso {
+  background: var(--superficie-secundaria, #e5e7eb);
+  border-radius: 4px;
+  animation: pulso 1.8s ease-in-out infinite;
+}
+
+/* Lista */
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.card {
+  display: flex;
+  border: 1px solid var(--borda-sutil);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cardAcento {
+  width: 4px;
+  background: var(--superficie-secundaria);
+  flex-shrink: 0;
+  animation: pulso 1.8s ease-in-out infinite;
+}
+
+.cardCorpo {
+  padding: var(--spacing-4);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.codigo   { height: 10px; width: 60px; }
+.data     { height: 10px; width: 80px; }
+.nome     { height: 16px; width: 80%; }
+.objetivo { height: 12px; width: 65%; }
+.badge    { height: 20px; width: 70px; border-radius: 10px; }
+.versao   { height: 10px; width: 30px; }
+
+.cardBottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Detalhe */
+.detalhe {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  padding: var(--spacing-5) var(--spacing-6);
+}
+
+.detalheHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.titulo    { height: 28px; width: 60%; }
+.subtitulo { height: 16px; width: 40%; }
+
+.detalheColunas {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: var(--spacing-6);
+}
+
+.detalheCorpo,
+.detalheLateral {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.bloco      { height: 120px; }
+.blocoMenor { height: 80px; }

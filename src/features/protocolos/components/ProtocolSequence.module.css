@@ -1,0 +1,106 @@
+/* ProtocolSequence */
+
+.wrapper {}
+
+.vazio {
+  font-size: var(--texto-sm);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  counter-reset: fase;
+}
+
+.fase {
+  display: flex;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4) 0;
+  border-bottom: 1px solid var(--borda-sutil);
+  position: relative;
+}
+
+.fase:last-child {
+  border-bottom: none;
+}
+
+.numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--superficie-secundaria);
+  border: 1px solid var(--borda-sutil);
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  color: var(--texto-secundario);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.conteudo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  min-width: 0;
+}
+
+.nome {
+  font-size: var(--texto-base);
+  font-weight: 500;
+  color: var(--texto-primario);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.duracao {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  background: var(--superficie-secundaria);
+  padding: 2px 8px;
+  border-radius: 10px;
+  align-self: flex-start;
+}
+
+.descricao {
+  font-size: var(--texto-sm);
+  color: var(--texto-secundario);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.instrucoes {
+  background: var(--superficie-secundaria);
+  border-radius: 6px;
+  padding: var(--spacing-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.instrucoesLabel {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-terciario);
+  margin: 0;
+}
+
+.instrucoesTexto {
+  font-size: var(--texto-sm);
+  color: var(--texto-secundario);
+  margin: 0;
+  line-height: 1.6;
+}

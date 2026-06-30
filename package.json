@@ -1,0 +1,43 @@
+{
+  "name": "a-biblioteca",
+  "version": "0.2.0",
+  "private": true,
+  "description": "A Biblioteca — uma biblioteca viva de conhecimento cosmetológico de Rafa Rabelo",
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "types:gen": "supabase gen types typescript --local > src/types/supabase.generated.ts",
+    "types:gen:staging": "supabase gen types typescript --project-id $SUPABASE_PROJECT_ID_STAGING > src/types/supabase.generated.ts",
+    "db:reset": "supabase db reset",
+    "db:push": "supabase db push",
+    "db:diff": "supabase db diff",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop"
+  },
+  "dependencies": {
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "@supabase/supabase-js": "^2.44.0",
+    "@supabase/ssr": "^0.3.0",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.0",
+    "supabase": "^1.178.0",
+    "tailwindcss": "^3.4.0",
+    "postcss": "^8.4.0",
+    "autoprefixer": "^10.4.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

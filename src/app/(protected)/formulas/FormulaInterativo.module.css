@@ -1,0 +1,29 @@
+.buscaWrapper {
+  margin-bottom: var(--spacing-4);
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.vazio {
+  padding: var(--spacing-8) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.vazioTexto {
+  font-size: var(--texto-sm);
+  color: var(--texto-secundario);
+  margin: 0;
+}
+
+.vazioSubtexto {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}

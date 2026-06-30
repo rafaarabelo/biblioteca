@@ -1,0 +1,61 @@
+/* CaseLoading */
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.card {
+  display: flex;
+  border: 1px solid var(--borda-sutil);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.acento {
+  display: block;
+  width: 4px;
+  background: var(--superficie-terciaria);
+  flex-shrink: 0;
+}
+
+.corpo {
+  padding: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  flex: 1;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shimmer {
+  display: block;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--superficie-secundaria) 0%,
+    var(--superficie-terciaria) 50%,
+    var(--superficie-secundaria) 100%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+.codigo   { width: 80px;  height: 10px; }
+.data     { width: 70px;  height: 10px; }
+.objetivo { width: 75%;   height: 18px; }
+.queixa   { width: 55%;   height: 13px; }
+.rodape   { display: flex; justify-content: space-between; }
+.status   { width: 100px; height: 10px; }
+.contagem { width: 60px;  height: 10px; }

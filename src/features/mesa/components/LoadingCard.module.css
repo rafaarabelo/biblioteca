@@ -1,0 +1,66 @@
+/* ── LoadingCard ─────────────────────────────────────────── */
+
+@keyframes shimmer {
+  0%   { opacity: 0.35; }
+  50%  { opacity: 0.6;  }
+  100% { opacity: 0.35; }
+}
+
+.card {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 6px);
+  background: var(--card-bg, #faf9f7);
+}
+
+.cardCompact {
+  padding: 0.625rem 0.875rem;
+}
+
+/* Ícone placeholder — círculo */
+.icone {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--muted-fg, #9ca3af);
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+.textos {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 0.2rem;
+}
+
+/* Linhas de texto */
+.linha {
+  height: 0.7rem;
+  border-radius: 2px;
+  background: var(--muted-fg, #9ca3af);
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+.linhaTitulo {
+  width: 70%;
+  height: 0.8rem;
+  animation-delay: 0s;
+}
+
+.linhaSubtitulo {
+  width: 50%;
+  animation-delay: 0.15s;
+}
+
+.linhaBadge {
+  width: 28%;
+  height: 0.65rem;
+  border-radius: 10px;     /* badge é arredondado */
+  margin-top: 0.2rem;
+  animation-delay: 0.3s;
+}

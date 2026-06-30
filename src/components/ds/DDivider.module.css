@@ -1,0 +1,97 @@
+/* ============================================================
+   DDivider — Divisor editorial
+   A Biblioteca — Design System
+   ============================================================
+   Separadores visuais com estética de publicação científica.
+   ============================================================ */
+
+.divider {
+  width: 100%;
+  border: none;
+  margin: var(--esp-6) 0;
+}
+
+/* ── Variantes ────────────────────────────── */
+
+.dividerLinha {
+  height: 1px;
+  background: var(--borda-sutil);
+}
+
+.dividerDupla {
+  height: 3px;
+  background:
+    linear-gradient(
+      180deg,
+      var(--borda-sutil) 0px,
+      var(--borda-sutil) 1px,
+      transparent 1px,
+      transparent 2px,
+      var(--borda-sutil) 2px,
+      var(--borda-sutil) 3px
+    );
+}
+
+.dividerPontilhada {
+  height: 1px;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      var(--borda-media) 0px,
+      var(--borda-media) 4px,
+      transparent 4px,
+      transparent 10px
+    );
+}
+
+.dividerOrnamento {
+  height: 16px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dividerOrnamento::before {
+  content: '§';
+  font-family: var(--tipo-serif);
+  font-size: var(--tipo-sm);
+  color: var(--texto-fantasma);
+  padding: 0 var(--esp-4);
+  background: var(--fundo-papel);
+}
+
+.dividerOrnamento::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--borda-sutil);
+  z-index: -1;
+}
+
+.dividerGradiente {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--borda-media) 20%,
+    var(--borda-media) 80%,
+    transparent 100%
+  );
+}
+
+/* ── Espaçamentos ─────────────────────────── */
+
+.dividerSm {
+  margin: var(--esp-3) 0;
+}
+
+.dividerLg {
+  margin: var(--esp-8) 0;
+}
+
+.dividerXl {
+  margin: var(--esp-12) 0;
+}

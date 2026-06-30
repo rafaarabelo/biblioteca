@@ -1,0 +1,167 @@
+/* ============================================================
+   NotebookLoading — Shimmer do Caderno de Campo
+   A Biblioteca — Sprint VI, Direção de Arte
+   ============================================================
+   Shimmer a 2s: sensação de páginas sendo preparadas.
+   Alinhado com o novo layout editorial (sem fundos opacos).
+   ============================================================ */
+
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position:  600px 0; }
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+/* ─── Shimmer base ───────────────────────── */
+.headerTitulo,
+.headerBotao,
+.sidebarLabel,
+.sidebarLabel2,
+.sidebarItem,
+.cardTipo,
+.cardTitulo,
+.cardExcerpto,
+.cardStatus,
+.cardData {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--cor-madeira-mel) 10%, transparent) 25%,
+    color-mix(in srgb, var(--cor-madeira-mel) 18%, transparent) 50%,
+    color-mix(in srgb, var(--cor-madeira-mel) 10%, transparent) 75%
+  );
+  background-size: 1200px 100%;
+  animation: shimmer 2s ease-in-out infinite;
+  border-radius: var(--raio-sm);
+}
+
+/* ─── Header ─────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--esp-8) var(--esp-8) var(--esp-5);
+  background: transparent;
+}
+
+.headerTitulo {
+  height: 28px;
+  width: 220px;
+}
+
+.headerBotao {
+  height: 34px;
+  width: 160px;
+  border-radius: var(--raio-sm);
+}
+
+/* ─── Corpo ──────────────────────────────── */
+.corpo {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  flex: 1;
+  min-height: 0;
+  gap: var(--esp-6);
+  padding: 0 var(--esp-6);
+}
+
+/* ─── Sidebar skeleton ───────────────────── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  padding: var(--esp-5) var(--esp-4);
+  /* Painel de papel — mesma aparência do sidebar real */
+  background: color-mix(in srgb, var(--cor-papel-creme) 72%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid color-mix(in srgb, var(--cor-madeira-mel) 25%, transparent);
+  border-radius: var(--raio-md);
+  box-shadow: var(--sombra-2);
+  align-self: start;
+}
+
+.sidebarLabel {
+  height: 10px;
+  width: 50px;
+  margin-bottom: var(--esp-2);
+}
+
+.sidebarLabel2 {
+  margin-top: var(--esp-4);
+}
+
+.sidebarItem {
+  height: 26px;
+  width: 100%;
+  border-radius: var(--raio-sm);
+}
+
+/* ─── Lista de cards ─────────────────────── */
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+  padding: var(--esp-4) var(--esp-4) var(--esp-8);
+  overflow-y: auto;
+}
+
+/* ─── Card skeleton ──────────────────────── */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  padding: var(--esp-4) var(--esp-5);
+  background: color-mix(in srgb, var(--cor-papel-algodao) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cor-madeira-mel) 15%, transparent);
+  border-radius: var(--raio-md);
+}
+
+.cardTipo {
+  height: 10px;
+  width: 80px;
+}
+
+.cardTitulo {
+  height: 18px;
+  width: 70%;
+}
+
+.cardExcerpto {
+  height: 12px;
+  width: 100%;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--esp-1);
+}
+
+.cardStatus {
+  height: 10px;
+  width: 60px;
+}
+
+.cardData {
+  height: 10px;
+  width: 40px;
+}
+
+@media (max-width: 768px) {
+  .corpo {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0 var(--esp-3);
+  }
+
+  .sidebar {
+    display: none;
+  }
+}

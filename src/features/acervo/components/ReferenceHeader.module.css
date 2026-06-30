@@ -1,0 +1,52 @@
+/* ReferenceHeader */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-4) var(--spacing-6);
+  gap: var(--spacing-4);
+}
+
+.esquerda {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.titulo {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--texto-primario);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.cont {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6875rem;
+  color: var(--texto-terciario);
+  background: var(--superficie-terciaria);
+  border: 1px solid var(--borda-suave);
+  border-radius: 999px;
+  padding: 2px 8px;
+  line-height: 1.4;
+}
+
+.botaoNova {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--superficie-primaria);
+  background: var(--terracota-500);
+  padding: 6px 16px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: opacity 0.12s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.botaoNova:hover {
+  opacity: 0.88;
+}

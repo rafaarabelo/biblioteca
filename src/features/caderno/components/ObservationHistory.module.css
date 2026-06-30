@@ -1,0 +1,114 @@
+/* ObservationHistory */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: var(--spacing-4);
+}
+
+.modal {
+  background: var(--superficie-primaria);
+  border-radius: var(--radius-lg, var(--radius-md));
+  border: 1px solid var(--borda-suave);
+  max-width: 680px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-6);
+}
+
+.cabecalho {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+.cabecalhoInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+.versaoNum {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--texto-secundario);
+}
+
+.status {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status_neutro   { color: var(--texto-terciario); }
+.status_ambar    { color: var(--ambar-600, #b45309); }
+.status_verde    { color: var(--salvia-700, #15803d); }
+.status_vermelho { color: var(--terracota-600, #c2410c); }
+.status_azul     { color: #3b82f6; }
+
+.data {
+  font-size: 0.75rem;
+  color: var(--texto-terciario);
+}
+
+.fechar {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--texto-terciario);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.1s ease;
+}
+
+.fechar:hover {
+  color: var(--texto-primario);
+}
+
+.justificativa {
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--superficie-secundaria);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--borda-suave);
+}
+
+.justificativaLabel {
+  display: block;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--texto-terciario);
+  margin-bottom: var(--spacing-1);
+}
+
+.justificativa p {
+  font-size: 0.875rem;
+  color: var(--texto-secundario);
+  margin: 0;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.conteudo {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--texto-primario);
+}
+
+.conteudo p {
+  margin: 0 0 var(--spacing-3);
+}

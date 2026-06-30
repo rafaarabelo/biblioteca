@@ -1,0 +1,127 @@
+/* ProtocoloDetalheClient */
+
+.acoes {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+}
+
+.botaoAcao {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  font-size: 0.8125rem;
+  color: var(--texto-secundario);
+  background: transparent;
+  border: 1px solid var(--borda-sutil);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  white-space: nowrap;
+}
+
+.botaoAcao:hover {
+  background: var(--superficie-secundaria);
+}
+
+.botaoFavorito {
+  color: #b45309;
+  border-color: #b45309;
+  background: color-mix(in srgb, #b45309 6%, transparent);
+}
+
+.botaoRevisao {
+  padding: 7px 12px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--terracota-500);
+  background: transparent;
+  border: 1px solid var(--terracota-500);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  white-space: nowrap;
+}
+
+.botaoRevisao:hover {
+  background: var(--terracota-500);
+  color: white;
+}
+
+/* ── Modal de Revisão ── */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--spacing-6) var(--spacing-4);
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.modal {
+  background: var(--superficie-primaria);
+  border-radius: 10px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalCabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-5) var(--spacing-6);
+  border-bottom: 1px solid var(--borda-sutil);
+  flex-shrink: 0;
+  gap: var(--spacing-4);
+}
+
+.modalTitulo {
+  font-family: var(--fonte-serif);
+  font-size: var(--texto-xl);
+  font-weight: 600;
+  color: var(--texto-primario);
+  margin: 0;
+}
+
+.modalSubtitulo {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  margin: 0;
+}
+
+.modalFechar {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--texto-terciario);
+  background: transparent;
+  border: 1px solid var(--borda-sutil);
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.12s ease;
+  margin-left: auto;
+}
+
+.modalFechar:hover {
+  color: var(--texto-primario);
+  background: var(--superficie-secundaria);
+}
+
+.modalCorpo {
+  padding: var(--spacing-6);
+  overflow-y: auto;
+  max-height: 80vh;
+}

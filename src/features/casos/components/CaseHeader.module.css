@@ -1,0 +1,49 @@
+/* CaseHeader */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+.titulo {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-3);
+}
+
+.h1 {
+  font-family: var(--fonte-serif);
+  font-size: var(--texto-2xl);
+  font-weight: 600;
+  color: var(--texto-primario);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.total {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  background: var(--superficie-secundaria);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+
+.novo {
+  font-size: var(--texto-sm);
+  font-weight: 500;
+  color: var(--terracota-500);
+  text-decoration: none;
+  border: 1px solid var(--terracota-500);
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: all 0.12s ease;
+  flex-shrink: 0;
+}
+
+.novo:hover {
+  background: var(--terracota-500);
+  color: white;
+}

@@ -1,0 +1,369 @@
+/* Detalhe do Protocolo — Sprint VI */
+
+.pagina {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--spacing-5) var(--spacing-6) var(--spacing-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+/* ── Área do Cabeçalho ───────────────────── */
+
+.cabecalhoArea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.voltar {
+  font-size: 0.8125rem;
+  color: var(--texto-terciario);
+  text-decoration: none;
+  transition: color 0.12s;
+}
+.voltar:hover { color: var(--texto-primario); }
+
+.headerPrincipal {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-6);
+}
+
+.headerEsquerda {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  flex: 1;
+  min-width: 0;
+}
+
+.headerAcoes {
+  flex-shrink: 0;
+}
+
+.codigo {
+  font-size: var(--texto-xs, 0.75rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--texto-terciario);
+}
+
+.titulo {
+  font-family: var(--fonte-serif, serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--texto-primario);
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.objetivo {
+  font-size: var(--texto-sm, 0.875rem);
+  color: var(--texto-secundario);
+  line-height: 1.5;
+  margin: 0;
+  font-style: italic;
+}
+
+.maturidadeRow {
+  display: flex;
+}
+
+/* ── Grid Principal ───────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 290px;
+  gap: var(--spacing-8);
+  align-items: start;
+}
+
+.principal {
+  min-width: 0;
+}
+
+/* ── Seções do conteúdo ───────────────────── */
+
+.secao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.secaoTitulo {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--texto-terciario);
+  margin: 0;
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid var(--borda-sutil);
+}
+
+.texto {
+  font-size: var(--texto-sm, 0.875rem);
+  color: var(--texto-primario);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.textoItalico {
+  font-size: var(--texto-sm, 0.875rem);
+  color: var(--texto-secundario);
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+.textoVazio {
+  font-size: var(--texto-sm, 0.875rem);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}
+
+.obs {
+  font-size: var(--texto-sm, 0.875rem);
+  color: var(--texto-secundario);
+  line-height: 1.65;
+  margin: 0;
+  border-left: 3px solid var(--terracota-500);
+  padding-left: var(--spacing-4);
+  font-style: italic;
+}
+
+/* Chips de objetivos */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.chip {
+  font-size: 0.75rem;
+  color: var(--texto-secundario);
+  background: var(--superficie-secundaria, var(--surface));
+  border: 1px solid var(--borda-sutil);
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 0.75rem;
+  color: var(--texto-secundario);
+  background: var(--superficie-secundaria, var(--surface));
+  border: 1px solid var(--borda-sutil);
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+/* Em breve */
+.emBreve {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-10) var(--spacing-6);
+  text-align: center;
+  border: 1px dashed var(--borda-sutil);
+  border-radius: var(--raio-md, 8px);
+  opacity: 0.6;
+}
+
+.emBreveIcone {
+  font-size: 1.75rem;
+}
+
+.emBreveTexto {
+  font-size: var(--texto-sm, 0.875rem);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}
+
+/* ── Lateral ──────────────────────────────── */
+
+.lateral {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  border-left: 1px solid var(--borda-sutil);
+  padding-left: var(--spacing-6);
+  position: sticky;
+  top: var(--spacing-5);
+}
+
+.secaoLateral {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.secaoTituloLateral {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--texto-terciario);
+  margin: 0;
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid var(--borda-sutil);
+}
+
+/* Implementação Recomendada */
+.implementacao {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.implementacaoItem {
+  display: grid;
+  grid-template-columns: 8px auto 1fr;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.implDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.implDot[data-color="green"]  { background: var(--salvia-500, #4a7c59); }
+.implDot[data-color="amber"]  { background: var(--ambar-500, #b45309); }
+.implDot[data-color="blue"]   { background: var(--neutro-500, #6b7280); }
+.implDot[data-color="gray"]   { background: var(--neutro-400, #9ca3af); }
+
+.implLabel {
+  font-size: 0.6875rem;
+  color: var(--texto-terciario);
+  white-space: nowrap;
+}
+
+.implValor {
+  font-size: 0.75rem;
+  color: var(--texto-secundario);
+  text-align: right;
+}
+
+/* Recursos Relacionados */
+.recursos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.recursoItem {}
+
+.recursoLink {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-1-5) var(--spacing-2);
+  border-radius: var(--raio-sm, 4px);
+  text-decoration: none;
+  color: var(--texto-secundario);
+  font-size: var(--texto-xs, 0.75rem);
+  transition: background 0.12s, color 0.12s;
+}
+
+.recursoLink:hover {
+  background: var(--superficie-secundaria, var(--surface));
+  color: var(--texto-primario);
+}
+
+.recursoIcone {
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.recursoContador {
+  font-size: 0.6875rem;
+  color: var(--texto-terciario);
+  background: var(--superficie-secundaria, var(--surface));
+  border: 1px solid var(--borda-sutil);
+  padding: 1px 6px;
+  border-radius: 10px;
+  margin-left: auto;
+}
+
+.recursoArrow {
+  color: var(--texto-terciario);
+  font-size: 0.75rem;
+}
+
+/* Anotações da Aurora */
+.auroraCard {
+  border-left: 3px solid var(--salvia-400, #6b9e74);
+  padding: var(--spacing-3) var(--spacing-4);
+  background: color-mix(in srgb, var(--salvia-400, #6b9e74) 6%, transparent);
+  border-radius: 0 var(--raio-sm, 4px) var(--raio-sm, 4px) 0;
+}
+
+.auroraTexto {
+  font-family: var(--tipo-script, serif);
+  font-size: 0.8125rem;
+  color: var(--texto-secundario);
+  line-height: 1.6;
+  font-style: italic;
+  margin: 0 0 var(--spacing-2);
+}
+
+.auroraAssinatura {
+  font-family: var(--tipo-script, serif);
+  font-size: 1rem;
+  color: var(--texto-terciario);
+  font-style: italic;
+}
+
+/* ── Responsivo ───────────────────────────── */
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lateral {
+    border-left: none;
+    border-top: 1px solid var(--borda-sutil);
+    padding-left: 0;
+    padding-top: var(--spacing-6);
+    position: static;
+  }
+
+  .headerPrincipal {
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+
+  .titulo {
+    font-size: 1.375rem;
+  }
+}

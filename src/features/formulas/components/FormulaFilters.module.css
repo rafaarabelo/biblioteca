@@ -1,0 +1,105 @@
+.filtros {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.secao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.label {
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--texto-terciario);
+  text-transform: uppercase;
+}
+
+.opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.opcao {
+  text-align: left;
+  padding: 5px var(--spacing-2);
+  border: none;
+  background: none;
+  border-radius: 5px;
+  font-size: var(--texto-sm);
+  color: var(--texto-secundario);
+  cursor: pointer;
+  transition: background 0.1s ease, color 0.1s ease;
+}
+
+.opcao:hover {
+  background: var(--superficie-secundaria);
+  color: var(--texto-primario);
+}
+
+.opcao.ativo {
+  background: color-mix(in srgb, var(--terracota-500, #b45309) 10%, transparent);
+  color: var(--terracota-500, #b45309);
+  font-weight: 600;
+}
+
+.checkLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--texto-sm);
+  color: var(--texto-secundario);
+  cursor: pointer;
+}
+
+.check {
+  accent-color: var(--terracota-500, #b45309);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tag {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 10px;
+  border: 1px solid var(--borda-sutil);
+  background: var(--superficie-secundaria);
+  color: var(--texto-terciario);
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.tag:hover {
+  border-color: var(--terracota-500, #b45309);
+  color: var(--texto-primario);
+}
+
+.tag.tagAtiva {
+  background: color-mix(in srgb, var(--terracota-500, #b45309) 12%, transparent);
+  border-color: var(--terracota-500, #b45309);
+  color: var(--terracota-500, #b45309);
+  font-weight: 600;
+}
+
+.limpar {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  text-decoration: underline;
+}
+
+.limpar:hover {
+  color: var(--texto-primario);
+}

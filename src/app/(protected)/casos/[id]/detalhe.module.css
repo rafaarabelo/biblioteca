@@ -1,0 +1,264 @@
+/* Caso Detalhe — Ações e Modal de Evolução */
+
+/* ── Ações ── */
+.acoes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.acao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 8px 14px;
+  font-size: var(--texto-sm);
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  background: transparent;
+  border: 1px solid var(--borda-sutil);
+  color: var(--texto-secundario);
+}
+
+.acao:hover {
+  border-color: var(--texto-secundario);
+  color: var(--texto-primario);
+}
+
+.acaoFavorito {
+  color: #b45309;
+  border-color: #b45309;
+  background: color-mix(in srgb, #b45309 6%, transparent);
+}
+
+.acaoPrincipal {
+  color: white;
+  background: var(--terracota-500);
+  border-color: var(--terracota-500);
+}
+
+.acaoPrincipal:hover {
+  opacity: 0.88;
+}
+
+/* ── Modal ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(2px);
+  z-index: 50;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--spacing-8) var(--spacing-4);
+  overflow-y: auto;
+}
+
+.modal {
+  background: var(--superficie-primaria);
+  border: 1px solid var(--borda-sutil);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.modalCabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-5) var(--spacing-5) 0;
+}
+
+.modalTitulo {
+  font-family: var(--fonte-serif);
+  font-size: var(--texto-lg);
+  font-weight: 600;
+  color: var(--texto-primario);
+  margin: 0;
+}
+
+.modalFechar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--texto-terciario);
+  border-radius: 50%;
+  transition: all 0.1s ease;
+  line-height: 1;
+}
+
+.modalFechar:hover {
+  background: var(--superficie-secundaria);
+  color: var(--texto-primario);
+}
+
+.modalCorpo {
+  padding: var(--spacing-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  overflow-y: auto;
+  max-height: 65vh;
+}
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4);
+}
+
+.modalCampo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.modalLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--texto-xs);
+  font-weight: 500;
+  color: var(--texto-secundario);
+}
+
+.modalLabelHint {
+  font-size: 10px;
+  color: var(--texto-terciario);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.modalInput,
+.modalSelect,
+.modalTextarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--borda-sutil);
+  border-radius: 6px;
+  font-size: var(--texto-sm);
+  color: var(--texto-primario);
+  background: var(--superficie-primaria);
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+  box-sizing: border-box;
+}
+
+.modalInput:focus,
+.modalSelect:focus,
+.modalTextarea:focus {
+  outline: none;
+  border-color: var(--terracota-400, color-mix(in srgb, var(--terracota-500) 70%, white));
+}
+
+.modalTextarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.6;
+}
+
+.modalTextarea::placeholder {
+  color: var(--texto-terciario);
+}
+
+/* Satisfação */
+.satisfacaoOpcoes {
+  display: flex;
+  gap: 8px;
+}
+
+.satisfacaoBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid var(--borda-sutil);
+  background: var(--superficie-secundaria);
+  font-size: var(--texto-sm);
+  font-weight: 500;
+  color: var(--texto-secundario);
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.satisfacaoBtn:hover {
+  border-color: var(--terracota-500);
+  color: var(--terracota-500);
+}
+
+.satisfacaoBtnAtivo {
+  background: var(--terracota-500);
+  border-color: var(--terracota-500);
+  color: white;
+}
+
+/* Aviso */
+.avisoImutavel {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+  padding: var(--spacing-3) var(--spacing-3);
+  background: var(--superficie-secundaria);
+  border-radius: 6px;
+  border: 1px solid var(--borda-sutil);
+}
+
+/* Erro */
+.erro {
+  font-size: var(--texto-sm);
+  color: #dc2626;
+  margin: 0;
+}
+
+/* Rodapé */
+.modalRodape {
+  padding: var(--spacing-4) var(--spacing-5);
+  border-top: 1px solid var(--borda-sutil);
+  display: flex;
+  gap: var(--spacing-3);
+  justify-content: flex-end;
+}
+
+.modalCancelar {
+  font-size: var(--texto-sm);
+  color: var(--texto-secundario);
+  background: transparent;
+  border: 1px solid var(--borda-sutil);
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: border-color 0.1s ease;
+}
+
+.modalCancelar:hover { border-color: var(--texto-secundario); }
+
+.modalSalvar {
+  font-size: var(--texto-sm);
+  font-weight: 500;
+  color: white;
+  background: var(--terracota-500);
+  border: none;
+  border-radius: 6px;
+  padding: 9px 20px;
+  cursor: pointer;
+  transition: opacity 0.12s ease;
+}
+
+.modalSalvar:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}

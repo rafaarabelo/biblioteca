@@ -1,0 +1,89 @@
+/* ============================================================
+   BotanicalDecoration — Decoração botânica
+   A Biblioteca — Design System
+   ============================================================
+   Ornamentos vegetais sutis para cantos, bordas e divisores.
+   Puramente decorativos (aria-hidden).
+   ============================================================ */
+
+.botanical {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.12;
+  color: var(--cor-oliva-500);
+  z-index: 0;
+}
+
+/* ── Posições ─────────────────────────────── */
+
+.botanicalTopRight {
+  top: var(--esp-3);
+  right: var(--esp-3);
+}
+
+.botanicalTopLeft {
+  top: var(--esp-3);
+  left: var(--esp-3);
+}
+
+.botanicalBottomRight {
+  bottom: var(--esp-3);
+  right: var(--esp-3);
+}
+
+.botanicalBottomLeft {
+  bottom: var(--esp-3);
+  left: var(--esp-3);
+}
+
+.botanicalCenter {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ── Tamanhos ─────────────────────────────── */
+
+.botanicalSm {
+  width: 32px;
+  height: 32px;
+}
+
+.botanicalMd {
+  width: 48px;
+  height: 48px;
+}
+
+.botanicalLg {
+  width: 72px;
+  height: 72px;
+}
+
+.botanicalXl {
+  width: 96px;
+  height: 96px;
+}
+
+/* ── Opacidades ───────────────────────────── */
+
+.botanicalSutil {
+  opacity: 0.06;
+}
+
+.botanicalVisivel {
+  opacity: 0.18;
+}
+
+/* ── Cores ────────────────────────────────── */
+
+.botanicalTerracota {
+  color: var(--cor-terracota-400);
+}
+
+.botanicalDourado {
+  color: var(--cor-dourado-400);
+}
+
+.botanicalNeutro {
+  color: var(--cor-neutro-400);
+}

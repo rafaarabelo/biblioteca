@@ -1,0 +1,158 @@
+/* ============================================================
+   Protected Layout — Workspace Editorial
+   A Biblioteca — Sprint VI, Onda 4
+   ============================================================
+   O ambiente onde toda a Biblioteca vive.
+   Uma mesa de pesquisa com profundidade e iluminação.
+
+   Camadas de profundidade:
+   1. Fundo creme (parede distante)
+   2. Madeira (mesa de pesquisa)
+   3. Papéis (conteúdo das páginas)
+   4. Cartões (EditorialCards sobre papéis)
+   5. Elementos decorativos (ribbons, selos)
+   6. Hover (elevação ao interagir)
+
+   ZERO cores hardcoded. ZERO sombras hardcoded. ZERO radius hardcoded.
+   ============================================================ */
+
+/* ─────────────────────────────────────────────
+   APP SHELL — Container flex principal
+───────────────────────────────────────────── */
+
+.appShell {
+  display: flex;
+  min-height: 100vh;
+
+  /* Camada 1: Parede/Fundo — creme quente distante */
+  background-color: var(--cor-papel-creme);
+}
+
+/* ─────────────────────────────────────────────
+   APP CONTENT — Área à direita da sidebar
+   A foto da mesa é o background de toda esta área.
+───────────────────────────────────────────── */
+
+.appContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100vh;
+  position: relative;
+
+  /* Mockup da mesa — fotografia como gabarito físico.
+     NUNCA usar background-attachment: fixed.
+     A foto rola com a página como uma folha impressa gigante. */
+  background-image: url('/Background%20mesa.png');
+  background-size: 100% auto;
+  background-position: top left;
+  background-repeat: no-repeat;
+}
+
+/* ─────────────────────────────────────────────
+   APP MAIN — A Mesa de Pesquisa
+───────────────────────────────────────────── */
+
+.appMain {
+  flex: 1;
+  outline: none;
+  overflow-x: hidden;
+  position: relative;
+
+  /* Transparente — mostra a foto do appContent */
+  background: transparent;
+
+  /* Padding mínimo — os papéis da foto já definem as margens.
+     O PhotoLayout e cada .page controlam o posicionamento exato. */
+  padding: 0;
+}
+
+/* Luz direcional sutil sobre a foto — rola com o conteúdo */
+.appMain::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(
+    ellipse at 90% 10%,
+    color-mix(in srgb, var(--cor-dourado-50) 8%, transparent) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: var(--z-mesa);
+}
+
+.appMain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: var(--sombra-interna-1);
+  pointer-events: none;
+  z-index: var(--z-mesa);
+}
+
+/* ─────────────────────────────────────────────
+   ÁREA DE TRABALHO — Onde os papéis repousam
+   Cada página é automaticamente envolta neste
+   contexto de profundidade.
+───────────────────────────────────────────── */
+
+/* Camada 3: Papéis sobre a madeira.
+   Os filhos diretos de appMain (páginas) ganham
+   contexto de superfície automaticamente. */
+.appMain > * {
+  position: relative;
+  z-index: var(--z-papel);
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVIDADE
+───────────────────────────────────────────── */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .appContent {
+    background-size: auto 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .appContent {
+    /* Em mobile a fotografia perde sentido posicional */
+    background-size: auto;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   ACESSIBILIDADE
+───────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .appMain::before,
+  .appMain::after {
+    display: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .appShell {
+    background: Canvas;
+  }
+
+  .appContent {
+    background-image: none;
+  }
+
+  .appMain {
+    background: Canvas;
+  }
+
+  .appMain::before,
+  .appMain::after {
+    display: none;
+  }
+}

@@ -1,0 +1,129 @@
+/* ProtocolVersionHistory */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.titulo {
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  color: var(--texto-secundario);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.versao {
+  position: relative;
+  padding: var(--spacing-3) 0 var(--spacing-4) var(--spacing-4);
+  border-left: 1px solid var(--borda-sutil);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.versaoAtiva {
+  border-left-color: var(--terracota-500);
+}
+
+.versaoAtiva::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 14px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--terracota-500);
+  border: 2px solid var(--superficie-primaria);
+}
+
+.versao:not(.versaoAtiva)::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 15px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--borda-sutil);
+}
+
+.versaoCabecalho {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.versaoNumero {
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  color: var(--texto-primario);
+  font-variant-numeric: tabular-nums;
+}
+
+.versaoAtivaBadge {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--terracota-500);
+  background: color-mix(in srgb, var(--terracota-500) 10%, transparent);
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+
+.versaoData {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  margin-left: auto;
+}
+
+.maturidade {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.maturidadePonto {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.maturidadeLabel {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+}
+
+.autor {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  margin: 0;
+  font-style: italic;
+}
+
+.justificativa {
+  font-size: var(--texto-xs);
+  color: var(--texto-secundario);
+  margin: 4px 0 0;
+  padding-left: var(--spacing-3);
+  border-left: 2px solid var(--borda-sutil);
+  line-height: 1.5;
+}
+
+.fio {
+  display: none;  /* Visual já dado pelo border-left da lista */
+}

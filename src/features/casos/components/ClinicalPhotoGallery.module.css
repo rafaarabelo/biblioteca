@@ -1,0 +1,103 @@
+/* ClinicalPhotoGallery */
+
+.galeria {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.grupo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.grupoTitulo {
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--texto-terciario);
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--spacing-3);
+}
+
+.foto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin: 0;
+}
+
+.imagem {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--borda-sutil);
+  background: var(--superficie-secundaria);
+}
+
+.placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--superficie-secundaria);
+  border: 1px dashed var(--borda-sutil);
+  border-radius: 6px;
+  color: var(--texto-terciario);
+}
+
+.legenda {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.legendaData {
+  font-size: 10px;
+  color: var(--texto-terciario);
+}
+
+.legendaAngulo {
+  font-size: 10px;
+  color: var(--texto-secundario);
+}
+
+.legendaNotas {
+  font-size: 10px;
+  color: var(--texto-terciario);
+  font-style: italic;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Vazio */
+.vazio {
+  padding: var(--spacing-6) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.vazioTexto {
+  font-size: var(--texto-sm);
+  color: var(--texto-secundario);
+  margin: 0;
+}
+
+.vazioHint {
+  font-size: var(--texto-xs);
+  color: var(--texto-terciario);
+  font-style: italic;
+  margin: 0;
+}

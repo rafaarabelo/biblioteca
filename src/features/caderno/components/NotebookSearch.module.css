@@ -1,0 +1,69 @@
+/* ============================================================
+   NotebookSearch — Caderno de Campo
+   A Biblioteca — Sprint VI, Direção de Arte
+   ============================================================
+   Busca sobre o pergaminho. Sem fundo opaco.
+   ============================================================ */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  background: color-mix(in srgb, var(--cor-papel-creme) 55%, transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid color-mix(in srgb, var(--cor-madeira-mel) 22%, transparent);
+  border-radius: var(--raio-md);
+  padding: var(--esp-2-5) var(--esp-4);
+  transition: border-color var(--trans-hover), box-shadow var(--trans-hover);
+}
+
+.wrapper:focus-within {
+  border-color: color-mix(in srgb, var(--cor-terracota-500) 50%, var(--cor-madeira-mel));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--cor-terracota-500) 10%, transparent);
+}
+
+.icone {
+  font-size: var(--tipo-sm);
+  color: #9A8B7C;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--tipo-sans);
+  font-size: var(--tipo-sm);
+  color: #3F2E22;
+  line-height: 1.4;
+  outline: none;
+  min-width: 0;
+}
+
+.input::placeholder {
+  color: #9A8B7C;
+  font-style: italic;
+}
+
+/* Remove o X nativo do Safari */
+.input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.limpar {
+  background: none;
+  border: none;
+  font-size: var(--tipo-base);
+  color: #857467;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color var(--trans-hover);
+}
+
+.limpar:hover {
+  color: #3F2E22;
+}

@@ -1,0 +1,77 @@
+/* ============================================================
+   Surface — Container genérico de superfície
+   A Biblioteca — Design System
+   ============================================================
+   Container neutro com elevação e borda configuráveis.
+   Usado como base para composições que não são Paper/Wood/Notebook.
+   ============================================================ */
+
+.surface {
+  position: relative;
+  background-color: var(--fundo-papel);
+  border-radius: var(--raio-md);
+  overflow: hidden;
+}
+
+/* ── Bordas ───────────────────────────────── */
+
+.surfaceBordaSutil {
+  border: 1px solid var(--borda-sutil);
+}
+
+.surfaceBordaMedia {
+  border: 1px solid var(--borda-media);
+}
+
+.surfaceBordaForte {
+  border: 1px solid var(--borda-forte);
+}
+
+/* ── Elevações ────────────────────────────── */
+
+.surfacePlano {
+  box-shadow: none;
+}
+
+.surfaceElevacao1 {
+  box-shadow: var(--sombra-1);
+}
+
+.surfaceElevacao2 {
+  box-shadow: var(--sombra-2);
+}
+
+.surfaceElevacao3 {
+  box-shadow: var(--sombra-3);
+}
+
+.surfaceElevacao4 {
+  box-shadow: var(--sombra-4);
+}
+
+/* ── Fundos ───────────────────────────────── */
+
+.surfaceMesa {
+  background-color: var(--fundo-mesa);
+}
+
+.surfacePapel {
+  background-color: var(--fundo-papel);
+}
+
+.surfaceRebaixado {
+  background-color: var(--fundo-rebaixado);
+}
+
+.surfaceElevado {
+  background-color: var(--fundo-elevado);
+}
+
+/* ── Padding ──────────────────────────────── */
+
+.surfaceP0 { padding: 0; }
+.surfaceP2 { padding: var(--esp-2); }
+.surfaceP3 { padding: var(--esp-3); }
+.surfaceP4 { padding: var(--esp-4); }
+.surfaceP6 { padding: var(--esp-6); }
+.surfaceP8 { padding: var(--esp-8); }

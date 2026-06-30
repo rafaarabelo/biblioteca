@@ -1,0 +1,17 @@
+// Barrel export — Capítulo V: Fórmulas
+
+export { FormulaLayout }         from './FormulaLayout'
+export { FormulaCard }           from './FormulaCard'
+export { FormulaHeader }         from './FormulaHeader'
+export { FormulaComposition }    from './FormulaComposition'
+export { FormulaIngredient }     from './FormulaIngredient'
+export { FormulaTimeline }       from './FormulaTimeline'
+export { FormulaVersionHistory } from './FormulaVersionHistory'
+export { FormulaComparison }     from './FormulaComparison'
+export { FormulaConnections }    from './FormulaConnections'
+export { FormulaSearch }         from './FormulaSearch'
+export { FormulaFilters }        from './FormulaFilters'
+export { FormulaSidebar }        from './FormulaSidebar'
+export { FormulaLoading }        from './FormulaLoading'
+export { FormulaEditor }         from './FormulaEditor'
+export { FormulaStatus }         from './FormulaStatus'

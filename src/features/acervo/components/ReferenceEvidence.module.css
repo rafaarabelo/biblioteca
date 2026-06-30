@@ -1,0 +1,75 @@
+/* ReferenceEvidence — pirâmide de barras verticais */
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.barras {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.barra {
+  width: 3px;
+  border-radius: 1px;
+  transition: opacity 0.15s ease;
+}
+
+/* Alturas crescentes (pirâmide invertida — maior peso = barra mais alta) */
+.altura_1 { height: 3px; }
+.altura_2 { height: 5px; }
+.altura_3 { height: 7px; }
+.altura_4 { height: 9px; }
+.altura_5 { height: 11px; }
+.altura_6 { height: 14px; }
+
+/* Barra inativa */
+.inativa {
+  background: var(--borda-suave);
+  opacity: 0.5;
+}
+
+/* Cores por nível */
+.cor_verde_escuro { background: #15803d; }
+.cor_verde        { background: #16a34a; }
+.cor_oliva        { background: #65a30d; }
+.cor_ambar        { background: #ca8a04; }
+.cor_laranja      { background: #ea580c; }
+.cor_terracota    { background: var(--terracota-500); }
+.cor_neutro       { background: var(--texto-terciario); }
+
+/* Label */
+.label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.04em;
+}
+
+.label_verde_escuro { color: #15803d; }
+.label_verde        { color: #16a34a; }
+.label_oliva        { color: #65a30d; }
+.label_ambar        { color: #ca8a04; }
+.label_laranja      { color: #ea580c; }
+.label_terracota    { color: var(--terracota-500); }
+.label_neutro       { color: var(--texto-terciario); }
+
+/* Compacto: sem label */
+.compacto .barras {
+  height: 10px;
+}
+
+.compacto .barra {
+  width: 2px;
+}
+
+.compacto .altura_1 { height: 2px; }
+.compacto .altura_2 { height: 4px; }
+.compacto .altura_3 { height: 5px; }
+.compacto .altura_4 { height: 7px; }
+.compacto .altura_5 { height: 8px; }
+.compacto .altura_6 { height: 10px; }

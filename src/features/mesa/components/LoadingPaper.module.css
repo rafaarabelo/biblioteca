@@ -1,0 +1,75 @@
+/* ── LoadingPaper ────────────────────────────────────────── */
+/* Papel sendo colocado na mesa. Mesmos tokens do BilheteAurora. */
+
+@keyframes shimmer {
+  0%   { opacity: 0.4; }
+  50%  { opacity: 0.7; }
+  100% { opacity: 0.4; }
+}
+
+.wrapper {
+  width: 240px;
+}
+
+.papel {
+  position: relative;
+  background: var(--card-bg, #faf9f7);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 1.125rem 1rem 1.25rem 2.25rem;
+  min-height: 80px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+/* Margem lateral — idêntica à do bilhete real */
+.margem {
+  position: absolute;
+  left: 1.5rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: color-mix(in srgb, var(--terracota-300, #d4a5a0) 40%, transparent);
+}
+
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+/* Linha de preview — largura variável para parecer texto real */
+.linha {
+  height: 0.75rem;
+  border-radius: 2px;
+  background: var(--muted-fg, #9ca3af);
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+.linhaPreview {
+  width: 85%;
+}
+
+/* Separador — onde o bilhete "dobra" quando fechado */
+.separador {
+  height: 1px;
+  background: color-mix(in srgb, var(--border) 60%, transparent);
+  margin-top: 0.25rem;
+  animation: shimmer 1.8s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+/* Canto dobrado — idêntico ao do bilhete real */
+.canto {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    var(--border) 50%
+  );
+  opacity: 0.5;
+}

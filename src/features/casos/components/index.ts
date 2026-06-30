@@ -1,0 +1,17 @@
+// Barrel export — Capítulo IV: Casos Clínicos
+
+export { ClinicalLayout }       from './ClinicalLayout'
+export { CaseCard }             from './CaseCard'
+export { CaseHeader }           from './CaseHeader'
+export { CaseTimeline }         from './CaseTimeline'
+export { EvolutionCard }        from './EvolutionCard'
+export { ClinicalPhotoGallery } from './ClinicalPhotoGallery'
+export { CaseConnections }      from './CaseConnections'
+export { CaseSidebar }          from './CaseSidebar'
+export { CaseSummary }          from './CaseSummary'
+export { CaseSearch }           from './CaseSearch'
+export { CaseFilters }          from './CaseFilters'
+export { CaseStatus }           from './CaseStatus'
+export { CaseHistory }          from './CaseHistory'
+export { CaseLoading }          from './CaseLoading'
+export { CaseEditor }           from './CaseEditor'
