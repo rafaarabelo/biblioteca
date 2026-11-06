@@ -98,13 +98,13 @@ export async function middleware(request: NextRequest) {
 
   // 2. Usuário autenticado tenta acessar /login ou /forgot-password
   if (isAuthenticated && (pathname === '/login' || pathname === '/forgot-password')) {
-    return NextResponse.redirect(new URL('/mesa', request.url))
+    return NextResponse.redirect(new URL('/hoje', request.url))
   }
 
-  // 3. Raiz / redireciona para /mesa (autenticado) ou /login (não autenticado)
+  // 3. Raiz / redireciona para /hoje (autenticado) ou /login (não autenticado)
   if (pathname === '/') {
     if (isAuthenticated) {
-      return NextResponse.redirect(new URL('/mesa', request.url))
+      return NextResponse.redirect(new URL('/hoje', request.url))
     } else {
       return NextResponse.redirect(new URL('/login', request.url))
     }

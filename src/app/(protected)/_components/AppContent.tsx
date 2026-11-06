@@ -5,6 +5,7 @@
 // Decisão centralizada de background:
 //   - /mesa  → fundo de mesa de madeira
 //   - demais → fundo de rolo de papel antigo
+//   - dia a dia (hoje, agenda, pacientes, pedidos, programas) → fundo liso
 // Nenhuma página decide seu próprio fundo. A rota define tudo.
 // ============================================================
 
@@ -22,11 +23,15 @@ export function AppContent({ children }: AppContentProps) {
 
   // A Mesa de Pesquisa é a única tela com fundo de madeira.
   // A raiz '/' também resolve para a Mesa (middleware redireciona).
-  const isMesa = pathname === '/mesa' || pathname === '/'
+  const isMesa = pathname === '/mesa'
+
+  // Gestão Natural (uso diário): fundo liso, sem fotografia.
+  const isDiaADia = ['/', '/hoje', '/agenda', '/pacientes', '/pedidos', '/programas']
+    .some((r) => pathname === r || (r !== '/' && pathname.startsWith(r + '/')))
 
   const classes = [
     styles.appContent,
-    isMesa ? styles.bgMesa : styles.bgPapel,
+    isDiaADia ? styles.bgLimpo : isMesa ? styles.bgMesa : styles.bgPapel,
   ].join(' ')
 
   return <div className={classes}>{children}</div>

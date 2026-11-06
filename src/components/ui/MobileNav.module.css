@@ -1,0 +1,42 @@
+.barra {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .barra {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--z-sticky, 100);
+    background: var(--cor-neutro-0);
+    border-top: 1px solid var(--cor-papel-borda);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  :global(.dark) .barra {
+    background: #1f1a16;
+    border-top-color: #3d352d;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 0 6px;
+    font: 500 11px/1.2 var(--tipo-sans);
+    color: var(--texto-terciario);
+    text-decoration: none;
+  }
+
+  .ativo {
+    color: var(--cor-musgo-600);
+  }
+
+  :global(.dark) .ativo {
+    color: var(--cor-musgo-300);
+  }
+}

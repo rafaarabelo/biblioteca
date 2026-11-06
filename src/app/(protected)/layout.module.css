@@ -70,6 +70,16 @@
   background-color: var(--cor-papel-algodao);
 }
 
+/* Variante LIMPA — telas de uso diário (Gestão Natural).
+   Sem fotografia: leitura rápida, inclusive no celular. */
+.bgLimpo {
+  background-image: none;
+  background-color: var(--cor-papel-algodao);
+}
+:global(.dark) .bgLimpo {
+  background-color: var(--cor-neutro-900);
+}
+
 /* ─────────────────────────────────────────────
    APP MAIN — A Mesa de Pesquisa
 ───────────────────────────────────────────── */

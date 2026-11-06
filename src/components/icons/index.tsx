@@ -246,3 +246,41 @@ export function IconCaso({ size = 18, ...p }: IconProps) {
     </svg>
   )
 }
+
+// ── Gestão Natural ─────────────────────────────
+
+export function IconHoje({ size = 18, ...p }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 18 18" fill="none" {...p}>
+      <circle cx="9" cy="9" r="3.2" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M9 1.8v1.6M9 14.6v1.6M1.8 9h1.6M14.6 9h1.6M3.9 3.9l1.1 1.1M13 13l1.1 1.1M3.9 14.1L5 13M13 5l1.1-1.1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function IconAgenda({ size = 18, ...p }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 18 18" fill="none" {...p}>
+      <rect x="2.5" y="3.5" width="13" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M2.5 7h13M6 2v3M12 2v3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function IconPacientes({ size = 18, ...p }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 18 18" fill="none" {...p}>
+      <circle cx="9" cy="6" r="3" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M3 16c.6-3 3-4.6 6-4.6s5.4 1.6 6 4.6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function IconPedido({ size = 18, ...p }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 18 18" fill="none" {...p}>
+      <path d="M7 2h4M7.5 2v2.5L5 7.5V15a1.5 1.5 0 0 0 1.5 1.5h5A1.5 1.5 0 0 0 13 15V7.5l-2.5-3V2" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+      <path d="M5 10.5h8" stroke="currentColor" strokeWidth="1.4" />
+    </svg>
+  )
+}

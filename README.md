@@ -1,6 +1,11 @@
-# A Biblioteca
+# Gestão Natural + A Biblioteca
 
-Uma biblioteca viva de conhecimento cosmetológico de Rafa Rabelo.
+Sistema de clínica de estética natural (agenda, pacientes, prontuário, pedidos
+manipulados, programas de tratamento) com a biblioteca de conhecimento
+cosmetológico de Rafa Rabelo como seção de pesquisa.
+
+> Uso diário: veja [`docs/gestao-natural.md`](docs/gestao-natural.md), inclusive
+> como ativar a migration `supabase/017_gestao_natural.sql`.
 
 Aplicação **Next.js 14 (App Router)** + **React 18** + **TypeScript** + **CSS Modules**, com persistência em **Supabase** e deploy na **Vercel**.
 
@@ -169,7 +174,7 @@ src/
   as demais telas usam `Background papel todos.png` (papel claro) via
   `PhotoLayout`. As imagens ficam em `public/`.
 - **Autenticação:** o `middleware.ts` cuida do refresh de token e da proteção de
-  rotas. A raiz `/` redireciona para `/mesa` (autenticado) ou `/login`.
+  rotas. A raiz `/` redireciona para `/hoje` (autenticado) ou `/login`.
 - **Persistência:** toda a persistência real ocorre no Supabase. O
   `localStorage` é usado apenas para estado de interface (filtros, tema, notas
   rápidas, posição de scroll) — nunca como fonte de verdade.

@@ -16,17 +16,16 @@ import {
   IconMesa,
   IconCaderno,
   IconAcervo,
-  IconAtivo,
-  IconVeiculo,
   IconFormula,
   IconProtocolo,
   IconCaso,
-  IconProducao,
-  IconAurora,
-  IconConexoes,
   IconConfig,
   IconAjuda,
   IconSignOut,
+  IconHoje,
+  IconAgenda,
+  IconPacientes,
+  IconPedido,
 } from '@/components/icons'
 import { Paper } from '@/components/ds/Paper'
 import { Ribbon } from '@/components/ds/Ribbon'
@@ -58,6 +57,14 @@ interface SidebarProps {
 // Dados de navegação
 // ─────────────────────────────────────────────
 
+// O dia a dia vem primeiro: é o que se usa toda hora.
+export const NAV_DIA_A_DIA: NavItem[] = [
+  { href: '/hoje',       label: 'Hoje',                 icon: <IconHoje size={20} /> },
+  { href: '/agenda',     label: 'Agenda',               icon: <IconAgenda size={20} /> },
+  { href: '/pacientes',  label: 'Pacientes',            icon: <IconPacientes size={20} /> },
+  { href: '/pedidos',    label: 'Pedidos manipulados',  icon: <IconPedido size={20} /> },
+]
+
 const NAV_DISPONIVEL: NavItem[] = [
   { href: '/mesa',       label: 'Mesa de Pesquisa',     icon: <IconMesa size={20} /> },
   { href: '/caderno',    label: 'Caderno de Campo',     icon: <IconCaderno size={20} /> },
@@ -65,14 +72,6 @@ const NAV_DISPONIVEL: NavItem[] = [
   { href: '/formulas',   label: 'Fórmulas',             icon: <IconFormula size={20} /> },
   { href: '/protocolos', label: 'Protocolos de Uso',    icon: <IconProtocolo size={20} /> },
   { href: '/casos',      label: 'Casos Clínicos',       icon: <IconCaso size={20} /> },
-]
-
-const NAV_EM_PREPARACAO: NavItem[] = [
-  { href: '/ativos',    label: 'Ativos Cosméticos',     icon: <IconAtivo size={20} />,   badge: 'em preparação' },
-  { href: '/veiculos',  label: 'Veículos Cosméticos',   icon: <IconVeiculo size={20} />, badge: 'em preparação' },
-  { href: '/conexoes',  label: 'Conexões',              icon: <IconConexoes size={20} />,badge: 'em preparação' },
-  { href: '/producoes', label: 'Produções',             icon: <IconProducao size={20} />,badge: 'em preparação' },
-  { href: '/aurora',    label: 'Aurora',                icon: <IconAurora size={20} />,  badge: 'em preparação' },
 ]
 
 // ─────────────────────────────────────────────
@@ -160,30 +159,31 @@ export function Sidebar({ profile }: SidebarProps) {
 
       {/* ── Cabeçalho: Placa da Biblioteca ─────── */}
       <div className={styles.cabecalho}>
-        <Link href="/mesa" className={styles.cabecalhoLink} aria-label="Início — Mesa de Pesquisa">
+        <Link href="/hoje" className={styles.cabecalhoLink} aria-label="Início — Hoje">
           <div className={styles.logo}>
             <LogoBotanico />
           </div>
           <div className={styles.cabecalhoTexto}>
-            <span className={styles.titulo}>A Biblioteca</span>
-            <span className={styles.subtitulo}>Conhecimento cosmetológico</span>
+            <span className={styles.titulo}>Gestão Natural</span>
+            <span className={styles.subtitulo}>Clínica e biblioteca</span>
           </div>
         </Link>
       </div>
 
       {/* ── Navegação principal ────────────────── */}
-      <nav className={styles.nav} aria-label="Seções da Biblioteca">
+      <nav className={styles.nav} aria-label="Seções">
+        <span className={styles.navGrupoLabel}>dia a dia</span>
         <div className={styles.navGrupo} role="list">
-          {NAV_DISPONIVEL.map((item) => (
+          {NAV_DIA_A_DIA.map((item) => (
             <NavLink key={item.href} item={item} active={isActive(item.href)} />
           ))}
         </div>
 
         <div className={styles.navDivisor} aria-hidden="true" />
 
-        <span className={styles.navGrupoLabel}>em desenvolvimento</span>
+        <span className={styles.navGrupoLabel}>biblioteca</span>
         <div className={styles.navGrupo} role="list">
-          {NAV_EM_PREPARACAO.map((item) => (
+          {NAV_DISPONIVEL.map((item) => (
             <NavLink key={item.href} item={item} active={isActive(item.href)} />
           ))}
         </div>

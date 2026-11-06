@@ -25,7 +25,7 @@ export async function signIn(
 ): Promise<LoginFormState> {
   const email = formData.get('email')?.toString().trim() ?? ''
   const password = formData.get('password')?.toString() ?? ''
-  const next = formData.get('next')?.toString() ?? '/mesa'
+  const next = formData.get('next')?.toString() ?? '/hoje'
 
   const authService = createAuthService()
   const result = await authService.signIn({ email, password })

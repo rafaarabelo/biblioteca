@@ -14,7 +14,7 @@ import { createClient } from '@/lib/supabase/server'
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url)
   const code = searchParams.get('code')
-  const next = searchParams.get('next') ?? '/mesa'
+  const next = searchParams.get('next') ?? '/hoje'
   const errorParam = searchParams.get('error')
   const errorDescription = searchParams.get('error_description')
 
@@ -51,7 +51,7 @@ export async function GET(request: NextRequest) {
   }
 
   // Sanitizar o `next` para evitar open redirect
-  const safeNext = next.startsWith('/') ? next : '/mesa'
+  const safeNext = next.startsWith('/') ? next : '/hoje'
 
   return NextResponse.redirect(new URL(safeNext, origin))
 }

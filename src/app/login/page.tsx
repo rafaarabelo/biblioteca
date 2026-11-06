@@ -106,7 +106,7 @@ export default function LoginPage() {
 function LoginPageInner() {
   const [state, formAction] = useFormState(signIn, initialState)
   const searchParams = useSearchParams()
-  const next = searchParams.get('next') ?? '/mesa'
+  const next = searchParams.get('next') ?? '/hoje'
 
   return (
     <div className="login-root">

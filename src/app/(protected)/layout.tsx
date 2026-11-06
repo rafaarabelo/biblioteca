@@ -14,6 +14,7 @@ import { redirect } from 'next/navigation'
 import { getAuthContext } from '@/lib/supabase/server'
 import { Sidebar } from '@/components/ui/Sidebar'
 import { TopBar } from '@/components/ui/TopBar'
+import { MobileNav } from '@/components/ui/MobileNav'
 import { AppContent } from './_components/AppContent'
 import styles from './layout.module.css'
 
@@ -42,12 +43,15 @@ export default async function ProtectedLayout({
 
       {/* Área principal: background escolhido pela rota (AppContent) */}
       <AppContent>
-        <TopBar titulo="A Biblioteca" />
+        <TopBar titulo="Gestão Natural" />
 
         <main className={styles.appMain} id="main-content" tabIndex={-1}>
           {children}
         </main>
       </AppContent>
+
+      {/* Celular: a Sidebar some, a barra inferior assume */}
+      <MobileNav />
     </div>
   )
 }
