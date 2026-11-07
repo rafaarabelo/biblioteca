@@ -57,7 +57,7 @@ function BuscaAtivo({ ativos, aoEscolher }: { ativos: AtivoOpcao[]; aoEscolher: 
 
 export function PainelSeguranca({ alertas, detectados, total }: {
   alertas: AlertaSeguranca[]
-  detectados: { nome: string; concentracao: number | null }[]
+  detectados: { nome: string; concentracao: number | null; aproximado?: boolean }[]
   total: number
 }) {
   if (total === 0) return null
@@ -74,7 +74,7 @@ export function PainelSeguranca({ alertas, detectados, total }: {
         <div className={s.acoes} style={{ marginBottom: 12 }}>
           {detectados.map((d, i) => (
             <span key={i} className={`${s.chip} ${s.chipAcento}`}>
-              {d.nome}{d.concentracao !== null ? ` ${String(d.concentracao).replace('.', ',')}%` : ''}
+              {d.aproximado ? '≈ ' : ''}{d.nome}{d.concentracao !== null ? ` ${String(d.concentracao).replace('.', ',')}%` : ''}
             </span>
           ))}
         </div>

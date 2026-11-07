@@ -41,20 +41,57 @@ cola o texto, coloca a data original e ele entra no histórico sem virar tarefa.
 
 O editor de pedido usa a tabela `ativos_cosmeticos` da Biblioteca:
 
-- **Busca de ativos** em cada fórmula: digita parte do nome (ou INCI, ou sinônimo) e
-  um clique insere a linha na composição já com a concentração usual. A faixa
-  mínima/máxima aparece no botão.
+- **Busca de ativos** em cada fórmula: digita parte do nome, do INCI ou de um
+  sinônimo e um clique insere o ativo na composição.
 - **Conferência automática** enquanto você escreve, e de novo na tela do pedido. O
-  sistema reconhece os ativos no texto livre (sem precisar de acento, aceita INCI e
-  sinônimos), lê a concentração escrita e cruza com a ficha da paciente:
-  gestação, amamentação, alergias registradas, idade, rosácea, uso de retinoide,
-  fototipo claro. Também avisa concentração acima da máxima ou abaixo da mínima e
-  pares de ativos incompatíveis no mesmo pedido.
-- Alerta sério pede confirmação antes de salvar. A decisão continua sendo sua, por
-  isso não é um bloqueio absoluto.
+  sistema reconhece os ativos no texto livre (sem precisar de acento ou hífen, aceita
+  INCI e sinônimos, tolera erro de digitação e mostra com "≈" o que leu por
+  semelhança), lê a concentração e cruza com a ficha da paciente.
+- **Trava** (pede confirmação ao salvar): contraindicado na gestação ou na
+  amamentação para paciente gestante ou lactante, alergia registrada, menor de 12 anos,
+  incompatibilidade severa entre ativos do mesmo pedido.
+- **Aviso**: uso na gestação "só com orientação profissional", **ativo sem
+  informação de gestação** para paciente gestante (o silêncio não é sinal de
+  segurança), concentração fora da faixa, rosácea, retinoide, fototipo claro.
 
-Lógica em `src/features/clinica/seguranca.ts`. A qualidade dos alertas depende do
-que está cadastrado nos ativos (concentrações, contraindicações, incompatibilidades).
+A decisão continua sendo sua, por isso nada bloqueia de forma absoluta.
+
+Lógica em `src/features/clinica/seguranca.ts`.
+
+#### Importar os ativos (`supabase/018_ativos_importados.sql`)
+
+O arquivo é gerado a partir do export JSON da Biblioteca:
+
+```bash
+python3 -I scripts/gerar-seed-ativos.py export.json supabase/018_ativos_importados.sql
+```
+
+Ordem: rodar a `017` e depois a `018` no SQL Editor (ou via `psql`, se o editor
+reclamar do tamanho de ~360 KB). A `018` acha a dona pelo e-mail
+`a.rafaelarabelo@gmail.com`, então o usuário precisa existir antes. Pode rodar mais de
+uma vez: ativo que já existe é pulado.
+
+O que o import faz de propósito:
+
+- **Faixas de concentração e pH que eram valor padrão do export foram descartadas.**
+  Eram 179 ativos com "2 a 5%", 112 com "1 a 3%", 24 invertidos ("5 a 2%") e 23 com
+  "1 a 5%", além de 424 com pH "3 a 7". Entraram só 90 faixas de concentração e 35 de
+  pH, as que parecem preenchidas de verdade. Faixa falsa gera alerta falso, e alerta
+  falso ensina a ignorar alerta.
+- **Gestação em três níveis**, derivada do texto, sempre pelo mais restritivo:
+  231 liberados, 124 com orientação, 28 contraindicados, 76 sem informação. Frase
+  de segurança ("Segura em gestantes") nunca conta como contraindicação.
+- **7 nomes repetidos mesclados** (ácido salicílico, ácido hialurônico, aveia
+  coloidal, calêndula, ácido fítico, Turmeria Zen e Miniporyl), ficando 459 ativos.
+- **Tudo entra como não revisado** (`metadados.revisado = false`). Enquanto for assim,
+  concentração fora da faixa é só aviso, nunca trava. Quando você revisar um ativo,
+  marque `revisado: true` em `metadados` para ele passar a travar.
+- O texto original (categoria, indicações, notas, referências, uso exportado) fica
+  guardado em `metadados`, nada foi jogado fora.
+
+**Lacunas conhecidas:** Calmaline, Acne Control e Nano Light Vitamina C Lipossomal,
+que aparecem nas suas fórmulas, não estavam no export e precisam ser cadastrados.
+O sistema avisa quando uma linha da fórmula não corresponde a nenhum ativo.
 
 ### Travas dos programas
 

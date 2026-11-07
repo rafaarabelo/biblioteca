@@ -3,7 +3,7 @@
 // ============================================================
 
 import 'server-only'
-import type { AtivoBiblioteca, PerfilPaciente } from './seguranca'
+import type { AtivoBiblioteca, NivelUsoSeguro, PerfilPaciente } from './seguranca'
 import { createClient, getAuthContext } from '@/lib/supabase/server'
 import {
   hojeISO,
@@ -441,7 +441,7 @@ export async function carregarAtivosBiblioteca(): Promise<AtivoBiblioteca[]> {
     .from('ativos_cosmeticos')
     .select(`
       id, nome, nome_inci, outros_nomes, concentracao_minima, concentracao_usual, concentracao_maxima,
-      unidade_concentracao, ph_minimo, ph_maximo, restricoes_regulatorias,
+      unidade_concentracao, ph_minimo, ph_maximo, restricoes_regulatorias, metadados,
       sinonimos_ativo(sinonimo),
       ativo_contraindicacoes(contraindicacoes_cosmeticas(nome, severidade)),
       ativo_incompativeis!ativo_incompativeis_ativo_id_fkey(motivo, severidade, ativo_incompativel_id,
@@ -455,7 +455,7 @@ export async function carregarAtivosBiblioteca(): Promise<AtivoBiblioteca[]> {
     // Sem as relações (nome de FK diferente no banco): carrega o básico.
     const { data: basico, error: e2 } = await db()
       .from('ativos_cosmeticos')
-      .select('id, nome, nome_inci, outros_nomes, concentracao_minima, concentracao_usual, concentracao_maxima, unidade_concentracao, ph_minimo, ph_maximo, restricoes_regulatorias')
+      .select('id, nome, nome_inci, outros_nomes, concentracao_minima, concentracao_usual, concentracao_maxima, unidade_concentracao, ph_minimo, ph_maximo, restricoes_regulatorias, metadados')
       .eq('tenant_id', tenantId)
       .is('archived_at', null)
       .order('nome')
@@ -464,6 +464,10 @@ export async function carregarAtivosBiblioteca(): Promise<AtivoBiblioteca[]> {
     return (basico ?? []).map((r: any) => mapAtivo(r))
   }
   return (data ?? []).map((r: any) => mapAtivo(r))
+}
+
+function nivelUso(v: unknown): NivelUsoSeguro | null {
+  return v === 'liberado' || v === 'orientacao' || v === 'contraindicado' ? v : null
 }
 
 function mapAtivo(r: any): AtivoBiblioteca {
@@ -480,6 +484,9 @@ function mapAtivo(r: any): AtivoBiblioteca {
     phMin: n(r.ph_minimo),
     phMax: n(r.ph_maximo),
     restricoes: r.restricoes_regulatorias ?? null,
+    gestacao: nivelUso(r.metadados?.gestacao),
+    lactacao: nivelUso(r.metadados?.lactacao),
+    revisado: r.metadados?.revisado === true,
     contraindicacoes: (r.ativo_contraindicacoes ?? [])
       .map((c: any) => c.contraindicacoes_cosmeticas)
       .filter(Boolean)

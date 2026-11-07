@@ -481,6 +481,7 @@ export async function checarFormula(pacienteId: string | null, formulas: string[
         item: d.item,
         nome: d.ativo.nome,
         concentracao: d.concentracao,
+        aproximado: d.aproximado ?? false,
         concMin: d.ativo.concMin,
         concMax: d.ativo.concMax,
         phMin: d.ativo.phMin,
