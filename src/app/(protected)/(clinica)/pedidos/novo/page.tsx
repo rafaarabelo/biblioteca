@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { listarFarmacias, listarPacientes, obterPedido } from '@/features/clinica/dados'
+import { listarFarmacias, listarPacientes, obterPedido, opcoesAtivos } from '@/features/clinica/dados'
 import { hojeISO } from '@/features/clinica/dominio'
 import type { PedidoPayload } from '@/features/clinica/acoes'
 import { PedidoEditor } from '@/features/clinica/ui/PedidoEditor'
@@ -12,10 +12,11 @@ export default async function NovoPedidoPage({
 }: {
   searchParams: { paciente?: string; repetir?: string; historico?: string }
 }) {
-  const [pacientes, farmacias, origem] = await Promise.all([
+  const [pacientes, farmacias, origem, ativos] = await Promise.all([
     listarPacientes(),
     listarFarmacias(),
     searchParams.repetir ? obterPedido(searchParams.repetir) : Promise.resolve(null),
+    opcoesAtivos(),
   ])
 
   const historico = searchParams.historico === '1'
@@ -45,7 +46,7 @@ export default async function NovoPedidoPage({
           </p>
         </div>
       </header>
-      <PedidoEditor pacientes={pacientes.map((p) => ({ id: p.id, nome: p.nome }))} farmacias={farmacias} inicial={inicial} />
+      <PedidoEditor pacientes={pacientes.map((p) => ({ id: p.id, nome: p.nome }))} farmacias={farmacias} ativos={ativos} inicial={inicial} />
     </div>
   )
 }

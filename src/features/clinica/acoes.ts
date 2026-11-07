@@ -10,7 +10,8 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import { ctx } from './dados'
+import { carregarAtivosBiblioteca, ctx, obterPaciente, perfilDaPaciente } from './dados'
+import { avaliarSeguranca, detectarAtivos } from './seguranca'
 import {
   brasiliaParaISO,
   checklistDaSessao,
@@ -463,5 +464,31 @@ export async function concluirTarefa(id: string) {
     return { ok: true }
   } catch (e) {
     return { erro: mensagemErro(e) }
+  }
+}
+
+// ── Segurança da fórmula (ativos da Biblioteca) ────────────
+export async function checarFormula(pacienteId: string | null, formulas: string[]) {
+  try {
+    const [ativos, paciente] = await Promise.all([
+      carregarAtivosBiblioteca(),
+      pacienteId ? obterPaciente(pacienteId) : Promise.resolve(null),
+    ])
+    const detectados = detectarAtivos(formulas, ativos)
+    return {
+      totalBiblioteca: ativos.length,
+      detectados: detectados.map((d) => ({
+        item: d.item,
+        nome: d.ativo.nome,
+        concentracao: d.concentracao,
+        concMin: d.ativo.concMin,
+        concMax: d.ativo.concMax,
+        phMin: d.ativo.phMin,
+        phMax: d.ativo.phMax,
+      })),
+      alertas: avaliarSeguranca(detectados, paciente ? perfilDaPaciente(paciente) : null),
+    }
+  } catch (e) {
+    return { totalBiblioteca: 0, detectados: [], alertas: [], erro: mensagemErro(e) }
   }
 }

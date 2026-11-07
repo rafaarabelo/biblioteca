@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { listarFarmacias, listarPacientes, obterPedido } from '@/features/clinica/dados'
+import { listarFarmacias, listarPacientes, obterPedido, opcoesAtivos } from '@/features/clinica/dados'
 import { PedidoEditor } from '@/features/clinica/ui/PedidoEditor'
 import s from '@/features/clinica/ui/clinica.module.css'
 
 export default async function EditarPedidoPage({ params }: { params: { id: string } }) {
-  const [r, pacientes, farmacias] = await Promise.all([obterPedido(params.id), listarPacientes(), listarFarmacias()])
+  const [r, pacientes, farmacias, ativos] = await Promise.all([obterPedido(params.id), listarPacientes(), listarFarmacias(), opcoesAtivos()])
   if (!r) notFound()
   const p = r.pedido
   return (
@@ -15,6 +15,7 @@ export default async function EditarPedidoPage({ params }: { params: { id: strin
       <PedidoEditor
         pacientes={pacientes.map((x) => ({ id: x.id, nome: x.nome }))}
         farmacias={farmacias}
+        ativos={ativos}
         inicial={{
           id: p.id, pacienteId: p.pacienteId, status: p.status, farmacia: p.farmacia,
           dataPedido: p.dataPedido, previsaoEntrega: p.previsaoEntrega, valor: p.valor,

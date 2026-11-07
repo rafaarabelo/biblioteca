@@ -1,20 +1,109 @@
 'use client'
 
-import { useState, useTransition } from 'react'
+import { useEffect, useMemo, useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
-import { salvarPedido, type PedidoPayload } from '../acoes'
+import { checarFormula, salvarPedido, type PedidoPayload } from '../acoes'
+import type { AlertaSeguranca } from '../seguranca'
 import { CATEGORIAS_ITEM, hojeISO, STATUS_PEDIDO, type CategoriaItem, type PedidoItem, type StatusPedido } from '../dominio'
 import s from './clinica.module.css'
+
+export interface AtivoOpcao {
+  id: string
+  nome: string
+  linha: string
+  faixa: string | null
+  busca: string
+}
+
+type Checagem = Awaited<ReturnType<typeof checarFormula>>
+
+const semAcento = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+
+function BuscaAtivo({ ativos, aoEscolher }: { ativos: AtivoOpcao[]; aoEscolher: (a: AtivoOpcao) => void }) {
+  const [termo, setTermo] = useState('')
+  const resultados = useMemo(() => {
+    const q = semAcento(termo.trim())
+    if (q.length < 2) return []
+    return ativos.filter((a) => a.busca.includes(q)).slice(0, 8)
+  }, [termo, ativos])
+  if (ativos.length === 0) return null
+  return (
+    <div className={`${s.campo} ${s.campoLargo}`}>
+      <input
+        className={s.input}
+        value={termo}
+        onChange={(e) => setTermo(e.target.value)}
+        placeholder={`Buscar entre os ${ativos.length} ativos da Biblioteca e inserir na composição`}
+        aria-label="Buscar ativo da Biblioteca"
+      />
+      {resultados.length > 0 && (
+        <div className={s.acoes}>
+          {resultados.map((a) => (
+            <button
+              key={a.id}
+              type="button"
+              className={`${s.botaoSec} ${s.botaoPequeno}`}
+              onClick={() => { aoEscolher(a); setTermo('') }}
+              title={a.faixa ? `Faixa da Biblioteca: ${a.faixa}` : undefined}
+            >
+              + {a.linha}{a.faixa ? ` (${a.faixa})` : ''}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export function PainelSeguranca({ alertas, detectados, total }: {
+  alertas: AlertaSeguranca[]
+  detectados: { nome: string; concentracao: number | null }[]
+  total: number
+}) {
+  if (total === 0) return null
+  const travas = alertas.filter((a) => a.nivel === 'trava')
+  return (
+    <section className={s.card} aria-live="polite">
+      <h2 className={s.cardTitulo}>
+        Conferência com a Biblioteca
+        <span className={`${s.contador} ${travas.length ? s.contadorAlerta : ''}`}>{alertas.length}</span>
+      </h2>
+      {detectados.length === 0 ? (
+        <p className={s.vazio}>Nenhum ativo da Biblioteca reconhecido na composição ainda.</p>
+      ) : (
+        <div className={s.acoes} style={{ marginBottom: 12 }}>
+          {detectados.map((d, i) => (
+            <span key={i} className={`${s.chip} ${s.chipAcento}`}>
+              {d.nome}{d.concentracao !== null ? ` ${String(d.concentracao).replace('.', ',')}%` : ''}
+            </span>
+          ))}
+        </div>
+      )}
+      {alertas.length === 0 && detectados.length > 0 && (
+        <p className={s.avisoOk}>Nada contraindicado para esta paciente nos ativos reconhecidos.</p>
+      )}
+      <div className={s.pilha} style={{ gap: 8 }}>
+        {alertas.map((a, i) => (
+          <p key={i} className={a.nivel === 'trava' ? s.avisoTrava : s.aviso}>
+            {a.nivel === 'trava' ? '🔒 ' : '⚠ '}<strong>{a.ativo}</strong>: {a.mensagem}
+          </p>
+        ))}
+      </div>
+    </section>
+  )
+}
 
 const itemVazio = (): PedidoItem => ({ categoria: 'cosmetico', nome: '', formula: '', quantidade: '', posologia: '' })
 
 export function PedidoEditor({
   pacientes,
   farmacias,
+  ativos = [],
   inicial,
 }: {
   pacientes: { id: string; nome: string }[]
   farmacias: string[]
+  ativos?: AtivoOpcao[]
   inicial: Partial<PedidoPayload>
 }) {
   const [p, setP] = useState<PedidoPayload>({
@@ -33,6 +122,20 @@ export function PedidoEditor({
   const [salvando, iniciar] = useTransition()
   const router = useRouter()
   const historico = p.status === 'historico'
+  const [checagem, setChecagem] = useState<Checagem | null>(null)
+
+  // Confere a composição com a Biblioteca enquanto você escreve
+  const chaveChecagem = JSON.stringify([p.pacienteId, p.itens.map((i) => i.formula)])
+  useEffect(() => {
+    if (ativos.length === 0) return
+    const t = setTimeout(async () => {
+      setChecagem(await checarFormula(p.pacienteId || null, p.itens.map((i) => i.formula)))
+    }, 600)
+    return () => clearTimeout(t)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chaveChecagem, ativos.length])
+
+  const travas = checagem?.alertas.filter((a) => a.nivel === 'trava') ?? []
 
   const set = <K extends keyof PedidoPayload>(k: K, v: PedidoPayload[K]) => setP((x) => ({ ...x, [k]: v }))
   const setItem = (i: number, campo: keyof PedidoItem, v: string) =>
@@ -40,6 +143,11 @@ export function PedidoEditor({
 
   function salvar(statusFinal?: StatusPedido) {
     setErro(null)
+    if (travas.length > 0 && !window.confirm(
+      `A conferência com a Biblioteca encontrou ${travas.length} alerta(s) sério(s):\n\n` +
+      travas.map((a) => `• ${a.ativo}: ${a.mensagem}`).join('\n') +
+      '\n\nSalvar mesmo assim?',
+    )) return
     iniciar(async () => {
       const r = await salvarPedido({ ...p, status: statusFinal ?? p.status })
       if (r.erro) setErro(r.erro)
@@ -125,6 +233,10 @@ export function PedidoEditor({
                 {Object.entries(CATEGORIAS_ITEM).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
               </select>
             </label>
+            <BuscaAtivo
+              ativos={ativos}
+              aoEscolher={(a) => setItem(i, 'formula', (it.formula.trim() ? it.formula.replace(/\s*$/, '') + '\n' : '') + a.linha)}
+            />
             <label className={`${s.campo} ${s.campoLargo}`}>
               <span className={s.rotulo}>Composição *</span>
               <textarea
@@ -156,6 +268,10 @@ export function PedidoEditor({
           <textarea className={s.textarea} value={p.observacoes ?? ''} onChange={(e) => set('observacoes', e.target.value)} />
         </label>
       </section>
+
+      {checagem && (
+        <PainelSeguranca alertas={checagem.alertas} detectados={checagem.detectados} total={checagem.totalBiblioteca} />
+      )}
 
       {erro && <p className={s.avisoTrava} role="alert">{erro}</p>}
 

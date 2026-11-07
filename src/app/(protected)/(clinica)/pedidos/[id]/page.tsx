@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { obterPedido } from '@/features/clinica/dados'
-import { mudarStatusPedido } from '@/features/clinica/acoes'
+import { checarFormula, mudarStatusPedido } from '@/features/clinica/acoes'
+import { PainelSeguranca } from '@/features/clinica/ui/PedidoEditor'
 import {
   diasDesde,
   fmtData,
@@ -30,6 +31,7 @@ export default async function PedidoPage({ params }: { params: { id: string } })
   const etapaAtual = FLUXO_PEDIDO.indexOf(p.status)
   const textoFarmacia = textoPedidoFarmacia(p)
   const textoPaciente = textoPedidoPaciente(p)
+  const conferencia = await checarFormula(p.pacienteId, p.itens.map((i) => i.formula))
 
   return (
     <div className={s.pagina}>
@@ -85,6 +87,8 @@ export default async function PedidoPage({ params }: { params: { id: string } })
             <PedidoFormulas pedido={p} comCabecalho={false} />
             {p.observacoes && <p className={s.aviso} style={{ marginTop: 12 }}>{p.observacoes}</p>}
           </section>
+
+          <PainelSeguranca alertas={conferencia.alertas} detectados={conferencia.detectados} total={conferencia.totalBiblioteca} />
 
           <section className={s.card}>
             <h2 className={s.cardTitulo}>Mandar pelo WhatsApp</h2>

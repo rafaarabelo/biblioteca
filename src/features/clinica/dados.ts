@@ -3,9 +3,11 @@
 // ============================================================
 
 import 'server-only'
+import type { AtivoBiblioteca, PerfilPaciente } from './seguranca'
 import { createClient, getAuthContext } from '@/lib/supabase/server'
 import {
   hojeISO,
+  idade,
   somarDias,
   type Agendamento,
   type Atendimento,
@@ -428,4 +430,87 @@ export async function painelHoje() {
   sessoesPendentes.sort((a, b) => (a.sessao.dataPrevista ?? '').localeCompare(b.sessao.dataPrevista ?? ''))
 
   return { hoje, agendaHoje, semRegistro: semRegistro as Agendamento[], pedidosAbertos, tarefas, sessoesPendentes }
+}
+
+// ── Ativos da Biblioteca ───────────────────────────────────
+
+/** Todos os ativos da Biblioteca com o que importa para prescrever. */
+export async function carregarAtivosBiblioteca(): Promise<AtivoBiblioteca[]> {
+  const { tenantId } = await ctx()
+  const { data, error } = await db()
+    .from('ativos_cosmeticos')
+    .select(`
+      id, nome, nome_inci, outros_nomes, concentracao_minima, concentracao_usual, concentracao_maxima,
+      unidade_concentracao, ph_minimo, ph_maximo, restricoes_regulatorias,
+      sinonimos_ativo(sinonimo),
+      ativo_contraindicacoes(contraindicacoes_cosmeticas(nome, severidade)),
+      ativo_incompativeis!ativo_incompativeis_ativo_id_fkey(motivo, severidade, ativo_incompativel_id,
+        incompativel:ativos_cosmeticos!ativo_incompativeis_ativo_incompativel_id_fkey(id, nome))
+    `)
+    .eq('tenant_id', tenantId)
+    .is('archived_at', null)
+    .order('nome')
+    .limit(2000)
+  if (error) {
+    // Sem as relações (nome de FK diferente no banco): carrega o básico.
+    const { data: basico, error: e2 } = await db()
+      .from('ativos_cosmeticos')
+      .select('id, nome, nome_inci, outros_nomes, concentracao_minima, concentracao_usual, concentracao_maxima, unidade_concentracao, ph_minimo, ph_maximo, restricoes_regulatorias')
+      .eq('tenant_id', tenantId)
+      .is('archived_at', null)
+      .order('nome')
+      .limit(2000)
+    if (e2) return []
+    return (basico ?? []).map((r: any) => mapAtivo(r))
+  }
+  return (data ?? []).map((r: any) => mapAtivo(r))
+}
+
+function mapAtivo(r: any): AtivoBiblioteca {
+  const n = (v: any) => (v === null || v === undefined ? null : Number(v))
+  return {
+    id: r.id,
+    nome: r.nome,
+    inci: r.nome_inci ?? null,
+    apelidos: [...(r.outros_nomes ?? []), ...((r.sinonimos_ativo ?? []).map((s: any) => s.sinonimo))].filter(Boolean),
+    concMin: n(r.concentracao_minima),
+    concUsual: n(r.concentracao_usual),
+    concMax: n(r.concentracao_maxima),
+    unidade: r.unidade_concentracao ?? null,
+    phMin: n(r.ph_minimo),
+    phMax: n(r.ph_maximo),
+    restricoes: r.restricoes_regulatorias ?? null,
+    contraindicacoes: (r.ativo_contraindicacoes ?? [])
+      .map((c: any) => c.contraindicacoes_cosmeticas)
+      .filter(Boolean)
+      .map((c: any) => ({ nome: c.nome, severidade: c.severidade ?? null })),
+    incompativeis: (r.ativo_incompativeis ?? [])
+      .filter((i: any) => i.incompativel)
+      .map((i: any) => ({ id: i.incompativel.id, nome: i.incompativel.nome, motivo: i.motivo ?? null, severidade: i.severidade ?? null })),
+  }
+}
+
+export function perfilDaPaciente(p: Paciente): PerfilPaciente {
+  return {
+    gestante: p.gestante,
+    amamentando: p.amamentando,
+    alergias: p.alergias,
+    condicoes: p.condicoes,
+    medicamentos: p.medicamentos,
+    fototipo: p.fototipo,
+    idade: idade(p.dataNascimento),
+  }
+}
+
+/** Lista enxuta para a busca de ativos no editor de pedido. */
+export async function opcoesAtivos() {
+  const { linhaDoAtivo, faixaDoAtivo, normalizar } = await import('./seguranca')
+  const ativos = await carregarAtivosBiblioteca()
+  return ativos.map((a) => ({
+    id: a.id,
+    nome: a.nome,
+    linha: linhaDoAtivo(a),
+    faixa: faixaDoAtivo(a),
+    busca: normalizar([a.nome, a.inci ?? '', ...a.apelidos].join(' ')),
+  }))
 }

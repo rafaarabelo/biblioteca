@@ -37,6 +37,25 @@ copiar e de abrir direto no WhatsApp.
 **Registrar fórmula antiga** serve para recuperar o que está nas mensagens antigas:
 cola o texto, coloca a data original e ele entra no histórico sem virar tarefa.
 
+### Ativos da Biblioteca dentro do pedido
+
+O editor de pedido usa a tabela `ativos_cosmeticos` da Biblioteca:
+
+- **Busca de ativos** em cada fórmula: digita parte do nome (ou INCI, ou sinônimo) e
+  um clique insere a linha na composição já com a concentração usual. A faixa
+  mínima/máxima aparece no botão.
+- **Conferência automática** enquanto você escreve, e de novo na tela do pedido. O
+  sistema reconhece os ativos no texto livre (sem precisar de acento, aceita INCI e
+  sinônimos), lê a concentração escrita e cruza com a ficha da paciente:
+  gestação, amamentação, alergias registradas, idade, rosácea, uso de retinoide,
+  fototipo claro. Também avisa concentração acima da máxima ou abaixo da mínima e
+  pares de ativos incompatíveis no mesmo pedido.
+- Alerta sério pede confirmação antes de salvar. A decisão continua sendo sua, por
+  isso não é um bloqueio absoluto.
+
+Lógica em `src/features/clinica/seguranca.ts`. A qualidade dos alertas depende do
+que está cadastrado nos ativos (concentrações, contraindicações, incompatibilidades).
+
 ### Travas dos programas
 
 Cada sessão nasce com um checklist. Itens obrigatórios travam a conclusão, e a trava
